@@ -1456,11 +1456,11 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 
     <!-- Reader Card -->
     <div class="comic-reader-card">
-      <!-- Toolbar -->
+      <!-- Toolbar & Mode -->
       <div class="comic-toolbar">
         <div class="comic-mode-switch">
-          <button class="comic-mode-btn active" id="comicModeSingle" onclick="setComicMode('single')">📄 Mode Per Halaman</button>
-          <button class="comic-mode-btn" id="comicModeScroll" onclick="setComicMode('scroll')">📜 Mode Gulir (Semua)</button>
+          <button class="comic-mode-btn active" id="comicModeScroll" onclick="setComicMode('scroll')">📜 Mode Bergulir</button>
+          <button class="comic-mode-btn" id="comicModeSingle" onclick="setComicMode('single')">📄 Mode Per Halaman</button>
         </div>
         <div class="comic-tool-actions">
           <button class="comic-action-btn" onclick="openComicZoom()">
@@ -1469,16 +1469,44 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
         </div>
       </div>
 
-      <!-- Quick Jump Pills -->
+      <!-- Quick Jump Pills (Smooth Scroll to page) -->
       <div class="comic-jump-pills" id="comicJumpPills">
-        <button class="comic-pill active" onclick="comicPage(0)">Sampul</button>
-        <button class="comic-pill" onclick="comicPage(1)">Halaman 1</button>
-        <button class="comic-pill" onclick="comicPage(2)">Halaman 2</button>
-        <button class="comic-pill" onclick="comicPage(3)">Halaman 3</button>
+        <button class="comic-pill" onclick="jumpToComicPage(0)">📖 Sampul</button>
+        <button class="comic-pill" onclick="jumpToComicPage(1)">📄 Halaman 1</button>
+        <button class="comic-pill" onclick="jumpToComicPage(2)">📄 Halaman 2</button>
+        <button class="comic-pill" onclick="jumpToComicPage(3)">📄 Halaman 3</button>
       </div>
 
-      <!-- SINGLE PAGE VIEW -->
-      <div id="comicSingleSection">
+      <!-- CONTINUOUS SCROLL VIEW (DEFAULT DIRECT ACTIVE) -->
+      <div id="comicScrollSection">
+        <div class="comic-scroll-container">
+          <div class="comic-scroll-item" id="comicPageItem-0">
+            <div class="comic-scroll-badge">📖 Sampul: Kemajuan Peradaban Daulah Abbasiyah</div>
+            <img class="comic-scroll-img" src="komik_1_cover.jpg" alt="Sampul Komik" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
+          </div>
+          <div class="comic-scroll-item" id="comicPageItem-1">
+            <div class="comic-scroll-badge">📄 Halaman 1: Lahirnya Daulah Abbasiyah & Baitul Hikmah</div>
+            <img class="comic-scroll-img" src="komik_2_halaman1.jpg" alt="Halaman 1" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
+          </div>
+          <div class="comic-scroll-item" id="comicPageItem-2">
+            <div class="comic-scroll-badge">📄 Halaman 2: Meneladani Semangat Belajar & Nilai Luhur</div>
+            <img class="comic-scroll-img" src="komik_3_halaman2.jpg" alt="Halaman 2" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
+          </div>
+          <div class="comic-scroll-item" id="comicPageItem-3">
+            <div class="comic-scroll-badge">📄 Halaman 3: Faktor Kejayaan & Bidang Kemajuan</div>
+            <img class="comic-scroll-img" src="komik_4_halaman3.jpg" alt="Halaman 3" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="comic-btn-nav" onclick="jumpToComicPage(0)">
+            ⬆️ Kembali ke Atas Komik
+          </button>
+        </div>
+      </div>
+
+      <!-- SINGLE PAGE VIEW (OPTIONAL) -->
+      <div id="comicSingleSection" style="display: none;">
         <div class="comic-nav-bar">
           <button class="comic-btn-nav" id="comicPrev" onclick="comicPage(curComicIdx - 1)">◀ Sebelumnya</button>
           <span class="comic-page-title-badge" id="comicPageLabel">Halaman 1 dari 4: Sampul Depan</span>
@@ -1495,28 +1523,6 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
           <button class="comic-btn-nav" id="comicPrevBottom" onclick="comicPage(curComicIdx - 1)">◀ Sebelumnya</button>
           <span class="comic-page-title-badge" id="comicPageLabelBottom">Halaman 1 dari 4: Sampul Depan</span>
           <button class="comic-btn-nav" id="comicNextBottom" onclick="comicPage(curComicIdx + 1)">Berikutnya ▶</button>
-        </div>
-      </div>
-
-      <!-- CONTINUOUS SCROLL VIEW -->
-      <div id="comicScrollSection" style="display: none;">
-        <div class="comic-scroll-container">
-          <div class="comic-scroll-item">
-            <div class="comic-scroll-badge">📖 Sampul: Kemajuan Peradaban Daulah Abbasiyah</div>
-            <img class="comic-scroll-img" src="komik_1_cover.jpg" alt="Sampul Komik" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
-          </div>
-          <div class="comic-scroll-item">
-            <div class="comic-scroll-badge">📄 Halaman 1: Lahirnya Daulah Abbasiyah & Baitul Hikmah</div>
-            <img class="comic-scroll-img" src="komik_2_halaman1.jpg" alt="Halaman 1" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
-          </div>
-          <div class="comic-scroll-item">
-            <div class="comic-scroll-badge">📄 Halaman 2: Faktor Kejayaan & Bidang Kemajuan</div>
-            <img class="comic-scroll-img" src="komik_3_halaman2.jpg" alt="Halaman 2" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
-          </div>
-          <div class="comic-scroll-item">
-            <div class="comic-scroll-badge">📄 Halaman 3: Meneladani Semangat Belajar & Pesan Akhir</div>
-            <img class="comic-scroll-img" src="komik_4_halaman3.jpg" alt="Halaman 3" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
-          </div>
         </div>
       </div>
 
@@ -1713,20 +1719,40 @@ const COMIC_DATA = [
     desc: "Kisah berdirinya Daulah Abbasiyah tahun 750 M di Baghdad dan kejayaan Baitul Hikmah."
   },
   {
-    title: "Halaman 2: Faktor Kejayaan & Bidang Kemajuan",
+    title: "Halaman 2: Meneladani Semangat Belajar & Nilai Luhur",
     tag: "HALAMAN 2",
     img: "komik_3_halaman2.jpg",
-    desc: "Stabilitas politik, keterbukaan ilmu, kedokteran, matematika, serta refleksi kejayaan."
+    desc: "Nilai cinta ilmu, pantang menyerah, keterbukaan pikiran, dan pesan untuk generasi penerus."
   },
   {
-    title: "Halaman 3: Meneladani Semangat Belajar & Pesan Akhir",
+    title: "Halaman 3: Faktor Kejayaan & Bidang Kemajuan",
     tag: "HALAMAN 3",
     img: "komik_4_halaman3.jpg",
-    desc: "Nilai cinta ilmu, pantang menyerah, keterbukaan pikiran, dan pesan untuk generasi penerus."
+    desc: "Stabilitas politik, keterbukaan ilmu, kedokteran, matematika, serta refleksi kejayaan."
   }
 ];
 
 let curComicIdx = 0;
+let curComicMode = 'scroll'; // Langsung bergulir secara default
+
+function jumpToComicPage(idx) {
+  if (curComicMode === 'scroll') {
+    const el = document.getElementById("comicPageItem-" + idx);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  } else {
+    comicPage(idx);
+  }
+  // highlight jump pill
+  const pills = document.querySelectorAll("#comicJumpPills .comic-pill");
+  pills.forEach((p, i) => {
+    if (i === idx) p.classList.add("active");
+    else p.classList.remove("active");
+  });
+}
+window.jumpToComicPage = jumpToComicPage;
+
 function comicPage(idx) {
   curComicIdx = Math.max(0, Math.min(COMIC_DATA.length - 1, idx));
   const c = COMIC_DATA[curComicIdx];
@@ -1762,24 +1788,23 @@ function comicPage(idx) {
 window.comicPage = comicPage;
 
 function setComicMode(mode) {
+  curComicMode = mode;
   const single = document.getElementById("comicSingleSection");
   const scroll = document.getElementById("comicScrollSection");
   const btnSingle = document.getElementById("comicModeSingle");
   const btnScroll = document.getElementById("comicModeScroll");
-  const jumpPills = document.getElementById("comicJumpPills");
   
-  if (mode === 'scroll') {
-    if (single) single.style.display = "none";
-    if (scroll) scroll.style.display = "block";
-    if (btnSingle) btnSingle.classList.remove("active");
-    if (btnScroll) btnScroll.classList.add("active");
-    if (jumpPills) jumpPills.style.display = "none";
-  } else {
+  if (mode === 'single') {
     if (single) single.style.display = "block";
     if (scroll) scroll.style.display = "none";
     if (btnSingle) btnSingle.classList.add("active");
     if (btnScroll) btnScroll.classList.remove("active");
-    if (jumpPills) jumpPills.style.display = "flex";
+    comicPage(curComicIdx);
+  } else {
+    if (single) single.style.display = "none";
+    if (scroll) scroll.style.display = "block";
+    if (btnSingle) btnSingle.classList.remove("active");
+    if (btnScroll) btnScroll.classList.add("active");
   }
 }
 window.setComicMode = setComicMode;
@@ -1806,17 +1831,13 @@ if (customComicInp) {
     const file = e.target.files[0];
     if (file) {
       const url = URL.createObjectURL(file);
-      const elImg = document.getElementById("comicImg");
-      if (elImg) elImg.src = url;
-      const elLabel = document.getElementById("comicPageLabel");
-      if (elLabel) elLabel.textContent = "Komik Pilihan: " + file.name;
       openComicZoom(url);
     }
   };
 }
 
-// Initial call to set comic state
-comicPage(0);
+// Inisialisasi: langsung bergulir aktif
+setComicMode('scroll');
 
 
 
