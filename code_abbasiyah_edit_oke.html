@@ -1364,6 +1364,20 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   display: block;
   object-fit: contain;
 }
+
+/* Fullscreen styles for Chatbot Tanya SKI */
+#chatbotContainer:fullscreen, #chatbotContainer:-webkit-full-screen, #chatbotContainer:-moz-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background: #000 !important;
+}
+#chatbotContainer:fullscreen iframe, #chatbotContainer:-webkit-full-screen iframe, #chatbotContainer:-moz-full-screen iframe {
+  width: 100% !important;
+  height: 100% !important;
+}
 </style></head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
 <div class="wrap">
@@ -1408,51 +1422,16 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 <section class="screen" id="b0"><button class="back" data-go="menu">⬅ Kembali ke peta</button><div class="panel"><h2 id="bt"></h2><p id="bd"></p></div></section>
 
 <section class="screen" id="lk">
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
     <button class="back" data-go="menu">⬅ Kembali ke peta</button>
-    <button id="aiClearBtn" class="rpp-btn-print" style="margin:0; background:#FFF; border:1px solid #C9A24B; color:#78350F;">🧹 Bersihkan Obrolan</button>
+    <div style="display:flex; gap:8px;">
+      <button class="rpp-btn-print" onclick="reloadChatbot()" style="margin:0; background:#FFF; border:1px solid #C9A24B; color:#78350F; cursor:pointer;" title="Muat ulang chatbot">🔄 Mulai Ulang</button>
+      <button class="rpp-btn-print" onclick="toggleChatbotFullscreen()" style="margin:0; background:linear-gradient(180deg,#FDE68A,#D97706); color:#451A03; font-weight:800; cursor:pointer;" title="Layar penuh">⛶ Layar Penuh</button>
+    </div>
   </div>
 
-  <div class="ai-chat-card">
-    <div class="ai-chat-header">
-      <div class="ai-header-left">
-        <img src="sijenius_cert.png" alt="Si Jenius" class="ai-avatar">
-        <div class="ai-header-info">
-          <h3>🤖 Tanya Si Jenius AI: Sejarah Abbasiyah</h3>
-          <p>Sahabat Belajar Cerdas Daulah Abbasiyah · Kurikulum Berbasis Cinta</p>
-        </div>
-      </div>
-      <span class="ai-status-pill">
-        <span class="ai-status-dot"></span> Online
-      </span>
-    </div>
-
-    <!-- Messages Container -->
-    <div class="ai-messages-box" id="aiMessages">
-      <div class="ai-msg bot">
-        <img src="sijenius_cert.png" alt="Si Jenius" class="ai-msg-avatar">
-        <div class="ai-msg-bubble">
-          Assalamu'alaikum! Halo teman-teman sahabat belajar! 👋<br><br>
-          Aku <b>Si Jenius AI</b>, asisten cerdasmu untuk belajar Sejarah Kebudayaan Islam Daulah Abbasiyah. Mau tanya tentang <b>Baitul Hikmah</b>, para <b>Khalifah besar</b>, atau <b>ilmuwan muslim</b> penemu sains dunia? Silakan tanyakan di bawah atau klik tombol pertanyaan cepat ya! 💡
-        </div>
-      </div>
-    </div>
-
-    <!-- Quick Question Chips -->
-    <div class="ai-chips-bar">
-      <button class="ai-chip" onclick="askAiQuick('Apa itu institusi Baitul Hikmah?')">🏛️ Apa itu Baitul Hikmah?</button>
-      <button class="ai-chip" onclick="askAiQuick('Siapakah Khalifah Harun Ar-Rasyid?')">👑 Khalifah Harun Ar-Rasyid</button>
-      <button class="ai-chip" onclick="askAiQuick('Siapa ilmuwan penemu Aljabar dan angka nol?')">📐 Penemu Aljabar &amp; Nol</button>
-      <button class="ai-chip" onclick="askAiQuick('Mengapa penerjemah digaji emas seberat bukunya?')">⚖️ Digaji Emas Seberat Buku</button>
-      <button class="ai-chip" onclick="askAiQuick('Bagaimana kota Baghdad runtuh pada tahun 1258 M?')">💥 Runtuhnya Baghdad 1258 M</button>
-      <button class="ai-chip" onclick="askAiQuick('Apa nilai Cinta Ilmu dalam Kurikulum Berbasis Cinta?')">💖 Nilai Cinta Ilmu (KBC)</button>
-    </div>
-
-    <!-- Input Form -->
-    <form class="ai-input-bar" id="aiForm" onsubmit="handleAiSubmit(event)">
-      <input type="text" id="aiInput" class="ai-input-field" placeholder="Ketik pertanyaanmu seputar Daulah Abbasiyah di sini..." autocomplete="off">
-      <button type="submit" class="ai-btn-send">Kirim 🚀</button>
-    </form>
+  <div id="chatbotContainer" style="width:100%; height:78vh; min-height:560px; max-width:850px; margin:0 auto; border-radius:20px; overflow:hidden; border:3px solid #C9A24B; box-shadow:0 10px 30px rgba(0,0,0,0.35); background:#02030A;">
+    <iframe id="chatbotFrame" src="Tanya_SKI.html" style="width:100%; height:100%; border:none; display:block;" allow="microphone"></iframe>
   </div>
 </section>
 
@@ -2083,6 +2062,36 @@ function cert(kind){
     certMascot.onerror = finishCert;
   }
 }
+
+// ==================== CHATBOT TANYA SKI CONTROLS ====================
+function reloadChatbot() {
+  const cf = document.getElementById("chatbotFrame");
+  if (cf) {
+    const curSrc = cf.src;
+    cf.src = "";
+    setTimeout(() => { cf.src = curSrc; }, 50);
+  }
+}
+window.reloadChatbot = reloadChatbot;
+
+function toggleChatbotFullscreen() {
+  const el = document.getElementById("chatbotContainer") || document.getElementById("chatbotFrame");
+  if (!el) return;
+  const isFs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+  if (!isFs) {
+    if (el.requestFullscreen) el.requestFullscreen().catch(e=>console.log(e));
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen().catch(e=>console.log(e));
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+    else if (document.msExitFullscreen) document.msExitFullscreen();
+  }
+}
+window.toggleChatbotFullscreen = toggleChatbotFullscreen;
+
 renderMenu();
 </script><script>
 (function(){
