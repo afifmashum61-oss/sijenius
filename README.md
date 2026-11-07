@@ -49,3 +49,4 @@ Mengangkat tema kejayaan peradaban emas Islam (*The Islamic Golden Age*) di kota
 - **Penyusun**: Afif Ma'shum
 - **Lembaga**: MTs Darussalam
 - **Mata Pelajaran**: Sejarah Kebudayaan Islam (SKI) Kelas VIII
+
