@@ -622,17 +622,23 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 /* ============================================================
    KOMIK DIGITAL ABBSIYAH
    ============================================================ */
+/* =====================================
+   KOMIK SEJARAH (ADAPTIVE PORTRAIT READER)
+   ===================================== */
 .comic-container {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-top: 12px;
   font-family: 'Nunito', sans-serif;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .comic-header-card {
   background: linear-gradient(135deg, #7C2D12 0%, #991B1B 50%, #B45309 100%);
   color: #FFFBEC;
-  padding: 22px 20px;
+  padding: 20px;
   border-radius: 20px;
   border: 2px solid #FDE047;
   box-shadow: 0 8px 25px rgba(124, 45, 18, 0.35);
@@ -652,129 +658,285 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   color: #FFFFFF;
 }
 
-.comic-reader {
+.comic-reader-card {
   background: #FFFDF5;
   border: 2.5px solid #E3D3A0;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(42, 36, 16, 0.08);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 6px 20px rgba(42, 36, 16, 0.08);
 }
-.comic-page-nav {
+
+/* Control Toolbar */
+.comic-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   padding-bottom: 12px;
   border-bottom: 2px dashed #E5D6A8;
 }
-.comic-page-indicator {
-  font-family: 'Lilita One', cursive;
-  font-size: 17px;
-  color: #7C2D12;
+.comic-mode-switch {
+  display: inline-flex;
   background: #FEF3C7;
+  padding: 4px;
+  border-radius: 12px;
   border: 1.5px solid #FDE68A;
-  padding: 6px 16px;
-  border-radius: 999px;
+  gap: 4px;
+}
+.comic-mode-btn {
+  background: transparent;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-family: 'Lilita One', cursive;
+  font-size: 13.5px;
+  color: #78350F;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.comic-mode-btn.active {
+  background: linear-gradient(180deg, #F59E0B, #D97706);
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.3);
+}
+
+.comic-tool-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.comic-action-btn {
+  background: #FEF3C7;
+  color: #78350F;
+  border: 1.5px solid #FDE68A;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-family: 'Lilita One', cursive;
+  font-size: 13.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.comic-action-btn:hover {
+  background: #FDE68A;
+  transform: translateY(-1px);
+}
+
+/* Page Indicator & Navigator Bar */
+.comic-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
 }
 .comic-btn-nav {
   background: linear-gradient(180deg, #FDE68A, #D97706);
   color: #451A03;
   border: 1px solid #B45309;
-  padding: 7px 16px;
-  border-radius: 10px;
+  padding: 8px 18px;
+  border-radius: 12px;
   font-family: 'Lilita One', cursive;
   font-size: 14px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   transition: transform 0.15s ease, filter 0.15s ease;
-}
-.comic-btn-nav:hover:not(:disabled) {
-  transform: translateY(-1px);
-  filter: brightness(1.06);
-}
-.comic-btn-nav:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-/* Comic Panel Presentation */
-.comic-panel-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-@media(min-width: 600px) {
-  .comic-panel-grid {
-    grid-template-columns: 1.1fr 1fr;
-  }
-}
-.comic-art-box {
-  position: relative;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 3px solid #78350F;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  background: #1C1917;
-  min-height: 260px;
-}
-.comic-art-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.comic-chapter-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #991B1B;
-  color: #FEF08A;
-  font-family: 'Lilita One', cursive;
-  font-size: 13px;
-  padding: 4px 12px;
-  border-radius: 6px;
-  border: 1.5px solid #FEF08A;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-
-.comic-story-box {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  justify-content: center;
-}
-.comic-balloon {
-  background: #FFFFFF;
-  border: 2px solid #292524;
-  border-radius: 16px;
-  padding: 14px 16px;
-  position: relative;
-  box-shadow: 3px 3px 0 #292524;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #1C1917;
-}
-.comic-balloon-speaker {
-  font-weight: 900;
-  color: #B45309;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 4px;
-  font-size: 13.5px;
 }
-.comic-narrator-box {
-  background: #FEF9C3;
-  border: 2px solid #854D0E;
+.comic-btn-nav:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.comic-btn-nav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+.comic-page-title-badge {
+  font-family: 'Lilita One', cursive;
+  font-size: 15px;
+  color: #7C2D12;
+  background: #FEF3C7;
+  border: 1.5px solid #FDE68A;
+  padding: 7px 18px;
+  border-radius: 999px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Page Quick Jump Pills */
+.comic-jump-pills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.comic-pill {
+  background: #FFFBEB;
+  border: 1.5px solid #FDE68A;
+  color: #78350F;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.comic-pill:hover {
+  background: #FEF3C7;
+}
+.comic-pill.active {
+  background: #7C2D12;
+  color: #FEF08A;
+  border-color: #7C2D12;
+  box-shadow: 0 2px 6px rgba(124, 45, 18, 0.3);
+}
+
+/* Comic Stage (Single Page Mode) */
+.comic-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1C1917;
+  border-radius: 16px;
+  padding: 16px 12px;
+  box-shadow: inset 0 3px 12px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.12);
+  border: 2px solid #78350F;
+  margin: 0 auto;
+  width: 100%;
+}
+.comic-page-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.comic-page-img {
+  width: 100%;
+  height: auto;
+  max-height: 85vh;
+  object-fit: contain;
+  display: block;
   border-radius: 10px;
-  padding: 12px 14px;
-  font-style: italic;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  border: 2.5px solid #FDE047;
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.comic-page-img:hover {
+  transform: scale(1.008);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.7);
+}
+
+/* Scroll View Mode (Webtoon-style continuous scroll) */
+.comic-scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  background: #1C1917;
+  border-radius: 16px;
+  padding: 20px 12px;
+  border: 2px solid #78350F;
+  box-shadow: inset 0 3px 12px rgba(0,0,0,0.6);
+}
+.comic-scroll-item {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comic-scroll-badge {
+  background: #7C2D12;
+  color: #FEF08A;
+  font-family: 'Lilita One', cursive;
+  font-size: 13.5px;
+  padding: 5px 16px;
+  border-radius: 20px;
+  border: 1.5px solid #FEF08A;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+.comic-scroll-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px;
+  border: 2.5px solid #FDE047;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  cursor: zoom-in;
+}
+
+/* Modal Lightbox for Zoom / Fullscreen reading */
+.comic-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 16px;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+}
+.comic-modal.active {
+  display: flex;
+}
+.comic-modal-img {
+  max-width: 96vw;
+  max-height: 94vh;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 2px solid #FDE047;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+}
+.comic-modal-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  background: #DC2626;
+  color: #FFFFFF;
+  border: 2px solid #FDE047;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: transform 0.15s ease;
+  z-index: 100000;
+}
+.comic-modal-close:hover {
+  transform: scale(1.1);
+}
+.comic-modal-hint {
+  position: fixed;
+  bottom: 18px;
+  background: rgba(28, 25, 23, 0.85);
+  color: #FEF08A;
+  padding: 6px 16px;
+  border-radius: 20px;
   font-size: 13px;
-  line-height: 1.55;
-  color: #713F12;
-  box-shadow: 2px 2px 0 #854D0E;
+  border: 1px solid #CA8A04;
+  pointer-events: none;
 }
 
 
@@ -1288,43 +1450,78 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   <div class="comic-container">
     <!-- Header -->
     <div class="comic-header-card">
-      <h2>📖 KOMIK SEJARAH: PETUALANGAN EMAS BAGHDAD</h2>
-      <div class="comic-header-sub">Ikuti kisah Si Jenius mengarungi masa keemasan peradaban Islam Daulah Abbasiyah!</div>
+      <h2>📖 KOMIK SEJARAH DAULAH ABBASIYAH</h2>
+      <div class="comic-header-sub">Kemajuan Peradaban: Ilmu, Budaya, dan Peradaban untuk Dunia</div>
     </div>
 
-    <!-- Comic Reader -->
-    <div class="comic-reader">
-      <div class="comic-page-nav">
-        <button class="comic-btn-nav" id="comicPrev">◀ Episode Sebelumnya</button>
-        <span class="comic-page-indicator" id="comicPageLabel">Episode 1 dari 4</span>
-        <button class="comic-btn-nav" id="comicNext">Episode Berikutnya ▶</button>
+    <!-- Reader Card -->
+    <div class="comic-reader-card">
+      <!-- Toolbar -->
+      <div class="comic-toolbar">
+        <div class="comic-mode-switch">
+          <button class="comic-mode-btn active" id="comicModeSingle" onclick="setComicMode('single')">📄 Mode Per Halaman</button>
+          <button class="comic-mode-btn" id="comicModeScroll" onclick="setComicMode('scroll')">📜 Mode Gulir (Semua)</button>
+        </div>
+        <div class="comic-tool-actions">
+          <button class="comic-action-btn" onclick="openComicZoom()">
+            🔍 Perbesar Layar
+          </button>
+        </div>
       </div>
 
-      <div class="comic-panel-grid">
-        <div class="comic-art-box">
-          <img id="comicImg" src="misi3_1_baghdad.jpg" alt="Panel Komik" draggable="false">
-          <span class="comic-chapter-badge" id="comicTag">BAB 1 · KOTA BUNDAR</span>
+      <!-- Quick Jump Pills -->
+      <div class="comic-jump-pills" id="comicJumpPills">
+        <button class="comic-pill active" onclick="comicPage(0)">Sampul</button>
+        <button class="comic-pill" onclick="comicPage(1)">Halaman 1</button>
+        <button class="comic-pill" onclick="comicPage(2)">Halaman 2</button>
+        <button class="comic-pill" onclick="comicPage(3)">Halaman 3</button>
+      </div>
+
+      <!-- SINGLE PAGE VIEW -->
+      <div id="comicSingleSection">
+        <div class="comic-nav-bar">
+          <button class="comic-btn-nav" id="comicPrev" onclick="comicPage(curComicIdx - 1)">◀ Sebelumnya</button>
+          <span class="comic-page-title-badge" id="comicPageLabel">Halaman 1 dari 4: Sampul Depan</span>
+          <button class="comic-btn-nav" id="comicNext" onclick="comicPage(curComicIdx + 1)">Berikutnya ▶</button>
         </div>
 
-        <div class="comic-story-box">
-          <div class="comic-narrator-box" id="comicNarrator">
-            Tahun 762 Masehi, Khalifah Al-Mansur membangun kota metropolitan paling modern di tepian Sungai Tigris: Kota Bundar Baghdad.
+        <div class="comic-stage">
+          <div class="comic-page-wrapper">
+            <img id="comicImg" class="comic-page-img" src="komik_1_cover.jpg" alt="Komik Daulah Abbasiyah" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
           </div>
+        </div>
 
-          <div class="comic-balloon" id="comicBalloon1">
-            <div class="comic-balloon-speaker">🦜 Si Jenius:</div>
-            <span id="comicText1">“Wah megah sekali gerbang kota ini! Lihatlah, empat pintu gerbang besar mengarah ke penjuru mata angin dunia!”</span>
+        <div class="comic-nav-bar" style="margin-top: 16px;">
+          <button class="comic-btn-nav" id="comicPrevBottom" onclick="comicPage(curComicIdx - 1)">◀ Sebelumnya</button>
+          <span class="comic-page-title-badge" id="comicPageLabelBottom">Halaman 1 dari 4: Sampul Depan</span>
+          <button class="comic-btn-nav" id="comicNextBottom" onclick="comicPage(curComicIdx + 1)">Berikutnya ▶</button>
+        </div>
+      </div>
+
+      <!-- CONTINUOUS SCROLL VIEW -->
+      <div id="comicScrollSection" style="display: none;">
+        <div class="comic-scroll-container">
+          <div class="comic-scroll-item">
+            <div class="comic-scroll-badge">📖 Sampul: Kemajuan Peradaban Daulah Abbasiyah</div>
+            <img class="comic-scroll-img" src="komik_1_cover.jpg" alt="Sampul Komik" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
           </div>
-
-          <div class="comic-balloon" id="comicBalloon2" style="background:#F0FDF4; border-color:#166534; box-shadow:3px 3px 0 #166534;">
-            <div class="comic-balloon-speaker" style="color:#15803D;">📜 Khalifah Al-Mansur:</div>
-            <span id="comicText2">“Inilah Madinat As-Salam, Kota Perdamaian. Di sinilah ilmu pengetahuan, perniagaan, dan peradaban dunia akan bersemi!”</span>
+          <div class="comic-scroll-item">
+            <div class="comic-scroll-badge">📄 Halaman 1: Lahirnya Daulah Abbasiyah & Baitul Hikmah</div>
+            <img class="comic-scroll-img" src="komik_2_halaman1.jpg" alt="Halaman 1" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
+          </div>
+          <div class="comic-scroll-item">
+            <div class="comic-scroll-badge">📄 Halaman 2: Faktor Kejayaan & Bidang Kemajuan</div>
+            <img class="comic-scroll-img" src="komik_3_halaman2.jpg" alt="Halaman 2" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
+          </div>
+          <div class="comic-scroll-item">
+            <div class="comic-scroll-badge">📄 Halaman 3: Meneladani Semangat Belajar & Pesan Akhir</div>
+            <img class="comic-scroll-img" src="komik_4_halaman3.jpg" alt="Halaman 3" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
           </div>
         </div>
       </div>
 
       <!-- Kustom Upload Komik Sendiri -->
-      <div style="background:#FFF8E7; border:1px dashed #C9A24B; border-radius:12px; padding:12px 16px; margin-top:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+      <div style="background:#FFF8E7; border:1px dashed #C9A24B; border-radius:12px; padding:12px 16px; margin-top:20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
         <span style="font-size:13px; color:#5C4718;">
           🖼️ <b>Ingin membaca komik karya sendiri?</b> Anda dapat memuat gambar panel komik dari perangkat:
         </span>
@@ -1334,6 +1531,13 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
         </label>
       </div>
     </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL FOR ZOOM -->
+  <div id="comicModal" class="comic-modal" onclick="closeComicZoom()">
+    <button class="comic-modal-close" onclick="closeComicZoom()" title="Tutup">✕</button>
+    <img id="comicModalImg" class="comic-modal-img" src="" alt="Perbesar Komik" onclick="event.stopPropagation()">
+    <div class="comic-modal-hint">💡 Klik tombol ✕ atau di luar gambar untuk menutup</div>
   </div>
 </section>
 
@@ -1497,40 +1701,28 @@ if(customVidInp){
 // ==================== KOMIK DATA & VIEWER ====================
 const COMIC_DATA = [
   {
-    tag: "BAB 1 · KOTA BUNDAR",
-    img: "misi3_1_baghdad.jpg",
-    narrator: "Tahun 762 Masehi, Khalifah Al-Mansur membangun kota metropolitan paling modern di tepian Sungai Tigris: Kota Bundar Baghdad.",
-    speaker1: "🦜 Si Jenius:",
-    text1: "“Wah megah sekali gerbang kota ini! Empat gerbang besar menjulang mengarah ke seluruh penjuru mata angin dunia!”",
-    speaker2: "📜 Khalifah Al-Mansur:",
-    text2: "“Inilah Madinat As-Salam, Kota Perdamaian. Di sinilah ilmu pengetahuan, perniagaan, dan peradaban dunia bersemi!”"
+    title: "Sampul Depan",
+    tag: "SAMPUL KOMIK",
+    img: "komik_1_cover.jpg",
+    desc: "Kemajuan Peradaban Daulah Abbasiyah: Ilmu, Budaya, dan Peradaban untuk Dunia"
   },
   {
-    tag: "BAB 2 · CAHAYA BAITUL HIKMAH",
-    img: "misi3_2_terjemah.jpg",
-    narrator: "Masa Khalifah Harun Ar-Rasyid dan Al-Ma'mun, cikal bakal Baitul Hikmah menjadi pusat riset dan penerjemahan naskah kuno Yunani, Persia, dan India.",
-    speaker1: "🦜 Si Jenius:",
-    text1: "“Benarkah Khalifah memberi hadiah emas seberat buku yang berhasil diterjemahkan oleh para sarjana?”",
-    speaker2: "📖 Hunain bin Ishaq:",
-    text2: "“Benar wahai kawan kecil! Di Baitul Hikmah, kecintaan pada ilmu lebih berharga daripada timbunan harta benda manapun!”"
+    title: "Halaman 1: Lahirnya Daulah Abbasiyah & Baitul Hikmah",
+    tag: "HALAMAN 1",
+    img: "komik_2_halaman1.jpg",
+    desc: "Kisah berdirinya Daulah Abbasiyah tahun 750 M di Baghdad dan kejayaan Baitul Hikmah."
   },
   {
-    tag: "BAB 3 · LAHIRNYA SANG CENDEKIAWAN",
-    img: "misi3_3_ilmuwan.jpg",
-    narrator: "Dari lorong-lorong ilmuwan Baghdad, lahirlah karya revolusioner matematika Al-Jabar, astronomi, kedokteran, dan filsafat Islam.",
-    speaker1: "🦜 Si Jenius:",
-    text1: "“Al-Khawarizmi menemukan angka nol dan aljabar yang kini dipakai di seluruh komputer dan smartphone di dunia!”",
-    speaker2: "📐 Al-Khawarizmi:",
-    text2: "“Kami belajar dan meneliti sebagai wujud syukur kepada Allah SWT, agar ilmu memberi manfaat bagi seluruh umat manusia.”"
+    title: "Halaman 2: Faktor Kejayaan & Bidang Kemajuan",
+    tag: "HALAMAN 2",
+    img: "komik_3_halaman2.jpg",
+    desc: "Stabilitas politik, keterbukaan ilmu, kedokteran, matematika, serta refleksi kejayaan."
   },
   {
-    tag: "BAB 4 · PESAN CINTA ILMU",
-    img: "misi3_4_mongol.jpg",
-    narrator: "Meski Baghdad sempat dihancurkan tentara Mongol (1258 M), api semangat Cinta Ilmu dan karya peradaban Islam tetap abadi menerangi dunia.",
-    speaker1: "🦜 Si Jenius:",
-    text1: "“Buku-buku boleh hanyut di Sungai Tigris, tapi ilmu dan teladannya mengalir abadi di sanubari kita semua!”",
-    speaker2: "💚 Komitmen Pelajar:",
-    text2: "“Mari kita lanjutkan estafet kejayaan ini dengan rajin membaca, berkarya, dan menjadi generasi emas penerus bangsa!”"
+    title: "Halaman 3: Meneladani Semangat Belajar & Pesan Akhir",
+    tag: "HALAMAN 3",
+    img: "komik_4_halaman3.jpg",
+    desc: "Nilai cinta ilmu, pantang menyerah, keterbukaan pikiran, dan pesan untuk generasi penerus."
   }
 ];
 
@@ -1538,33 +1730,94 @@ let curComicIdx = 0;
 function comicPage(idx) {
   curComicIdx = Math.max(0, Math.min(COMIC_DATA.length - 1, idx));
   const c = COMIC_DATA[curComicIdx];
-  $("#comicPageLabel").textContent = `Episode ${curComicIdx + 1} dari ${COMIC_DATA.length}`;
-  $("#comicTag").textContent = c.tag;
-  $("#comicImg").src = c.img;
-  $("#comicNarrator").textContent = c.narrator;
-  $("#comicBalloon1").querySelector(".comic-balloon-speaker").textContent = c.speaker1;
-  $("#comicText1").textContent = c.text1;
-  $("#comicBalloon2").querySelector(".comic-balloon-speaker").textContent = c.speaker2;
-  $("#comicText2").textContent = c.text2;
-  $("#comicPrev").disabled = (curComicIdx === 0);
-  $("#comicNext").disabled = (curComicIdx === COMIC_DATA.length - 1);
+  
+  const label = "Halaman " + (curComicIdx + 1) + " dari " + COMIC_DATA.length + ": " + c.title;
+  const elLabel = document.getElementById("comicPageLabel");
+  if (elLabel) elLabel.textContent = label;
+  const elLabelB = document.getElementById("comicPageLabelBottom");
+  if (elLabelB) elLabelB.textContent = label;
+  
+  const elImg = document.getElementById("comicImg");
+  if (elImg) {
+    elImg.src = c.img;
+    elImg.alt = c.title;
+  }
+  
+  const prev1 = document.getElementById("comicPrev");
+  const next1 = document.getElementById("comicNext");
+  const prev2 = document.getElementById("comicPrevBottom");
+  const next2 = document.getElementById("comicNextBottom");
+  if (prev1) prev1.disabled = (curComicIdx === 0);
+  if (next1) next1.disabled = (curComicIdx === COMIC_DATA.length - 1);
+  if (prev2) prev2.disabled = (curComicIdx === 0);
+  if (next2) next2.disabled = (curComicIdx === COMIC_DATA.length - 1);
+  
+  // Update jump pills
+  const pills = document.querySelectorAll("#comicJumpPills .comic-pill");
+  pills.forEach((p, i) => {
+    if (i === curComicIdx) p.classList.add("active");
+    else p.classList.remove("active");
+  });
 }
+window.comicPage = comicPage;
 
-$("#comicPrev").onclick = () => comicPage(curComicIdx - 1);
-$("#comicNext").onclick = () => comicPage(curComicIdx + 1);
+function setComicMode(mode) {
+  const single = document.getElementById("comicSingleSection");
+  const scroll = document.getElementById("comicScrollSection");
+  const btnSingle = document.getElementById("comicModeSingle");
+  const btnScroll = document.getElementById("comicModeScroll");
+  const jumpPills = document.getElementById("comicJumpPills");
+  
+  if (mode === 'scroll') {
+    if (single) single.style.display = "none";
+    if (scroll) scroll.style.display = "block";
+    if (btnSingle) btnSingle.classList.remove("active");
+    if (btnScroll) btnScroll.classList.add("active");
+    if (jumpPills) jumpPills.style.display = "none";
+  } else {
+    if (single) single.style.display = "block";
+    if (scroll) scroll.style.display = "none";
+    if (btnSingle) btnSingle.classList.add("active");
+    if (btnScroll) btnScroll.classList.remove("active");
+    if (jumpPills) jumpPills.style.display = "flex";
+  }
+}
+window.setComicMode = setComicMode;
 
-const customComicInp = $("#customComicInput");
-if(customComicInp){
+function openComicZoom(src) {
+  const modal = document.getElementById("comicModal");
+  const modalImg = document.getElementById("comicModalImg");
+  if (!modal || !modalImg) return;
+  const currentSrc = src || (COMIC_DATA[curComicIdx] ? COMIC_DATA[curComicIdx].img : "komik_1_cover.jpg");
+  modalImg.src = currentSrc;
+  modal.classList.add("active");
+}
+window.openComicZoom = openComicZoom;
+
+function closeComicZoom() {
+  const modal = document.getElementById("comicModal");
+  if (modal) modal.classList.remove("active");
+}
+window.closeComicZoom = closeComicZoom;
+
+const customComicInp = document.getElementById("customComicInput");
+if (customComicInp) {
   customComicInp.onchange = (e) => {
     const file = e.target.files[0];
-    if(file){
+    if (file) {
       const url = URL.createObjectURL(file);
-      $("#comicImg").src = url;
-      $("#comicTag").textContent = "KOMIK KUSTOM";
-      $("#comicNarrator").textContent = "Menampilkan gambar komik pilihan Anda (" + file.name + ").";
+      const elImg = document.getElementById("comicImg");
+      if (elImg) elImg.src = url;
+      const elLabel = document.getElementById("comicPageLabel");
+      if (elLabel) elLabel.textContent = "Komik Pilihan: " + file.name;
+      openComicZoom(url);
     }
   };
 }
+
+// Initial call to set comic state
+comicPage(0);
+
 
 
 // ==================== GAME PETUALANGAN CONTROLS ====================
