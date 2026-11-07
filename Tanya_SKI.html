@@ -86,6 +86,14 @@ nm.addEventListener("input",function(){try{localStorage.setItem("ski_nama",nm.te
 nm.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();nm.blur()}});
 function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
 function fmt(s){return esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>")}
+
+function scrollToTopAnswer(el) {
+  if (!el) return;
+  setTimeout(function() {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 80);
+}
+
 function add(cls,html){var d=document.createElement("div");d.className="msg "+cls;d.innerHTML=html;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;return d}
 function parse(t){t=t.trim();if(/^TOLAK/i.test(t))return{refuse:true};var m=t.match(/^OK[:.\s]*\n+([\s\S]*)/i);return m?{answer:m[1]}:{pending:true}}
 function upd(){go.className=q.value.trim()?"has":"";go.innerHTML=q.value.trim()?SEND:WAVE}
@@ -254,11 +262,11 @@ async function send(text){
     if(!sample)throw{code:"none"};
     var res=await sample(prompt_(text),{cache:false,modelTier:"quick",onText:function(o){
       var p=parse(o.text);
-      if(p.answer){bub.innerHTML=fmt(p.answer);chat.scrollTop=chat.scrollHeight}
+      if(p.answer){bub.innerHTML=fmt(p.answer);scrollToTopAnswer(bub);}
     }});
     var p=parse(res.text),ans;
     if(p.refuse){bub.className="msg a no";bub.textContent=NO;hist.push({r:"u",t:text},{r:"a",t:"(ditolak: di luar materi)"})}
-    else{ans=p.answer||res.text.replace(/^OK[:.\s]*/i,"");bub.innerHTML=fmt(ans);hist.push({r:"u",t:text},{r:"a",t:ans.slice(0,3000)})}
+    else{ans=p.answer||res.text.replace(/^OK[:.\s]*/i,"");bub.innerHTML=fmt(ans);hist.push({r:"u",t:text},{r:"a",t:ans.slice(0,3000)});scrollToTopAnswer(bub);}
   }catch(e){
     var c=e&&e.code;
     // Fallback to rich local knowledge base if external AI model is offline
@@ -267,10 +275,10 @@ async function send(text){
       bub.className = "msg a";
       bub.innerHTML = fmt(localAns);
       hist.push({r:"u",t:text},{r:"a",t:localAns.slice(0,3000)});
-      chat.scrollTop = chat.scrollHeight;
+      scrollToTopAnswer(bub);
     }, 450);
   }
-  busy=false;orb.classList.remove("busy");chat.scrollTop=chat.scrollHeight;
+  busy=false;orb.classList.remove("busy");
 }
 })();
 </script>
