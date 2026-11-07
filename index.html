@@ -1662,25 +1662,22 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     <!-- Header -->
     <div class="slide-header-card">
       <h2>📊 SLIDE MATERI: SI JENIUS DINASTI ABBASIYAH</h2>
-      <div class="slide-header-sub">Presentasi Resmi Pembelajaran Sejarah Kebudayaan Islam (9 Slide Lengkap)</div>
+      <div class="slide-header-sub">Presentasi Pembelajaran Sejarah Kebudayaan Islam Daulah Abbasiyah</div>
     </div>
 
     <!-- Reader Card -->
     <div class="slide-reader-card">
-      <!-- Toolbar -->
-      <div class="slide-toolbar">
-        <div class="slide-mode-switch">
-          <button class="slide-mode-btn active" id="tabSlideInteractive" onclick="setSlideTab('deck')">🖼️ Slide Interaktif</button>
-          <button class="slide-mode-btn" id="tabSlideVideo" onclick="setSlideTab('video')">▶️ Video Presentasi</button>
-        </div>
-        <div class="slide-tool-actions">
-          <a href="ppt_daulah_abbasiyah.pptx" download="ppt daulah abbasiyah.pptx" class="slide-action-btn" title="Unduh file presentasi PowerPoint">
-            📥 Unduh .PPTX
-          </a>
-        </div>
+      <!-- Quick Action Buttons -->
+      <div style="display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
+        <button type="button" onclick="document.getElementById('slideVideoSection').scrollIntoView({behavior:'smooth'})" class="slide-action-btn" style="background: linear-gradient(180deg,#F59E0B,#D97706); color:#FFF; border-color:#B45309; cursor: pointer;">
+          ▶️ Video Presentasi
+        </button>
+        <a href="ppt_daulah_abbasiyah.pptx" download="ppt daulah abbasiyah.pptx" class="slide-action-btn" title="Unduh file presentasi PowerPoint">
+          📥 Unduh .PPTX
+        </a>
       </div>
 
-      <!-- DECK PRESENTATION VIEW -->
+      <!-- DECK PRESENTATION VIEW (LANGSUNG TAMPIL) -->
       <div id="slideDeckSection">
         <div class="slide-nav-bar">
           <button class="btn sec" id="sp" onclick="prevSlide()">◀ Sebelumnya</button>
@@ -1697,15 +1694,16 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
         <div class="slide-dots-container" id="dt"></div>
       </div>
 
-      <!-- VIDEO PRESENTATION VIEW -->
-      <div id="slideVideoSection" style="display: none;">
+      <!-- VIDEO PRESENTATION VIEW (TETAP DIPERTAHANKAN) -->
+      <div id="slideVideoSection" style="margin-top: 28px; padding-top: 20px; border-top: 2px dashed #E5D6A8;">
+        <div style="text-align: center; margin-bottom: 12px;">
+          <h3 style="font-family: 'Lilita One', cursive; font-size: 20px; color: #1E3A8A; margin: 0 0 4px;">▶️ VIDEO PRESENTASI MATERI</h3>
+          <p style="font-size: 13.5px; color: #5C4718; margin: 0;">Simak video presentasi materi secara otomatis lengkap dengan animasi dan audio:</p>
+        </div>
         <div class="slide-video-box">
           <video id="slideVideoPlayer" src="ppt.mp4" controls poster="slides_ppt/slide_01.jpg" preload="metadata">
             Browser Anda tidak mendukung pemutar video HTML5.
           </video>
-        </div>
-        <div style="text-align: center; margin-top: 12px; font-size: 13.5px; color: #5C4718;">
-          💡 Putar video presentasi untuk menyimak materi secara otomatis lengkap dengan animasi dan audio.
         </div>
       </div>
 
