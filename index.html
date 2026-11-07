@@ -2853,78 +2853,49 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     </div>
   </div>
 
-  <div id="pilihMenuSection" class="pilih-menu-card-wrap">
-    <!-- Header matching Screen 2 in Mockup -->
-    <div class="pilih-menu-header-row">
-      <button class="menu-round-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ke Atas">🏠</button>
-      <div class="menu-plaque-title-box">
-        <div class="menu-plaque-pill">
-          <span>✦</span>
-          <span>Pilih Menu Pembelajaran</span>
-          <span>✦</span>
-        </div>
-        <p class="menu-plaque-subtitle">Ayo pilih menu yang ingin kamu pelajari!</p>
-      </div>
-      <button class="menu-round-btn" onclick="document.getElementById('mute').click()" title="Pengaturan Suara">⚙️</button>
-    </div>
+  <div class="menu-board-wrapper" id="pilihMenuSection">
+    <div class="menu-board-canvas">
+      <img src="pilih_menu_exact_board.png" alt="Pilih Menu Pembelajaran" class="menu-board-image" draggable="false">
 
-    <!-- 8 Exact Islamic Arched Cards matching Mockup -->
-    <div class="pilih-menu-8-grid">
-      <!-- Card 1: Misi 1 -->
-      <button class="pilih-menu-badge-btn" id="mCard0" onclick="m1(); go('m1')" title="Misi 1: Ayo Beriman Kepada Allah">
-        <img src="menu_badge_1.png" alt="Misi 1: Ayo Beriman Kepada Allah">
+      <!-- Interactive Hotspots positioned exactly over each button & card -->
+      <button class="board-hotspot hotspot-home" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ke Atas"></button>
+      <button class="board-hotspot hotspot-mute" onclick="document.getElementById('mute').click()" title="Pengaturan Suara"></button>
+
+      <!-- Row 1: Cards 1 - 4 -->
+      <button class="board-hotspot hotspot-card hotspot-c1" id="mCard0" onclick="m1(); go('m1')" title="Misi 1: Ayo Beriman Kepada Allah">
         <span class="badge-done-indicator" id="mDone0" style="display:none;">✓</span>
         <span class="badge-star-indicator" id="mStar0" style="display:none;"></span>
       </button>
 
-      <!-- Card 2: Misi 2 -->
-      <button class="pilih-menu-badge-btn" id="mCard1" onclick="m2(); go('m2')" title="Misi 2: Uji Kompetensi Kata &amp; Kalimat">
-        <img src="menu_badge_2.png" alt="Misi 2: Uji Kompetensi Kata &amp; Kalimat">
+      <button class="board-hotspot hotspot-card hotspot-c2" id="mCard1" onclick="m2(); go('m2')" title="Misi 2: Uji Kompetensi Kata &amp; Kalimat">
         <span class="badge-done-indicator" id="mDone1" style="display:none;">✓</span>
         <span class="badge-star-indicator" id="mStar1" style="display:none;"></span>
       </button>
 
-      <!-- Card 3: Misi 3 -->
-      <button class="pilih-menu-badge-btn" id="mCard2" onclick="m3(); go('m3')" title="Misi 3: Susun Ceritanya!">
-        <img src="menu_badge_3.png" alt="Misi 3: Susun Ceritanya!">
+      <button class="board-hotspot hotspot-card hotspot-c3" id="mCard2" onclick="m3(); go('m3')" title="Misi 3: Susun Ceritanya!">
         <span class="badge-done-indicator" id="mDone2" style="display:none;">✓</span>
         <span class="badge-star-indicator" id="mStar2" style="display:none;"></span>
       </button>
 
-      <!-- Card 4: Chatbot AI -->
-      <button class="pilih-menu-badge-btn" onclick="go('lk')" title="Chatbot AI: Tanya Jawab Bahasa Arab">
-        <img src="menu_badge_4.png" alt="Chatbot AI: Tanya Jawab Bahasa Arab">
-      </button>
+      <button class="board-hotspot hotspot-card hotspot-c4" onclick="go('lk')" title="Chatbot AI: Tanya Jawab Bahasa Arab"></button>
 
-      <!-- Card 5: Video Pembelajaran -->
-      <button class="pilih-menu-badge-btn" onclick="go('vp')" title="Video Pembelajaran">
-        <img src="menu_badge_5.png" alt="Video Pembelajaran">
-      </button>
+      <!-- Row 2: Cards 5 - 8 -->
+      <button class="board-hotspot hotspot-card hotspot-c5" onclick="go('vp')" title="Video Pembelajaran"></button>
+      <button class="board-hotspot hotspot-card hotspot-c6" onclick="go('pl')" title="Game Petualangan"></button>
+      <button class="board-hotspot hotspot-card hotspot-c7" onclick="go('rp')" title="RPP KBC: Kurikulum Merdeka"></button>
 
-      <!-- Card 6: Game Petualangan -->
-      <button class="pilih-menu-badge-btn" onclick="go('pl')" title="Game Petualangan">
-        <img src="menu_badge_6.png" alt="Game Petualangan">
-      </button>
-
-      <!-- Card 7: RPP KBC -->
-      <button class="pilih-menu-badge-btn" onclick="go('rp')" title="RPP KBC: Kurikulum Merdeka">
-        <img src="menu_badge_7.png" alt="RPP KBC: Kurikulum Merdeka">
-      </button>
-
-      <!-- Card 8: Quiz Uji Kemampuan -->
-      <button class="pilih-menu-badge-btn" id="mCard3" onclick="m4(); go('m4')" title="Quiz: Uji Kemampuan">
-        <img src="menu_badge_8.png" alt="Quiz: Uji Kemampuan">
+      <button class="board-hotspot hotspot-card hotspot-c8" id="mCard3" onclick="m4(); go('m4')" title="Quiz: Uji Kemampuan">
         <span class="badge-done-indicator" id="mDone3" style="display:none;">✓</span>
         <span class="badge-star-indicator" id="mStar3" style="display:none;"></span>
       </button>
     </div>
 
-    <!-- Progress bar & hidden container for existing JS compatibility -->
-    <div style="margin-top:18px;">
+    <!-- Progress bar placed cleanly below the board -->
+    <div class="menu-board-progress-box">
       <div class="bar" id="pbar" role="progressbar" aria-label="Kemajuan misi" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0">
         <i id="pb"></i>
       </div>
-      <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:800; color:#065F46; margin-top:4px;">
+      <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:800; color:#065F46; margin-top:6px;">
         <span id="pt">0 dari 4 misi selesai</span>
         <span id="pstarTotal">0 ⭐ Terkumpul</span>
       </div>
