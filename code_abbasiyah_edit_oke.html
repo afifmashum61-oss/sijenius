@@ -2403,6 +2403,246 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 .qp-icon-img {
   font-size: 16px;
 }
+
+/* =========================================================
+   ALL 6 SCREENS EXACT MOCKUP UI STYLES
+   ========================================================= */
+
+/* Top Floating Navbar (Consistent Across All Screens) */
+.sub-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 2px solid #E6D5A7;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(107, 74, 18, 0.06);
+}
+
+/* SCREEN 3: MATERI PEMBELAJARAN STYLES */
+.s3-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.s3-header-banner {
+  background: linear-gradient(135deg, #064E3B 0%, #047857 50%, #065F46 100%);
+  border: 2.5px solid #FDE047;
+  border-radius: 20px;
+  padding: 12px 20px;
+  color: #FFFBEB;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6px 20px rgba(6, 78, 59, 0.22);
+}
+.s3-books-img {
+  width: 58px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+}
+.s3-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media(min-width: 860px) {
+  .s3-layout {
+    grid-template-columns: 220px 1fr;
+  }
+}
+.s3-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 2px solid #E6D5A7;
+  border-radius: 18px;
+  padding: 14px;
+  height: fit-content;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+.s3-tab-btn {
+  background: transparent;
+  border: 1.5px solid transparent;
+  color: #374151;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.16s ease;
+}
+.s3-tab-btn:hover {
+  background: #FEF3C7;
+  color: #92400E;
+}
+.s3-tab-btn.active {
+  background: #10B981;
+  color: #FFFFFF;
+  border-color: #059669;
+  box-shadow: 0 3px 8px rgba(16, 185, 129, 0.3);
+}
+
+.s3-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media(min-width: 600px) {
+  .s3-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
+.s3-card-item {
+  background: #FFFFFF;
+  border: 2px solid #E5E7EB;
+  border-radius: 18px;
+  padding: 8px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+.s3-card-item:hover {
+  transform: translateY(-4px);
+  border-color: #10B981;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+}
+.s3-card-item img {
+  width: 100%;
+  aspect-ratio: 110 / 70;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 6px;
+}
+
+/* SCREEN 4: GAME EDUKATIF STYLES */
+.s4-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.s4-wood-banner {
+  background: linear-gradient(180deg, #A16207 0%, #78350F 50%, #451A03 100%);
+  border: 2.5px solid #FDE047;
+  border-radius: 20px;
+  padding: 12px 20px;
+  color: #FFFBEB;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6px 20px rgba(69, 26, 3, 0.3);
+}
+.s4-games-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media(min-width: 768px) {
+  .s4-games-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+}
+.s4-game-card {
+  background: #FFFFFF;
+  border: 2px solid #E5E7EB;
+  border-radius: 18px;
+  padding: 8px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+.s4-game-card:hover {
+  transform: translateY(-4px);
+  border-color: #F59E0B;
+  box-shadow: 0 8px 22px rgba(245, 158, 11, 0.2);
+}
+.s4-game-card img {
+  width: 100%;
+  aspect-ratio: 105 / 145;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* SCREEN 5: CHATBOT AI STYLES */
+.s5-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.s5-header-banner {
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 50%, #075985 100%);
+  border: 2.5px solid #FDE047;
+  border-radius: 20px;
+  padding: 12px 20px;
+  color: #FFFBEB;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6px 20px rgba(3, 105, 161, 0.25);
+}
+.s5-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media(min-width: 820px) {
+  .s5-layout {
+    grid-template-columns: 240px 1fr;
+    align-items: start;
+  }
+}
+.s5-robot-sidebar {
+  background: #FFFFFF;
+  border: 2px solid #BAE6FD;
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+.s5-robot-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 2px solid #38BDF8;
+  margin-bottom: 10px;
+}
+.s5-speech-bubble {
+  background: #F0F9FF;
+  border: 1.5px solid #7DD3FC;
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-family: 'Lilita One', cursive;
+  font-size: 15px;
+  color: #0369A1;
+  margin-top: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
 </style></head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
 <div class="wrap">
@@ -2659,16 +2899,45 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 <section class="screen" id="b0"><button class="back" data-go="menu">⬅ Kembali ke peta</button><div class="panel"><h2 id="bt"></h2><p id="bd"></p></div></section>
 
 <section class="screen" id="lk">
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-    <button class="back" data-go="menu">⬅ Kembali ke peta</button>
-    <div style="display:flex; gap:8px;">
-      <button class="rpp-btn-print" onclick="reloadChatbot()" style="margin:0; background:#FFF; border:1px solid #C9A24B; color:#78350F; cursor:pointer;" title="Muat ulang chatbot">🔄 Mulai Ulang</button>
-      <button class="rpp-btn-print" onclick="toggleChatbotFullscreen()" style="margin:0; background:linear-gradient(180deg,#FDE68A,#D97706); color:#451A03; font-weight:800; cursor:pointer;" title="Layar penuh">⛶ Layar Penuh</button>
+  <div class="s5-container">
+    <!-- Header matching Screen 5 in Mockup -->
+    <div class="s5-header-banner">
+      <button class="plaque-corner-btn" onclick="go('menu')" title="Kembali ke Beranda" style="background:#0284C7; border-color:#FEF08A;">🏠</button>
+      <div style="flex:1; text-align:center; padding:0 10px;">
+        <h2 style="font-family:'Lilita One',cursive; font-size:clamp(19px,3vw,25px); color:#FEF08A; margin:0; text-shadow:0 2px 4px rgba(0,0,0,0.3);">
+          🤖 Chatbot AI 🤖
+        </h2>
+        <p style="font-size:12.5px; font-weight:700; color:#E0F2FE; margin:2px 0 0;">
+          Tanya apa saja tentang Bahasa Arab &amp; Sejarah Daulah Abbasiyah!
+        </p>
+      </div>
+      <div style="display:flex; gap:6px;">
+        <button class="hero-btn-cta" onclick="reloadChatbot()" style="padding:6px 12px; font-size:12px;" title="Muat ulang">🔄</button>
+        <button class="hero-btn-cta" onclick="toggleChatbotFullscreen()" style="padding:6px 12px; font-size:12px;" title="Layar penuh">⛶</button>
+      </div>
     </div>
-  </div>
 
-  <div id="chatbotContainer" style="width:100%; height:78vh; min-height:560px; max-width:850px; margin:0 auto; border-radius:20px; overflow:hidden; border:3px solid #C9A24B; box-shadow:0 10px 30px rgba(0,0,0,0.35); background:#02030A;">
-    <iframe id="chatbotFrame" src="Tanya_SKI.html" style="width:100%; height:100%; border:none; display:block;" allow="microphone"></iframe>
+    <!-- Screen 5 Layout: Robot Mascot Sidebar & Chat Window -->
+    <div class="s5-layout">
+      <!-- Left Mascot Sidebar matching Screen 5 -->
+      <aside class="s5-robot-sidebar">
+        <img src="chatbot_robot_3d.jpg" alt="Robot Chatbot" class="s5-robot-img">
+        <div class="s5-speech-bubble">
+          مرحباً! 👋<br>
+          <span style="font-size:12px; font-family:'Nunito',sans-serif; color:#374151; font-weight:700;">
+            Assalamu'alaikum! Ada yang bisa saya bantu?
+          </span>
+        </div>
+        <div style="font-size:11.5px; color:#6B7280; font-weight:700; margin-top:10px;">
+          Didukung AI Pembelajaran SKI &amp; Bahasa Arab Kelas 8
+        </div>
+      </aside>
+
+      <!-- Right Chat Frame -->
+      <main style="background:#FFFFFF; border:2px solid #BAE6FD; border-radius:20px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.06); height:75vh; min-height:540px;">
+        <iframe id="chatbotFrame" src="Tanya_SKI.html" style="width:100%; height:100%; border:none; display:block;" allow="microphone"></iframe>
+      </main>
+    </div>
   </div>
 </section>
 
@@ -2872,36 +3141,83 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 </section>
 
 <section class="screen" id="sl">
-  <button class="back" data-go="menu">⬅ Kembali ke peta</button>
-  
-  <div class="slide-container">
-    <!-- Header -->
-    <div class="slide-header-card">
-      <h2>🎥 VIDEO PRESENTASI MATERI: DAULAH ABBASIYAH</h2>
-      <div class="slide-header-sub">Simak pemaparan materi presentasi PowerPoint secara lengkap dengan animasi & audio</div>
+  <div class="s3-container">
+    <!-- Header matching Screen 3 in Mockup -->
+    <div class="s3-header-banner">
+      <button class="plaque-corner-btn" onclick="go('menu')" title="Kembali ke Beranda">⬅</button>
+      <div style="flex:1; text-align:center; padding:0 10px;">
+        <h2 style="font-family:'Lilita One',cursive; font-size:clamp(19px,3vw,25px); color:#FEF08A; margin:0; text-shadow:0 2px 4px rgba(0,0,0,0.3);">
+          ✦ Materi Pembelajaran ✦
+        </h2>
+        <p style="font-size:12.5px; font-weight:700; color:#E2E8F0; margin:2px 0 0;">
+          Pelajari materi berikut sesuai dengan tema
+        </p>
+      </div>
+      <img src="s3_books.png" alt="Buku" class="s3-books-img">
     </div>
 
-    <!-- Reader Card -->
-    <div class="slide-reader-card">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
-        <span style="font-family: 'Lilita One', cursive; font-size: 18px; color: #1E3A8A;">
-          ▶️ Pemutar Video Presentasi
-        </span>
-        <a href="ppt_daulah_abbasiyah.pptx" download="ppt daulah abbasiyah.pptx" class="slide-action-btn" title="Unduh file presentasi PowerPoint">
-          📥 Unduh .PPTX
-        </a>
-      </div>
+    <!-- Screen 3 Layout: Sidebar Categories & Chapter Cards -->
+    <div class="s3-layout">
+      <!-- Left Sidebar Categories matching Screen 3 -->
+      <aside class="s3-sidebar">
+        <button class="s3-tab-btn active" onclick="switchMateriTab(this, 'all')">
+          <span>📖</span> Bahasa Arab &amp; SKI
+        </button>
+        <button class="s3-tab-btn" onclick="switchMateriTab(this, 'nahwu')">
+          <span>📖</span> Nahwu &amp; Shorof
+        </button>
+        <button class="s3-tab-btn" onclick="switchMateriTab(this, 'kalam')">
+          <span>🗣️</span> Percakapan (Kalam)
+        </button>
+        <button class="s3-tab-btn" onclick="switchMateriTab(this, 'tarikh')">
+          <span>📜</span> Kisah &amp; Sejarah
+        </button>
+        <button class="s3-tab-btn" onclick="switchMateriTab(this, 'budaya')">
+          <span>🕌</span> Budaya Islam
+        </button>
+      </aside>
 
-      <!-- VIDEO PRESENTATION ONLY -->
-      <div class="slide-video-box" style="box-shadow: 0 10px 35px rgba(0,0,0,0.3); border: 3px solid #C9A24B; border-radius: 16px;">
-        <video id="slideVideoPlayer" src="ppt.mp4" controls poster="slides_ppt/slide_01.jpg" preload="metadata" style="width: 100%; height: 100%; border-radius: 13px; display: block;">
-          Browser Anda tidak mendukung pemutar video HTML5.
-        </video>
-      </div>
+      <!-- Right 6 Chapter Cards matching Screen 3 -->
+      <main>
+        <div class="s3-cards-grid">
+          <div class="s3-card-item" onclick="scrollToPresentation()" title="Maharah Kalam (Berbicara)">
+            <img src="s3_card1.png" alt="Maharah Kalam">
+          </div>
+          <div class="s3-card-item" onclick="scrollToPresentation()" title="Mufradat (Kosakata)">
+            <img src="s3_card2.png" alt="Mufradat">
+          </div>
+          <div class="s3-card-item" onclick="scrollToPresentation()" title="Tashrif (Kata Kerja)">
+            <img src="s3_card3.png" alt="Tashrif">
+          </div>
+          <div class="s3-card-item" onclick="scrollToPresentation()" title="Qira'ah (Membaca)">
+            <img src="s3_card4.png" alt="Qira'ah">
+          </div>
+          <div class="s3-card-item" onclick="scrollToPresentation()" title="Qawaid (Tata Bahasa)">
+            <img src="s3_card5.png" alt="Qawaid">
+          </div>
+          <div class="s3-card-item" onclick="scrollToPresentation()" title="At-Tarikh (Sejarah Islam)">
+            <img src="s3_card6.png" alt="At-Tarikh">
+          </div>
+        </div>
 
-      <div style="text-align: center; margin-top: 14px; font-size: 13.5px; color: #5C4718; font-weight: 600;">
-        💡 Klik tombol play untuk menyimak video presentasi. Anda dapat mengaktifkan mode layar penuh melalui kontrol pemutar video.
-      </div>
+        <!-- Embedded Interactive PowerPoint Video & Download Section -->
+        <div id="presentationViewerBox" style="background:#FFFFFF; border:2px solid #E6D5A7; border-radius:20px; padding:18px; margin-top:20px; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+            <span style="font-family:'Lilita One',cursive; font-size:17px; color:#064E3B;">
+              🎥 Pemutar Video Presentasi Materi
+            </span>
+            <a href="ppt_daulah_abbasiyah.pptx" download="ppt daulah abbasiyah.pptx" class="hero-btn-cta" style="padding:6px 16px; font-size:13px; text-decoration:none;" title="Unduh file presentasi PowerPoint">
+              📥 Unduh .PPTX
+            </a>
+          </div>
+
+          <div style="width:100%; border-radius:14px; overflow:hidden; border:2.5px solid #F5E6B3; box-shadow:0 8px 24px rgba(0,0,0,0.15); background:#000;">
+            <video id="slideVideoPlayer" src="ppt.mp4" controls poster="slides_ppt/slide_01.jpg" preload="metadata" style="width:100%; height:auto; max-height:65vh; display:block;">
+              Browser Anda tidak mendukung pemutar video HTML5.
+            </video>
+          </div>
+        </div>
+      </main>
     </div>
   </div>
 </section>
@@ -3015,25 +3331,55 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 </section>
 
 <section class="screen" id="pl">
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-    <button class="back" id="plb" data-go="menu">⬅ Kembali ke peta</button>
-    <div style="display:flex; gap:8px;">
-      <button id="gameReloadBtn" class="rpp-btn-print" style="margin:0;" onclick="reloadGame()">🔄 Mulai Ulang</button>
-      <button id="gameFsBtn" class="rpp-btn-print" style="margin:0;" onclick="toggleGameFullscreen()">⛶ Layar Penuh</button>
-    </div>
-  </div>
-
-  <div class="panel dark" style="background:linear-gradient(180deg,#0B3D2E 0%,#06261C 100%); border:2.5px solid #C9A24B; border-radius:20px; padding:18px; box-shadow:0 8px 25px rgba(0,0,0,0.45);">
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
-      <div>
-        <h2 style="font-family:'Lilita One',cursive; font-size:24px; color:#EBD28F; margin:0; letter-spacing:0.5px;">🎮 Si Jenius: Petualangan Dimulai</h2>
-        <p style="color:#FFFBEC; font-size:13.5px; margin:4px 0 0; opacity:0.92;">Tantangan game sejarah interaktif bersama Si Jenius!</p>
+  <div class="s4-container">
+    <!-- Header matching Screen 4 in Mockup -->
+    <div class="s4-wood-banner">
+      <button class="plaque-corner-btn" onclick="go('menu')" title="Kembali ke Beranda" style="background:#F59E0B; border-color:#FEF08A;">🏠</button>
+      <div style="flex:1; text-align:center; padding:0 10px;">
+        <h2 style="font-family:'Lilita One',cursive; font-size:clamp(19px,3vw,25px); color:#FEF08A; margin:0; text-shadow:0 2px 4px rgba(0,0,0,0.4);">
+          🎮 Game Edukatif 🎮
+        </h2>
+        <p style="font-size:12.5px; font-weight:700; color:#FEF3C7; margin:2px 0 0;">
+          Belajar sambil bermain, lebih seru!
+        </p>
+      </div>
+      <div style="background:#FFFFFF; color:#78350F; border:1.5px solid #FDE047; padding:6px 14px; border-radius:999px; font-family:'Lilita One',cursive; font-size:13.5px; display:inline-flex; align-items:center; gap:6px;">
+        <span>🏆 Skor:</span>
+        <span id="gamePlScore">0</span>
       </div>
     </div>
 
-    <!-- Game Container -->
-    <div id="gameContainer" style="position:relative; width:100%; aspect-ratio:16/9; max-height:78vh; border-radius:14px; overflow:hidden; border:2.5px solid #C9A24B; box-shadow:0 10px 30px rgba(0,0,0,0.6); background:#000;">
-      <iframe id="gameFrame" src="Si_Jenius_Petualangan_Dimulai.html" style="width:100%; height:100%; border:none; display:block;" allow="autoplay; fullscreen; clipboard-write; encrypted-media" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+    <!-- 4 Game Cards matching Screen 4 in Mockup -->
+    <div class="s4-games-grid">
+      <div class="s4-game-card" onclick="startSubGame('puzzle')" title="Puzzle Kata Arab">
+        <img src="s4_game1.png" alt="Puzzle Kata Arab">
+      </div>
+      <div class="s4-game-card" onclick="startSubGame('drag')" title="Drag &amp; Drop Tata Bahasa">
+        <img src="s4_game2.png" alt="Drag &amp; Drop">
+      </div>
+      <div class="s4-game-card" onclick="startSubGame('tebak')" title="Tebak Kata Bahasa Arab">
+        <img src="s4_game3.png" alt="Tebak Kata">
+      </div>
+      <div class="s4-game-card" onclick="startSubGame('rpg')" title="Petualangan Daulah Abbasiyah">
+        <img src="s4_game4.png" alt="Petualangan Daulah Abbasiyah">
+      </div>
+    </div>
+
+    <!-- Embedded RPG Game Window with Fullscreen & Reload -->
+    <div style="background:#FFFFFF; border:2px solid #E6D5A7; border-radius:20px; padding:16px; box-shadow:0 6px 20px rgba(0,0,0,0.06);" id="gamePlayerContainer">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+        <span style="font-family:'Lilita One',cursive; font-size:17px; color:#064E3B;" id="gameTitleLabel">
+          ⚔️ Game: Petualangan Daulah Abbasiyah
+        </span>
+        <div style="display:flex; gap:8px;">
+          <button id="gameReloadBtn" class="hero-btn-cta" style="padding:6px 14px; font-size:12.5px;" onclick="reloadGame()">🔄 Mulai Ulang</button>
+          <button id="gameFsBtn" class="hero-btn-cta" style="padding:6px 14px; font-size:12.5px;" onclick="toggleGameFullscreen()">⛶ Layar Penuh</button>
+        </div>
+      </div>
+
+      <div id="gameContainer" style="position:relative; width:100%; aspect-ratio:16/9; max-height:76vh; border-radius:14px; overflow:hidden; border:2.5px solid #F5E6B3; box-shadow:0 8px 25px rgba(0,0,0,0.25); background:#000;">
+        <iframe id="gameFrame" src="Si_Jenius_Petualangan_Dimulai.html" style="width:100%; height:100%; border:none; display:block;" allow="autoplay; fullscreen; clipboard-write; encrypted-media" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -3570,4 +3916,32 @@ renderMenu();
 })();
 </script>
 
+<script>
+function scrollToPresentation() {
+  const box = document.getElementById("presentationViewerBox");
+  if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+window.scrollToPresentation = scrollToPresentation;
+
+function switchMateriTab(btn, tabKey) {
+  document.querySelectorAll('.s3-tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  scrollToPresentation();
+}
+window.switchMateriTab = switchMateriTab;
+
+function startSubGame(type) {
+  const lbl = document.getElementById("gameTitleLabel");
+  const titles = {
+    puzzle: "🧩 Game: Puzzle Kata Arab",
+    drag: "🔲 Game: Drag & Drop Tata Bahasa",
+    tebak: "💡 Game: Tebak Kata Bahasa Arab",
+    rpg: "⚔️ Game: Petualangan Daulah Abbasiyah"
+  };
+  if (lbl && titles[type]) lbl.textContent = titles[type];
+  const box = document.getElementById("gamePlayerContainer");
+  if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+window.startSubGame = startSubGame;
+</script>
 </body></html>
