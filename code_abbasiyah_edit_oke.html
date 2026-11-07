@@ -1661,52 +1661,31 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   <div class="slide-container">
     <!-- Header -->
     <div class="slide-header-card">
-      <h2>📊 SLIDE MATERI: SI JENIUS DINASTI ABBASIYAH</h2>
-      <div class="slide-header-sub">Presentasi Pembelajaran Sejarah Kebudayaan Islam Daulah Abbasiyah</div>
+      <h2>🎥 VIDEO PRESENTASI MATERI: DAULAH ABBASIYAH</h2>
+      <div class="slide-header-sub">Simak pemaparan materi presentasi PowerPoint secara lengkap dengan animasi & audio</div>
     </div>
 
     <!-- Reader Card -->
     <div class="slide-reader-card">
-      <!-- Quick Action Buttons -->
-      <div style="display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
-        <button type="button" onclick="document.getElementById('slideVideoSection').scrollIntoView({behavior:'smooth'})" class="slide-action-btn" style="background: linear-gradient(180deg,#F59E0B,#D97706); color:#FFF; border-color:#B45309; cursor: pointer;">
-          ▶️ Video Presentasi
-        </button>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
+        <span style="font-family: 'Lilita One', cursive; font-size: 18px; color: #1E3A8A;">
+          ▶️ Pemutar Video Presentasi
+        </span>
         <a href="ppt_daulah_abbasiyah.pptx" download="ppt daulah abbasiyah.pptx" class="slide-action-btn" title="Unduh file presentasi PowerPoint">
           📥 Unduh .PPTX
         </a>
       </div>
 
-      <!-- DECK PRESENTATION VIEW (LANGSUNG TAMPIL) -->
-      <div id="slideDeckSection">
-        <div class="slide-nav-bar">
-          <button class="btn sec" id="sp" onclick="prevSlide()">◀ Sebelumnya</button>
-          <span class="slide-counter-badge" id="slideCounter">Slide 1 dari 9</span>
-          <button class="btn" id="sn" onclick="nextSlide()">Berikutnya ▶</button>
-          <button class="btn sec" id="sf" onclick="toggleSlideFull()">⛶ Layar Penuh</button>
-        </div>
-
-        <div class="slide-stage" id="slideStage">
-          <img id="slideImg" src="slides_ppt/slide_01.jpg" alt="Slide Materi PPT" onclick="toggleSlideFull()" title="Klik untuk layar penuh">
-        </div>
-
-        <!-- Dot thumbnails / indicators -->
-        <div class="slide-dots-container" id="dt"></div>
+      <!-- VIDEO PRESENTATION ONLY -->
+      <div class="slide-video-box" style="box-shadow: 0 10px 35px rgba(0,0,0,0.3); border: 3px solid #C9A24B; border-radius: 16px;">
+        <video id="slideVideoPlayer" src="ppt.mp4" controls poster="slides_ppt/slide_01.jpg" preload="metadata" style="width: 100%; height: 100%; border-radius: 13px; display: block;">
+          Browser Anda tidak mendukung pemutar video HTML5.
+        </video>
       </div>
 
-      <!-- VIDEO PRESENTATION VIEW (TETAP DIPERTAHANKAN) -->
-      <div id="slideVideoSection" style="margin-top: 28px; padding-top: 20px; border-top: 2px dashed #E5D6A8;">
-        <div style="text-align: center; margin-bottom: 12px;">
-          <h3 style="font-family: 'Lilita One', cursive; font-size: 20px; color: #1E3A8A; margin: 0 0 4px;">▶️ VIDEO PRESENTASI MATERI</h3>
-          <p style="font-size: 13.5px; color: #5C4718; margin: 0;">Simak video presentasi materi secara otomatis lengkap dengan animasi dan audio:</p>
-        </div>
-        <div class="slide-video-box">
-          <video id="slideVideoPlayer" src="ppt.mp4" controls poster="slides_ppt/slide_01.jpg" preload="metadata">
-            Browser Anda tidak mendukung pemutar video HTML5.
-          </video>
-        </div>
+      <div style="text-align: center; margin-top: 14px; font-size: 13.5px; color: #5C4718; font-weight: 600;">
+        💡 Klik tombol play untuk menyimak video presentasi. Anda dapat mengaktifkan mode layar penuh melalui kontrol pemutar video.
       </div>
-
     </div>
   </div>
 </section>
