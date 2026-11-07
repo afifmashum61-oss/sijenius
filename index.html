@@ -2643,6 +2643,143 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   width: 100%;
   box-sizing: border-box;
 }
+
+/* =========================================================
+   EXACT PILIH MENU PEMBELAJARAN STYLES
+   ========================================================= */
+.pilih-menu-card-wrap {
+  position: relative;
+  background: #FFFDF7 url('menu_panel_bg.jpg') center center / cover no-repeat;
+  border: 3.5px solid #F5E6B3;
+  border-radius: 28px;
+  padding: 24px 20px 28px;
+  box-shadow: 0 14px 40px rgba(6, 78, 59, 0.14), 0 0 0 1px #D4AF37;
+  margin-bottom: 26px;
+  overflow: hidden;
+}
+.pilih-menu-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.menu-round-btn {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #FFFFFF;
+  border: 2px solid #FDE047;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(6, 78, 59, 0.25);
+  transition: all 0.18s ease;
+  flex-shrink: 0;
+}
+.menu-round-btn:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+.menu-plaque-title-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.menu-plaque-pill {
+  background: linear-gradient(135deg, #064E3B 0%, #047857 50%, #065F46 100%);
+  color: #FFFFFF;
+  border: 2.5px solid #FDE047;
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(17px, 2.5vw, 22px);
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 14px rgba(6, 78, 59, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.menu-plaque-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #374151;
+  margin: 6px 0 0;
+}
+
+.pilih-menu-8-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 18px;
+}
+@media(max-width: 768px) {
+  .pilih-menu-8-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+.pilih-menu-badge-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  border-radius: 20px;
+  display: block;
+  width: 100%;
+  aspect-ratio: 294 / 228;
+  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+}
+.pilih-menu-badge-btn:hover {
+  transform: translateY(-6px) scale(1.03);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.2));
+}
+.pilih-menu-badge-btn:active {
+  transform: translateY(-2px) scale(0.99);
+}
+.pilih-menu-badge-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 16px;
+}
+.badge-done-indicator {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: #10B981;
+  color: #FFFFFF;
+  border: 1.5px solid #FFFFFF;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 13px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+.badge-star-indicator {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #FDE047;
+  border: 1px solid #FDE047;
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 800;
+}
 </style></head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
 <div class="wrap">
@@ -2716,101 +2853,74 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     </div>
   </div>
 
-  <div id="pilihMenuSection">
-    <div class="plaque-header-banner">
-      <button class="plaque-corner-btn left" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ke Atas">🏠</button>
-      <div class="plaque-title-wrap">
-        <h2 class="plaque-title">✦ Pilih Menu Pembelajaran ✦</h2>
-        <p class="plaque-sub">Ayo pilih menu yang ingin kamu pelajari!</p>
+  <div id="pilihMenuSection" class="pilih-menu-card-wrap">
+    <!-- Header matching Screen 2 in Mockup -->
+    <div class="pilih-menu-header-row">
+      <button class="menu-round-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ke Atas">🏠</button>
+      <div class="menu-plaque-title-box">
+        <div class="menu-plaque-pill">
+          <span>✦</span>
+          <span>Pilih Menu Pembelajaran</span>
+          <span>✦</span>
+        </div>
+        <p class="menu-plaque-subtitle">Ayo pilih menu yang ingin kamu pelajari!</p>
       </div>
-      <button class="plaque-corner-btn right" onclick="document.getElementById('mute').click()" title="Bunyikan/Matikan Suara">🔊</button>
+      <button class="menu-round-btn" onclick="document.getElementById('mute').click()" title="Pengaturan Suara">⚙️</button>
     </div>
 
-    <!-- 8 Cards Grid matching Screen 2 in Mockup -->
-    <div class="mockup-cards-grid">
+    <!-- 8 Exact Islamic Arched Cards matching Mockup -->
+    <div class="pilih-menu-8-grid">
       <!-- Card 1: Misi 1 -->
-      <button class="mockup-card card-c1" id="mCard0" onclick="m1(); go('m1')" title="Misi 1: Ayo Kenali Daulah Abbasiyah">
-        <div class="mc-img-wrap"><img src="card_misi1.png" alt="Misi 1"></div>
-        <div class="mc-text-wrap">
-          <span class="mc-title">Misi 1</span>
-          <span class="mc-sub">Ayo Kenali Daulah Abbasiyah</span>
-        </div>
-        <span class="mc-badge-done" id="mDone0" style="display:none;">✓</span>
-        <span class="mc-badge-star" id="mStar0" style="display:none;"></span>
+      <button class="pilih-menu-badge-btn" id="mCard0" onclick="m1(); go('m1')" title="Misi 1: Ayo Beriman Kepada Allah">
+        <img src="menu_badge_1.png" alt="Misi 1: Ayo Beriman Kepada Allah">
+        <span class="badge-done-indicator" id="mDone0" style="display:none;">✓</span>
+        <span class="badge-star-indicator" id="mStar0" style="display:none;"></span>
       </button>
 
       <!-- Card 2: Misi 2 -->
-      <button class="mockup-card card-c2" id="mCard1" onclick="m2(); go('m2')" title="Misi 2: Tokoh &amp; Khalifah Utama">
-        <div class="mc-img-wrap"><img src="card_misi2.png" alt="Misi 2"></div>
-        <div class="mc-text-wrap">
-          <span class="mc-title">Misi 2</span>
-          <span class="mc-sub">Uji Kompetensi Khalifah</span>
-        </div>
-        <span class="mc-badge-done" id="mDone1" style="display:none;">✓</span>
-        <span class="mc-badge-star" id="mStar1" style="display:none;"></span>
+      <button class="pilih-menu-badge-btn" id="mCard1" onclick="m2(); go('m2')" title="Misi 2: Uji Kompetensi Kata &amp; Kalimat">
+        <img src="menu_badge_2.png" alt="Misi 2: Uji Kompetensi Kata &amp; Kalimat">
+        <span class="badge-done-indicator" id="mDone1" style="display:none;">✓</span>
+        <span class="badge-star-indicator" id="mStar1" style="display:none;"></span>
       </button>
 
       <!-- Card 3: Misi 3 -->
-      <button class="mockup-card card-c3" id="mCard2" onclick="m3(); go('m3')" title="Misi 3: Susun Ceritanya!">
-        <div class="mc-img-wrap"><img src="card_misi3.png" alt="Misi 3"></div>
-        <div class="mc-text-wrap">
-          <span class="mc-title">Misi 3</span>
-          <span class="mc-sub">Susun Ceritanya!</span>
-        </div>
-        <span class="mc-badge-done" id="mDone2" style="display:none;">✓</span>
-        <span class="mc-badge-star" id="mStar2" style="display:none;"></span>
+      <button class="pilih-menu-badge-btn" id="mCard2" onclick="m3(); go('m3')" title="Misi 3: Susun Ceritanya!">
+        <img src="menu_badge_3.png" alt="Misi 3: Susun Ceritanya!">
+        <span class="badge-done-indicator" id="mDone2" style="display:none;">✓</span>
+        <span class="badge-star-indicator" id="mStar2" style="display:none;"></span>
       </button>
 
       <!-- Card 4: Chatbot AI -->
-      <button class="mockup-card card-c4" onclick="go('lk')" title="Chatbot AI: Tanya SKI">
-        <div class="mc-img-wrap"><img src="card_chatbot.png" alt="Chatbot AI"></div>
-        <div class="mc-text-wrap">
-          <span class="mc-title">Chatbot AI</span>
-          <span class="mc-sub">Tanya Jawab SKI</span>
-        </div>
+      <button class="pilih-menu-badge-btn" onclick="go('lk')" title="Chatbot AI: Tanya Jawab Bahasa Arab">
+        <img src="menu_badge_4.png" alt="Chatbot AI: Tanya Jawab Bahasa Arab">
       </button>
 
       <!-- Card 5: Video Pembelajaran -->
-      <button class="mockup-card card-c5" onclick="go('vp')" title="Video Pembelajaran">
-        <div class="mc-img-wrap"><img src="card_video.png" alt="Video Pembelajaran"></div>
-        <div class="mc-text-wrap">
-          <span class="mc-title">Video</span>
-          <span class="mc-sub">Pembelajaran</span>
-        </div>
+      <button class="pilih-menu-badge-btn" onclick="go('vp')" title="Video Pembelajaran">
+        <img src="menu_badge_5.png" alt="Video Pembelajaran">
       </button>
 
       <!-- Card 6: Game Petualangan -->
-      <button class="mockup-card card-c6" onclick="go('pl')" title="Game Petualangan">
-        <div class="mc-img-wrap"><img src="card_game.png" alt="Game Petualangan"></div>
-        <div class="mc-text-wrap">
-          <span class="mc-title">Game</span>
-          <span class="mc-sub">Petualangan</span>
-        </div>
+      <button class="pilih-menu-badge-btn" onclick="go('pl')" title="Game Petualangan">
+        <img src="menu_badge_6.png" alt="Game Petualangan">
       </button>
 
       <!-- Card 7: RPP KBC -->
-      <button class="mockup-card card-c7" onclick="go('rp')" title="RPP KBC Kurikulum Merdeka">
-        <div class="mc-img-wrap"><img src="card_rpp.png" alt="RPP KBC"></div>
-        <div class="mc-text-wrap">
-          <span class="mc-title">RPP KBC</span>
-          <span class="mc-sub">Kurikulum Merdeka</span>
-        </div>
+      <button class="pilih-menu-badge-btn" onclick="go('rp')" title="RPP KBC: Kurikulum Merdeka">
+        <img src="menu_badge_7.png" alt="RPP KBC: Kurikulum Merdeka">
       </button>
 
-      <!-- Card 8: Quiz / Misi 4 -->
-      <button class="mockup-card card-c8" id="mCard3" onclick="m4(); go('m4')" title="Quiz Evaluasi / Misi 4">
-        <div class="mc-img-wrap"><img src="card_quiz.png" alt="Quiz Uji Kemampuan"></div>
-        <div class="mc-text-wrap">
-          <span class="mc-title">Quiz</span>
-          <span class="mc-sub">Uji Kemampuan</span>
-        </div>
-        <span class="mc-badge-done" id="mDone3" style="display:none;">✓</span>
-        <span class="mc-badge-star" id="mStar3" style="display:none;"></span>
+      <!-- Card 8: Quiz Uji Kemampuan -->
+      <button class="pilih-menu-badge-btn" id="mCard3" onclick="m4(); go('m4')" title="Quiz: Uji Kemampuan">
+        <img src="menu_badge_8.png" alt="Quiz: Uji Kemampuan">
+        <span class="badge-done-indicator" id="mDone3" style="display:none;">✓</span>
+        <span class="badge-star-indicator" id="mStar3" style="display:none;"></span>
       </button>
     </div>
 
     <!-- Progress bar & hidden container for existing JS compatibility -->
-    <div style="margin-top:16px;">
+    <div style="margin-top:18px;">
       <div class="bar" id="pbar" role="progressbar" aria-label="Kemajuan misi" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0">
         <i id="pb"></i>
       </div>
@@ -2823,7 +2933,6 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     <div id="gb" style="display:none;"></div>
   </div>
 
-  <!-- Screen 6: PROFIL PENGGUNA & PRESTASI -->
   <div class="mockup-profile-card" id="profileSection">
     <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; border-bottom:1.5px dashed #E5D6A8; padding-bottom:10px;">
       <h3 style="font-family:'Lilita One',cursive; font-size:20px; color:#064E3B; margin:0;">
