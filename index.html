@@ -3402,83 +3402,31 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 </section>
 
 <section class="screen" id="sl">
-  <div class="s3-container">
-    <!-- Header matching Screen 3 in Mockup -->
-    <div class="s3-header-banner">
-      <button class="plaque-corner-btn" onclick="go('menu')" title="Kembali ke Beranda">⬅</button>
-      <div style="flex:1; text-align:center; padding:0 10px;">
-        <h2 style="font-family:'Lilita One',cursive; font-size:clamp(19px,3vw,25px); color:#FEF08A; margin:0; text-shadow:0 2px 4px rgba(0,0,0,0.3);">
-          ✦ Materi Pembelajaran ✦
-        </h2>
-        <p style="font-size:12.5px; font-weight:700; color:#E2E8F0; margin:2px 0 0;">
-          Pelajari materi berikut sesuai dengan tema
-        </p>
-      </div>
-      <img src="s3_books.png" alt="Buku" class="s3-books-img">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+    <button class="back" data-go="menu">⬅ Kembali ke Menu</button>
+    <a href="ppt_daulah_abbasiyah.pptx" download="ppt daulah abbasiyah.pptx" class="hero-btn-cta" style="padding:6px 16px; font-size:13px; text-decoration:none;" title="Unduh file presentasi PowerPoint">
+      📥 Unduh .PPTX
+    </a>
+  </div>
+
+  <div class="slide-container" style="background:#FFFFFF; border:2.5px solid #E6D5A7; border-radius:22px; padding:20px; box-shadow:0 8px 25px rgba(0,0,0,0.08);">
+    <div style="text-align:center; margin-bottom:16px;">
+      <h2 style="font-family:'Lilita One',cursive; font-size:clamp(20px,3.5vw,26px); color:#064E3B; margin:0;">
+        🎥 VIDEO PRESENTASI MATERI: DAULAH ABBASIYAH
+      </h2>
+      <p style="font-size:13px; font-weight:700; color:#6B7280; margin:4px 0 0;">
+        Simak pemaparan materi presentasi PowerPoint secara lengkap dengan animasi & audio
+      </p>
     </div>
 
-    <!-- Screen 3 Layout: Sidebar Categories & Chapter Cards -->
-    <div class="s3-layout">
-      <!-- Left Sidebar Categories matching Screen 3 -->
-      <aside class="s3-sidebar">
-        <button class="s3-tab-btn active" onclick="switchMateriTab(this, 'all')">
-          <span>📖</span> Bahasa Arab &amp; SKI
-        </button>
-        <button class="s3-tab-btn" onclick="switchMateriTab(this, 'nahwu')">
-          <span>📖</span> Nahwu &amp; Shorof
-        </button>
-        <button class="s3-tab-btn" onclick="switchMateriTab(this, 'kalam')">
-          <span>🗣️</span> Percakapan (Kalam)
-        </button>
-        <button class="s3-tab-btn" onclick="switchMateriTab(this, 'tarikh')">
-          <span>📜</span> Kisah &amp; Sejarah
-        </button>
-        <button class="s3-tab-btn" onclick="switchMateriTab(this, 'budaya')">
-          <span>🕌</span> Budaya Islam
-        </button>
-      </aside>
+    <div class="slide-video-box" style="box-shadow:0 10px 30px rgba(0,0,0,0.25); border:3px solid #C9A24B; border-radius:16px; overflow:hidden; background:#000;">
+      <video id="slideVideoPlayer" src="ppt.mp4" controls poster="slides_ppt/slide_01.jpg" preload="metadata" style="width:100%; height:auto; max-height:72vh; display:block;">
+        Browser Anda tidak mendukung pemutar video HTML5.
+      </video>
+    </div>
 
-      <!-- Right 6 Chapter Cards matching Screen 3 -->
-      <main>
-        <div class="s3-cards-grid">
-          <div class="s3-card-item" onclick="scrollToPresentation()" title="Maharah Kalam (Berbicara)">
-            <img src="s3_card1.png" alt="Maharah Kalam">
-          </div>
-          <div class="s3-card-item" onclick="scrollToPresentation()" title="Mufradat (Kosakata)">
-            <img src="s3_card2.png" alt="Mufradat">
-          </div>
-          <div class="s3-card-item" onclick="scrollToPresentation()" title="Tashrif (Kata Kerja)">
-            <img src="s3_card3.png" alt="Tashrif">
-          </div>
-          <div class="s3-card-item" onclick="scrollToPresentation()" title="Qira'ah (Membaca)">
-            <img src="s3_card4.png" alt="Qira'ah">
-          </div>
-          <div class="s3-card-item" onclick="scrollToPresentation()" title="Qawaid (Tata Bahasa)">
-            <img src="s3_card5.png" alt="Qawaid">
-          </div>
-          <div class="s3-card-item" onclick="scrollToPresentation()" title="At-Tarikh (Sejarah Islam)">
-            <img src="s3_card6.png" alt="At-Tarikh">
-          </div>
-        </div>
-
-        <!-- Embedded Interactive PowerPoint Video & Download Section -->
-        <div id="presentationViewerBox" style="background:#FFFFFF; border:2px solid #E6D5A7; border-radius:20px; padding:18px; margin-top:20px; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
-            <span style="font-family:'Lilita One',cursive; font-size:17px; color:#064E3B;">
-              🎥 Pemutar Video Presentasi Materi
-            </span>
-            <a href="ppt_daulah_abbasiyah.pptx" download="ppt daulah abbasiyah.pptx" class="hero-btn-cta" style="padding:6px 16px; font-size:13px; text-decoration:none;" title="Unduh file presentasi PowerPoint">
-              📥 Unduh .PPTX
-            </a>
-          </div>
-
-          <div style="width:100%; border-radius:14px; overflow:hidden; border:2.5px solid #F5E6B3; box-shadow:0 8px 24px rgba(0,0,0,0.15); background:#000;">
-            <video id="slideVideoPlayer" src="ppt.mp4" controls poster="slides_ppt/slide_01.jpg" preload="metadata" style="width:100%; height:auto; max-height:65vh; display:block;">
-              Browser Anda tidak mendukung pemutar video HTML5.
-            </video>
-          </div>
-        </div>
-      </main>
+    <div style="text-align:center; margin-top:14px; font-size:13px; color:#5C4718; font-weight:600;">
+      💡 Klik tombol play untuk menyimak video presentasi. Anda dapat mengaktifkan mode layar penuh melalui kontrol pemutar video.
     </div>
   </div>
 </section>
