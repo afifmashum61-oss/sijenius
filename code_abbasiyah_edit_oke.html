@@ -3608,65 +3608,78 @@ const IMG={"ml": ["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAECCAYAAAC
 const MI=["Majelis Ilmu","Kuis Peradaban","Susun Peristiwa","Cermin Hati"],BN=["Video Pembelajaran","Slide Materi","Komik","Game Petualangan","Chatbot AI","RPP KBC"];
 const BI=[["🎬","Video Pembelajaran","Tonton video pembelajaran seru menelusuri kejayaan peradaban Daulah Abbasiyah di kota Baghdad!"],["🖼️","Slide"],["📖","Komik","Baca komik petualangan seru masa kejayaan Daulah Abbasiyah!"],["🎮","Game Petualangan","Mainkan game petualangan seru Si Jenius menjelajah kota Baghdad!"],["🤖","Chatbot AI","Tanya jawab sejarah peradaban Daulah Abbasiyah bersama Si Jenius AI!"],["📚","RPP KBC"]];
 function renderMenu(){
-  const sName = (S.name || "Ahmad").trim();
-  const namaInp = $("#nama");
-  if (namaInp) namaInp.value = S.name || "";
-  const navUserEl = document.getElementById("navUserName");
-  if (navUserEl) navUserEl.textContent = sName;
+  try {
+    const sName = (S && S.name ? S.name : "Ahmad").trim();
+    const namaInp = $("#nama");
+    if (namaInp) namaInp.value = (S && S.name) || "";
+    const navUserEl = document.getElementById("navUserName");
+    if (navUserEl) navUserEl.textContent = sName;
 
-  const n = S.done.filter(Boolean).length;
-  const ptEl = $("#pt");
-  if (ptEl) ptEl.textContent = n + " dari 4 misi selesai";
-  const pbEl = $("#pb");
-  if (pbEl) pbEl.style.width = (n * 25) + "%";
-  const pbarEl = $("#pbar");
-  if (pbarEl) pbarEl.setAttribute("aria-valuenow", n);
+    const doneArr = (S && Array.isArray(S.done)) ? S.done : [0, 0, 0, 0];
+    const n = doneArr.filter(Boolean).length;
+    const ptEl = $("#pt");
+    if (ptEl) ptEl.textContent = n + " dari 4 misi selesai";
+    const pbEl = $("#pb");
+    if (pbEl) pbEl.style.width = (n * 25) + "%";
+    const pbarEl = $("#pbar");
+    if (pbarEl) pbarEl.setAttribute("aria-valuenow", n);
 
-  // Update profile section
-  const elMisiVal = document.getElementById("profileMisiVal");
-  if (elMisiVal) elMisiVal.textContent = n + " / 4";
-  
-  // Calculate total stars
-  let totalStars = 0;
-  for (let k in S.stars) { totalStars += (S.stars[k] || 0); }
-  const elStarVal = document.getElementById("profileStarVal");
-  if (elStarVal) elStarVal.textContent = totalStars + " ⭐";
-  const pstarTotalEl = document.getElementById("pstarTotal");
-  if (pstarTotalEl) pstarTotalEl.textContent = totalStars + " ⭐ Terkumpul";
+    // Update profile section
+    const elMisiVal = document.getElementById("profileMisiVal");
+    if (elMisiVal) elMisiVal.textContent = n + " / 4";
+    
+    // Calculate total stars
+    let totalStars = 0;
+    if (S && S.stars && typeof S.stars === "object") {
+      for (let k in S.stars) { totalStars += (S.stars[k] || 0); }
+    }
+    const elStarVal = document.getElementById("profileStarVal");
+    if (elStarVal) elStarVal.textContent = totalStars + " ⭐";
+    const pstarTotalEl = document.getElementById("pstarTotal");
+    if (pstarTotalEl) pstarTotalEl.textContent = totalStars + " ⭐ Terkumpul";
 
-  const elGameVal = document.getElementById("profileGameVal");
-  if (elGameVal) elGameVal.textContent = S.pf || 0;
+    const elGameVal = document.getElementById("profileGameVal");
+    if (elGameVal) elGameVal.textContent = (S && S.pf) || 0;
 
-  const elPctText = document.getElementById("profilePercentText");
-  if (elPctText) elPctText.textContent = (n * 25) + "%";
+    const elPctText = document.getElementById("profilePercentText");
+    if (elPctText) elPctText.textContent = (n * 25) + "%";
 
-  const elBarFill = document.getElementById("profileBarFill");
-  if (elBarFill) elBarFill.style.width = (n * 25) + "%";
+    const elBarFill = document.getElementById("profileBarFill");
+    if (elBarFill) elBarFill.style.width = (n * 25) + "%";
 
-  // Row 1: Render 4 Mission Badges matching Gambar 2
-  const gmEl = $("#gm");
-  if (gmEl) {
-    gmEl.innerHTML = MI.map((m, i) => {
-      const lock = i > 0 && !S.done[i - 1], st = S.stars["m" + i], art = lock ? IMG.ml[i] : IMG.mu[i];
-      return `<button class="mc ${lock ? "lock" : ""} ${S.done[i] ? "done" : ""}" data-m="${i}" aria-label="Misi ${i + 1}: ${m}${lock ? ", terkunci" : S.done[i] ? ", selesai" : ""}" ${lock ? 'aria-disabled="true"' : ""}>
-        <img src="${art}" alt="" draggable="false">
-        ${S.done[i] ? '<span class="tag ck" aria-hidden="true">✓</span>' : ""}
-        ${st ? `<span class="tag stz" aria-label="${st} bintang">${"⭐".repeat(st)}</span>` : ""}
-      </button>`;
-    }).join("");
-  }
+    // Row 1: Render 4 Mission Badges matching Gambar 2
+    const gmEl = $("#gm");
+    if (gmEl && typeof MI !== "undefined" && typeof IMG !== "undefined" && IMG.mu) {
+      gmEl.innerHTML = MI.map((m, i) => {
+        const lock = i > 0 && !doneArr[i - 1];
+        const st = (S && S.stars && typeof S.stars === "object") ? (S.stars["m" + i] || 0) : 0;
+        const art = lock ? (IMG.ml && IMG.ml[i] ? IMG.ml[i] : "") : (IMG.mu && IMG.mu[i] ? IMG.mu[i] : "");
+        return `<button class="mc ${lock ? "lock" : ""} ${doneArr[i] ? "done" : ""}" data-m="${i}" aria-label="Misi ${i + 1}: ${m}${lock ? ", terkunci" : doneArr[i] ? ", selesai" : ""}" ${lock ? 'aria-disabled="true"' : ""}>
+          <img src="${art}" alt="" draggable="false">
+          ${doneArr[i] ? '<span class="tag ck" aria-hidden="true">✓</span>' : ""}
+          ${st ? `<span class="tag stz" aria-label="${st} bintang">${"⭐".repeat(st)}</span>` : ""}
+        </button>`;
+      }).join("");
+    }
 
-  // Row 2: Render 6 Media Feature Badges matching Gambar 2
-  const gbEl = $("#gb");
-  if (gbEl) {
-    gbEl.innerHTML = BN.map((t, i) =>
-      `<button class="bc" data-b="${i}" aria-label="${t}">
-        <img src="${IMG.b[i]}" alt="" draggable="false">
-        ${S.stars.pf && i == 3 ? `<span class="tag stz" aria-label="${S.stars.pf} bintang">${"⭐".repeat(S.stars.pf)}</span>` : ""}
-      </button>`
-    ).join("");
+    // Row 2: Render 6 Media Feature Badges matching Gambar 2
+    const gbEl = $("#gb");
+    if (gbEl && typeof BN !== "undefined" && typeof IMG !== "undefined" && IMG.b) {
+      gbEl.innerHTML = BN.map((t, i) => {
+        const pfStar = (S && S.stars && typeof S.stars === "object") ? S.stars.pf : 0;
+        return `<button class="bc" data-b="${i}" aria-label="${t}">
+          <img src="${IMG.b[i]}" alt="" draggable="false">
+          ${pfStar && i == 3 ? `<span class="tag stz" aria-label="${pfStar} bintang">${"⭐".repeat(pfStar)}</span>` : ""}
+        </button>`;
+      }).join("");
+    }
+  } catch (err) {
+    console.error("renderMenu error:", err);
   }
 }
+renderMenu();
+window.addEventListener("DOMContentLoaded", renderMenu);
+window.addEventListener("load", renderMenu);
 
 function scrollToSection(secId) {
   const el = document.getElementById(secId);
@@ -3824,7 +3837,7 @@ let raf,pfOn=false,ctx;
 const pfMascot = new Image();
 pfMascot.src = "sijenius_cert.png";
 function stopPF(){pfOn=false;cancelAnimationFrame(raf)}
-$("#plb").onclick=()=>go("menu");
+const plbBtn=$("#plb");if(plbBtn)plbBtn.onclick=()=>go("menu");
 function pfStart(){const cv=$("#pf");ctx=cv.getContext("2d");$("#ps").innerHTML="";let qi=0,ok=0,ask=false,y=190,vy=0,ox=700,t=0,first={};pfOn=true;
  const jump=()=>{if(y>=190&&!ask){vy=-11;snd(500,.08)}};cv.onpointerdown=jump;onkeydown=e=>{if(e.code=="Space"&&pfOn){e.preventDefault();jump()}};
  const nextQ=()=>{ask=true;const [txt,a,...w]=QB[qi];const o=[a,...w].sort(()=>Math.random()-.5);
