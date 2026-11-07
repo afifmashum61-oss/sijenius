@@ -3020,7 +3020,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
         Selamat Datang<br>di <span class="highlight-green">SI JENIUS</span>
       </h1>
       <p class="hero-desc">
-        Belajar Bahasa Arab jadi lebih mudah,<br>seru dan menyenangkan!
+        Belajar Sejarah Kebudayaan Islam jadi lebih mudah,<br>seru dan menyenangkan!
       </p>
 
       <div class="hero-action-row" style="margin-top:4px;">
@@ -3160,42 +3160,54 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 <section class="screen" id="b0"><button class="back" data-go="menu">⬅ Kembali ke peta</button><div class="panel"><h2 id="bt"></h2><p id="bd"></p></div></section>
 
 <section class="screen" id="lk">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+    <button class="back" data-go="menu">⬅ Kembali ke Menu</button>
+    <div style="display:flex; gap:8px;">
+      <button class="hero-btn-cta" onclick="reloadChatbot()" style="padding:6px 14px; font-size:12.5px;">🔄 Mulai Ulang</button>
+      <button class="hero-btn-cta" onclick="toggleChatbotFullscreen()" style="padding:6px 14px; font-size:12.5px;">⛶ Layar Penuh</button>
+    </div>
+  </div>
+
   <div class="s5-container">
-    <!-- Header matching Screen 5 in Mockup -->
-    <div class="s5-header-banner">
-      <button class="plaque-corner-btn" onclick="go('menu')" title="Kembali ke Beranda" style="background:#0284C7; border-color:#FEF08A;">🏠</button>
-      <div style="flex:1; text-align:center; padding:0 10px;">
+    <!-- Header matching Modern Islamic Style -->
+    <div class="s5-header-banner" style="position:relative; justify-content:center; text-align:center;">
+      <div style="padding:0 10px;">
         <h2 style="font-family:'Lilita One',cursive; font-size:clamp(19px,3vw,25px); color:#FEF08A; margin:0; text-shadow:0 2px 4px rgba(0,0,0,0.3);">
-          🤖 Chatbot AI 🤖
+          🤖 Chatbot AI: Sejarah Kebudayaan Islam 🤖
         </h2>
-        <p style="font-size:12.5px; font-weight:700; color:#E0F2FE; margin:2px 0 0;">
-          Tanya apa saja tentang Bahasa Arab &amp; Sejarah Daulah Abbasiyah!
+        <p style="font-size:13px; font-weight:700; color:#E0F2FE; margin:4px 0 0;">
+          Tanya apa saja seputar Sejarah Peradaban &amp; Kejayaan Daulah Abbasiyah!
         </p>
-      </div>
-      <div style="display:flex; gap:6px;">
-        <button class="hero-btn-cta" onclick="reloadChatbot()" style="padding:6px 12px; font-size:12px;" title="Muat ulang">🔄</button>
-        <button class="hero-btn-cta" onclick="toggleChatbotFullscreen()" style="padding:6px 12px; font-size:12px;" title="Layar penuh">⛶</button>
       </div>
     </div>
 
     <!-- Screen 5 Layout: Robot Mascot Sidebar & Chat Window -->
     <div class="s5-layout">
-      <!-- Left Mascot Sidebar matching Screen 5 -->
+      <!-- Left Mascot Sidebar -->
       <aside class="s5-robot-sidebar">
-        <img src="chatbot_robot_3d.jpg" alt="Robot Chatbot" class="s5-robot-img">
-        <div class="s5-speech-bubble">
-          مرحباً! 👋<br>
-          <span style="font-size:12px; font-family:'Nunito',sans-serif; color:#374151; font-weight:700;">
-            Assalamu'alaikum! Ada yang bisa saya bantu?
-          </span>
+        <div style="width:130px; height:130px; border-radius:50%; overflow:hidden; border:3px solid #38BDF8; box-shadow:0 6px 18px rgba(14,165,233,0.25); margin-bottom:12px; background:#F0F9FF;">
+          <img src="chatbot_robot_3d.jpg" alt="Robot Chatbot" style="width:100%; height:100%; object-fit:cover;">
         </div>
-        <div style="font-size:11.5px; color:#6B7280; font-weight:700; margin-top:10px;">
-          Didukung AI Pembelajaran SKI &amp; Bahasa Arab Kelas 8
+        <div class="s5-speech-bubble" style="width:100%; box-sizing:border-box;">
+          <div style="font-family:'Lilita One',cursive; color:#0369A1; font-size:16px; margin-bottom:4px;">
+            Assalamu'alaikum! 👋
+          </div>
+          <div style="font-size:12.5px; font-family:'Nunito',sans-serif; color:#374151; font-weight:700; line-height:1.4;">
+            Ada yang ingin kamu tanyakan tentang sejarah Daulah Abbasiyah?
+          </div>
+        </div>
+        <div style="background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px; padding:10px 12px; margin-top:14px; width:100%; box-sizing:border-box; text-align:left;">
+          <div style="font-size:12px; font-weight:800; color:#166534; margin-bottom:4px;">
+            📚 Fokus Materi:
+          </div>
+          <div style="font-size:11.5px; color:#4B5563; line-height:1.4;">
+            Sejarah Kebudayaan Islam (SKI) Kelas 8 · Peradaban Daulah Abbasiyah &amp; Tokoh Ilmuwan Muslim
+          </div>
         </div>
       </aside>
 
       <!-- Right Chat Frame -->
-      <main style="background:#FFFFFF; border:2px solid #BAE6FD; border-radius:20px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.06); height:75vh; min-height:540px;">
+      <main id="chatbotContainer" style="background:#02030A; border:2.5px solid #BAE6FD; border-radius:20px; overflow:hidden; box-shadow:0 8px 25px rgba(0,0,0,0.1); height:75vh; min-height:560px;">
         <iframe id="chatbotFrame" src="Tanya_SKI.html" style="width:100%; height:100%; border:none; display:block;" allow="microphone"></iframe>
       </main>
     </div>
@@ -4125,9 +4137,9 @@ window.switchMateriTab = switchMateriTab;
 function startSubGame(type) {
   const lbl = document.getElementById("gameTitleLabel");
   const titles = {
-    puzzle: "🧩 Game: Puzzle Kata Arab",
+    puzzle: "🧩 Game: Puzzle Sejarah Abbasiyah",
     drag: "🔲 Game: Drag & Drop Tata Bahasa",
-    tebak: "💡 Game: Tebak Kata Bahasa Arab",
+    tebak: "💡 Game: Kuis Sejarah Abbasiyah",
     rpg: "⚔️ Game: Petualangan Daulah Abbasiyah"
   };
   if (lbl && titles[type]) lbl.textContent = titles[type];
