@@ -1456,18 +1456,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 
     <!-- Reader Card -->
     <div class="comic-reader-card">
-      <!-- Toolbar & Mode -->
-      <div class="comic-toolbar">
-        <div class="comic-mode-switch">
-          <button class="comic-mode-btn active" id="comicModeScroll" onclick="setComicMode('scroll')">📜 Mode Bergulir</button>
-          <button class="comic-mode-btn" id="comicModeSingle" onclick="setComicMode('single')">📄 Mode Per Halaman</button>
-        </div>
-        <div class="comic-tool-actions">
-          <button class="comic-action-btn" onclick="openComicZoom()">
-            🔍 Perbesar Layar
-          </button>
-        </div>
-      </div>
+      
 
       <!-- Quick Jump Pills (Smooth Scroll to page) -->
       <div class="comic-jump-pills" id="comicJumpPills">
@@ -1502,27 +1491,6 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
           <button class="comic-btn-nav" onclick="jumpToComicPage(0)">
             ⬆️ Kembali ke Atas Komik
           </button>
-        </div>
-      </div>
-
-      <!-- SINGLE PAGE VIEW (OPTIONAL) -->
-      <div id="comicSingleSection" style="display: none;">
-        <div class="comic-nav-bar">
-          <button class="comic-btn-nav" id="comicPrev" onclick="comicPage(curComicIdx - 1)">◀ Sebelumnya</button>
-          <span class="comic-page-title-badge" id="comicPageLabel">Halaman 1 dari 4: Sampul Depan</span>
-          <button class="comic-btn-nav" id="comicNext" onclick="comicPage(curComicIdx + 1)">Berikutnya ▶</button>
-        </div>
-
-        <div class="comic-stage">
-          <div class="comic-page-wrapper">
-            <img id="comicImg" class="comic-page-img" src="komik_1_cover.jpg" alt="Komik Daulah Abbasiyah" onclick="openComicZoom(this.src)" title="Klik untuk memperbesar">
-          </div>
-        </div>
-
-        <div class="comic-nav-bar" style="margin-top: 16px;">
-          <button class="comic-btn-nav" id="comicPrevBottom" onclick="comicPage(curComicIdx - 1)">◀ Sebelumnya</button>
-          <span class="comic-page-title-badge" id="comicPageLabelBottom">Halaman 1 dari 4: Sampul Depan</span>
-          <button class="comic-btn-nav" id="comicNextBottom" onclick="comicPage(curComicIdx + 1)">Berikutnya ▶</button>
         </div>
       </div>
 
@@ -1732,19 +1700,11 @@ const COMIC_DATA = [
   }
 ];
 
-let curComicIdx = 0;
-let curComicMode = 'scroll'; // Langsung bergulir secara default
-
 function jumpToComicPage(idx) {
-  if (curComicMode === 'scroll') {
-    const el = document.getElementById("comicPageItem-" + idx);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  } else {
-    comicPage(idx);
+  const el = document.getElementById("comicPageItem-" + idx);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
-  // highlight jump pill
   const pills = document.querySelectorAll("#comicJumpPills .comic-pill");
   pills.forEach((p, i) => {
     if (i === idx) p.classList.add("active");
@@ -1753,68 +1713,11 @@ function jumpToComicPage(idx) {
 }
 window.jumpToComicPage = jumpToComicPage;
 
-function comicPage(idx) {
-  curComicIdx = Math.max(0, Math.min(COMIC_DATA.length - 1, idx));
-  const c = COMIC_DATA[curComicIdx];
-  
-  const label = "Halaman " + (curComicIdx + 1) + " dari " + COMIC_DATA.length + ": " + c.title;
-  const elLabel = document.getElementById("comicPageLabel");
-  if (elLabel) elLabel.textContent = label;
-  const elLabelB = document.getElementById("comicPageLabelBottom");
-  if (elLabelB) elLabelB.textContent = label;
-  
-  const elImg = document.getElementById("comicImg");
-  if (elImg) {
-    elImg.src = c.img;
-    elImg.alt = c.title;
-  }
-  
-  const prev1 = document.getElementById("comicPrev");
-  const next1 = document.getElementById("comicNext");
-  const prev2 = document.getElementById("comicPrevBottom");
-  const next2 = document.getElementById("comicNextBottom");
-  if (prev1) prev1.disabled = (curComicIdx === 0);
-  if (next1) next1.disabled = (curComicIdx === COMIC_DATA.length - 1);
-  if (prev2) prev2.disabled = (curComicIdx === 0);
-  if (next2) next2.disabled = (curComicIdx === COMIC_DATA.length - 1);
-  
-  // Update jump pills
-  const pills = document.querySelectorAll("#comicJumpPills .comic-pill");
-  pills.forEach((p, i) => {
-    if (i === curComicIdx) p.classList.add("active");
-    else p.classList.remove("active");
-  });
-}
-window.comicPage = comicPage;
-
-function setComicMode(mode) {
-  curComicMode = mode;
-  const single = document.getElementById("comicSingleSection");
-  const scroll = document.getElementById("comicScrollSection");
-  const btnSingle = document.getElementById("comicModeSingle");
-  const btnScroll = document.getElementById("comicModeScroll");
-  
-  if (mode === 'single') {
-    if (single) single.style.display = "block";
-    if (scroll) scroll.style.display = "none";
-    if (btnSingle) btnSingle.classList.add("active");
-    if (btnScroll) btnScroll.classList.remove("active");
-    comicPage(curComicIdx);
-  } else {
-    if (single) single.style.display = "none";
-    if (scroll) scroll.style.display = "block";
-    if (btnSingle) btnSingle.classList.remove("active");
-    if (btnScroll) btnScroll.classList.add("active");
-  }
-}
-window.setComicMode = setComicMode;
-
 function openComicZoom(src) {
   const modal = document.getElementById("comicModal");
   const modalImg = document.getElementById("comicModalImg");
   if (!modal || !modalImg) return;
-  const currentSrc = src || (COMIC_DATA[curComicIdx] ? COMIC_DATA[curComicIdx].img : "komik_1_cover.jpg");
-  modalImg.src = currentSrc;
+  modalImg.src = src || "komik_1_cover.jpg";
   modal.classList.add("active");
 }
 window.openComicZoom = openComicZoom;
@@ -1835,9 +1738,6 @@ if (customComicInp) {
     }
   };
 }
-
-// Inisialisasi: langsung bergulir aktif
-setComicMode('scroll');
 
 
 
