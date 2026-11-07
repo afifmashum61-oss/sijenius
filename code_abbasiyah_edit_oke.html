@@ -3540,55 +3540,30 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 </section>
 
 <section class="screen" id="pl">
-  <div class="s4-container">
-    <!-- Header matching Screen 4 in Mockup -->
-    <div class="s4-wood-banner">
-      <button class="plaque-corner-btn" onclick="go('menu')" title="Kembali ke Beranda" style="background:#F59E0B; border-color:#FEF08A;">🏠</button>
-      <div style="flex:1; text-align:center; padding:0 10px;">
-        <h2 style="font-family:'Lilita One',cursive; font-size:clamp(19px,3vw,25px); color:#FEF08A; margin:0; text-shadow:0 2px 4px rgba(0,0,0,0.4);">
-          🎮 Game Edukatif 🎮
-        </h2>
-        <p style="font-size:12.5px; font-weight:700; color:#FEF3C7; margin:2px 0 0;">
-          Belajar sambil bermain, lebih seru!
-        </p>
-      </div>
-      <div style="background:#FFFFFF; color:#78350F; border:1.5px solid #FDE047; padding:6px 14px; border-radius:999px; font-family:'Lilita One',cursive; font-size:13.5px; display:inline-flex; align-items:center; gap:6px;">
-        <span>🏆 Skor:</span>
-        <span id="gamePlScore">0</span>
-      </div>
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+    <button class="back" data-go="menu">⬅ Kembali ke Menu</button>
+    <div style="display:flex; gap:8px;">
+      <button id="gameReloadBtn" class="hero-btn-cta" style="padding:6px 14px; font-size:12.5px;" onclick="reloadGame()">🔄 Mulai Ulang</button>
+      <button id="gameFsBtn" class="hero-btn-cta" style="padding:6px 14px; font-size:12.5px;" onclick="toggleGameFullscreen()">⛶ Layar Penuh</button>
+    </div>
+  </div>
+
+  <div class="game-view-container" style="background:#FFFFFF; border:2.5px solid #E6D5A7; border-radius:22px; padding:20px; box-shadow:0 8px 25px rgba(0,0,0,0.08);">
+    <div style="text-align:center; margin-bottom:16px;">
+      <h2 style="font-family:'Lilita One',cursive; font-size:clamp(20px,3.5vw,26px); color:#064E3B; margin:0;" id="gameTitleLabel">
+        ⚔️ GAME PETUALANGAN: DAULAH ABBASIYAH
+      </h2>
+      <p style="font-size:13px; font-weight:700; color:#6B7280; margin:4px 0 0;">
+        Jelajahi sejarah kejayaan Daulah Abbasiyah melalui permainan interaktif yang seru!
+      </p>
     </div>
 
-    <!-- 4 Game Cards matching Screen 4 in Mockup -->
-    <div class="s4-games-grid">
-      <div class="s4-game-card" onclick="startSubGame('puzzle')" title="Puzzle Kata Arab">
-        <img src="s4_game1.png" alt="Puzzle Kata Arab">
-      </div>
-      <div class="s4-game-card" onclick="startSubGame('drag')" title="Drag &amp; Drop Tata Bahasa">
-        <img src="s4_game2.png" alt="Drag &amp; Drop">
-      </div>
-      <div class="s4-game-card" onclick="startSubGame('tebak')" title="Tebak Kata Bahasa Arab">
-        <img src="s4_game3.png" alt="Tebak Kata">
-      </div>
-      <div class="s4-game-card" onclick="startSubGame('rpg')" title="Petualangan Daulah Abbasiyah">
-        <img src="s4_game4.png" alt="Petualangan Daulah Abbasiyah">
-      </div>
+    <div id="gameContainer" style="position:relative; width:100%; aspect-ratio:16/9; max-height:76vh; border-radius:16px; overflow:hidden; border:3px solid #C9A24B; box-shadow:0 10px 30px rgba(0,0,0,0.25); background:#000;">
+      <iframe id="gameFrame" src="Si_Jenius_Petualangan_Dimulai.html" style="width:100%; height:100%; border:none; display:block;" allow="autoplay; fullscreen; clipboard-write; encrypted-media" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
     </div>
 
-    <!-- Embedded RPG Game Window with Fullscreen & Reload -->
-    <div style="background:#FFFFFF; border:2px solid #E6D5A7; border-radius:20px; padding:16px; box-shadow:0 6px 20px rgba(0,0,0,0.06);" id="gamePlayerContainer">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
-        <span style="font-family:'Lilita One',cursive; font-size:17px; color:#064E3B;" id="gameTitleLabel">
-          ⚔️ Game: Petualangan Daulah Abbasiyah
-        </span>
-        <div style="display:flex; gap:8px;">
-          <button id="gameReloadBtn" class="hero-btn-cta" style="padding:6px 14px; font-size:12.5px;" onclick="reloadGame()">🔄 Mulai Ulang</button>
-          <button id="gameFsBtn" class="hero-btn-cta" style="padding:6px 14px; font-size:12.5px;" onclick="toggleGameFullscreen()">⛶ Layar Penuh</button>
-        </div>
-      </div>
-
-      <div id="gameContainer" style="position:relative; width:100%; aspect-ratio:16/9; max-height:76vh; border-radius:14px; overflow:hidden; border:2.5px solid #F5E6B3; box-shadow:0 8px 25px rgba(0,0,0,0.25); background:#000;">
-        <iframe id="gameFrame" src="Si_Jenius_Petualangan_Dimulai.html" style="width:100%; height:100%; border:none; display:block;" allow="autoplay; fullscreen; clipboard-write; encrypted-media" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
-      </div>
+    <div style="text-align:center; margin-top:14px; font-size:13px; color:#5C4718; font-weight:600;">
+      💡 Klik tombol <b>Layar Penuh</b> untuk pengalaman bermain maksimal. Gunakan kontrol di layar atau tombol keyboard untuk menggerakkan karakter.
     </div>
   </div>
 </section>
@@ -4160,5 +4135,30 @@ function startSubGame(type) {
   if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 window.startSubGame = startSubGame;
+
+function reloadGame() {
+  const f = document.getElementById('gameFrame');
+  if (f) {
+    const src = f.src;
+    f.src = '';
+    setTimeout(() => { f.src = src; }, 50);
+  }
+}
+window.reloadGame = reloadGame;
+
+function toggleGameFullscreen() {
+  const el = document.getElementById('gameContainer') || document.getElementById('gameFrame');
+  if (!el) return;
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  }
+}
+window.toggleGameFullscreen = toggleGameFullscreen;
+
 </script>
 </body></html>
