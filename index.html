@@ -1961,17 +1961,26 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 
 /* Screen 1: Modern Hero Card */
 .mockup-hero-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  background: linear-gradient(135deg, #F0FDF4 0%, #FEFCE8 50%, #ECFDF5 100%);
-  border: 2.5px solid #E6D5A7;
-  border-radius: 26px;
-  padding: 24px 22px;
-  margin-bottom: 24px;
-  box-shadow: 0 10px 28px rgba(107, 74, 18, 0.08);
   position: relative;
+  background: #EDF7F2 url('hero_bg_exact.jpg') right center / cover no-repeat;
+  border: 3px solid #F5E6B3;
+  border-radius: 28px;
+  min-height: 480px;
+  padding: 30px 32px 24px;
+  margin-bottom: 26px;
+  box-shadow: 0 14px 40px rgba(6, 78, 59, 0.15), 0 0 0 1px #D4AF37;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
   overflow: hidden;
+}
+@media(max-width: 860px) {
+  .mockup-hero-card {
+    min-height: 420px;
+    padding: 22px 20px 20px;
+    background-position: 72% center;
+  }
 }
 @media(min-width: 860px) {
   .mockup-hero-card {
