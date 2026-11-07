@@ -1,9 +1,10 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Intelektual dan Peradaban: Game Sejarah Abbasiyah</title>
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" id="viewportMeta" content="width=1140, user-scalable=yes"><title>Intelektual dan Peradaban: Game Sejarah Abbasiyah</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--g1:#0B3D2E;--g2:#06261C;--g3:#145a43;--cr:#FFFBEC;--cr2:#F6EBCB;--au:#C9A24B;--au2:#EBD28F;--auL:#D9BE70;--br:#6B4A12;--ink:#2a2410;--ok:#2E9E5B;--no:#8E2A2A;color-scheme:light}
-*{box-sizing:border-box}html{background:#180f08}html,body{margin:0;max-width:100%;overflow-x:hidden}
+*{box-sizing:border-box}html{background:#180f08}html, body { min-width: 1140px; }
+body{margin:0;max-width:100%;overflow-x:hidden}
 body{font:700 16px/1.5 Nunito,"Trebuchet MS",system-ui,sans-serif;color:var(--ink);min-height:100vh;
  background:#EDF7F2 url('bg_islamic_sunny.jpg') no-repeat center top fixed; background-size:cover;
  image-rendering:-webkit-optimize-contrast;
@@ -59,10 +60,7 @@ input[type=text],textarea{width:100%;font:800 16px/1.4 Nunito,system-ui,sans-ser
 input::placeholder,textarea::placeholder{color:#8b8570}
 textarea{resize:vertical}
 .grid{display:grid;gap:12px}
-.gm{grid-template-columns:repeat(2,1fr);margin-top:22px}.gb{grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
-@media(min-width:760px){.gb{grid-template-columns:repeat(6,1fr);gap:10px}}
-@media(min-width:640px){.gm{grid-template-columns:repeat(4,1fr)}}
-@media(min-width:760px){.gb{grid-template-columns:repeat(6,1fr)}}
+.gm{grid-template-columns:repeat(4,1fr);margin-top:22px}.gb{grid-template-columns:repeat(6,1fr);gap:10px;margin-top:14px}
 .mc,.bc{position:relative;display:block;padding:0;border:0;background:none;cursor:pointer;font:inherit;border-radius:20px;-webkit-tap-highlight-color:transparent}
 .mc img,.bc img{display:block;width:100%;height:auto;filter:drop-shadow(0 6px 6px #5a3d0a40);transition:transform .15s}
 .mc:not(.lock):hover img,.bc:hover img{transform:translateY(-3px)}
@@ -1388,7 +1386,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
   background: rgba(255, 255, 255, 0.95);
   border: 2px solid #E2D1A0;
@@ -1433,8 +1431,9 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 .nav-center {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
+  white-space: nowrap;
 }
 .nav-pill {
   background: #FFFBEB;
@@ -1831,15 +1830,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   transition: width 0.4s ease;
 }
 
-/* Make grid responsive on mobile */
-@media (max-width: 600px) {
-  .nav-center {
-    display: none; /* Hide top pill row on very small phones to prevent crowding */
-  }
-  .app-navbar {
-    padding: 8px 12px;
-  }
-}
+/* Unified single desktop layout */
 
 /* =========================================================
    EXACT MOCKUP UI - ISLAMIC GAMIFIED DESIGN (DESKTOP & MOBILE)
@@ -1848,14 +1839,15 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 /* Golden Arch Container Wrap */
 .wrap {
   position: relative;
+  width: 1140px;
+  min-width: 1140px;
   max-width: 1140px;
   margin: 16px auto;
-  width: calc(100% - 24px);
-  padding: 16px 18px 28px;
+  padding: 16px 20px 28px;
   background: rgba(255, 255, 255, 0.96);
-  border: 4px solid #F5E6B3;
+  border: 3.5px solid #F5E6B3;
   border-radius: 28px;
-  box-shadow: 0 16px 45px rgba(6, 78, 59, 0.18), 0 0 0 1.5px #D4AF37;
+  box-shadow: 0 16px 45px rgba(6, 78, 59, 0.16), 0 0 0 1.5px #D4AF37;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-sizing: border-box;
@@ -1975,13 +1967,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   box-sizing: border-box;
   overflow: hidden;
 }
-@media(max-width: 860px) {
-  .mockup-hero-card {
-    min-height: 420px;
-    padding: 22px 20px 20px;
-    background-position: 72% center;
-  }
-}
+/* Desktop hero layout preserved on mobile */
 @media(min-width: 860px) {
   .mockup-hero-card {
     grid-template-columns: 1.2fr 0.95fr;
@@ -2036,16 +2022,11 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 /* 4 Quick Pills on Hero matching Mockup Screen 1 */
 .hero-quick-pills {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 14px;
   padding-top: 14px;
   border-top: 1.5px dashed #E5D6A8;
-}
-@media(min-width: 600px) {
-  .hero-quick-pills {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 .hero-qp-item {
   background: #FFFFFF;
@@ -2979,7 +2960,26 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   font-size: 11px;
   font-weight: 800;
 }
-</style></head><body>
+</style><script>
+(function(){
+  function setAutoFitScale(){
+    var targetW = 1140;
+    var vp = document.getElementById("viewportMeta") || document.querySelector('meta[name="viewport"]');
+    if (!vp) return;
+    var screenW = window.innerWidth || (window.screen ? window.screen.width : 0) || (document.documentElement ? document.documentElement.clientWidth : 0);
+    if (screenW > 0 && screenW < targetW) {
+      var s = (screenW / targetW).toFixed(4);
+      vp.setAttribute("content", "width=" + targetW + ", initial-scale=" + s + ", minimum-scale=" + s + ", maximum-scale=3.0, user-scalable=yes");
+    } else {
+      vp.setAttribute("content", "width=device-width, initial-scale=1.0, user-scalable=yes");
+    }
+  }
+  setAutoFitScale();
+  window.addEventListener("resize", setAutoFitScale);
+  window.addEventListener("orientationchange", function(){ setTimeout(setAutoFitScale, 100); });
+})();
+</script>
+</head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
 <div class="wrap">
 
