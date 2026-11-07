@@ -1848,17 +1848,30 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 /* Golden Arch Container Wrap */
 .wrap {
   position: relative;
-  max-width: 1140px;
+  max-width: 1180px;
   margin: 16px auto;
   width: calc(100% - 24px);
-  padding: 16px 18px 28px;
+  padding: 18px 22px 28px;
   background: rgba(255, 255, 255, 0.96);
-  border: 4px solid #F5E6B3;
+  border: 3.5px solid #F5E6B3;
   border-radius: 28px;
-  box-shadow: 0 16px 45px rgba(6, 78, 59, 0.18), 0 0 0 1.5px #D4AF37;
+  box-shadow: 0 16px 45px rgba(6, 78, 59, 0.16), 0 0 0 1.5px #D4AF37;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 10px 24px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    box-shadow: none;
+  }
 }
 
 /* Screen 1: Top Floating Navbar */
@@ -1866,20 +1879,22 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   background: #FFFFFF;
   border: 2px solid #E6D5A7;
   border-radius: 22px;
   padding: 8px 18px;
   margin-bottom: 18px;
   box-shadow: 0 4px 16px rgba(107, 74, 18, 0.07);
+  box-sizing: border-box;
 }
+
 .nav-brand {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 .nav-logo {
   width: 44px;
@@ -1907,67 +1922,76 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 .nav-center {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  padding: 4px 6px;
+  border-radius: 999px;
+  gap: 4px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
 }
 .nav-link-btn {
   background: transparent;
   border: none;
-  color: #374151;
-  padding: 7px 14px;
+  color: #475569;
+  padding: 7px 15px;
   border-radius: 999px;
   font-family: 'Lilita One', cursive;
   font-size: 13.5px;
   cursor: pointer;
   transition: all 0.16s ease;
+  white-space: nowrap;
 }
 .nav-link-btn:hover {
-  background: #FEF3C7;
-  color: #92400E;
+  background: #ECFDF5;
+  color: #047857;
 }
 .nav-link-btn.active {
-  background: #10B981;
+  background: linear-gradient(135deg, #10B981, #059669);
   color: #FFFFFF;
   box-shadow: 0 3px 8px rgba(16, 185, 129, 0.35);
 }
 
-.nav-user-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #F0FDF4;
-  border: 1.5px solid #86EFAC;
-  padding: 5px 12px 5px 6px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.16s ease;
-}
-.nav-user-pill:hover {
-  background: #DCFCE7;
-  transform: translateY(-1px);
-}
-.nav-avatar-img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid #10B981;
-}
-.nav-user-name {
-  font-family: 'Lilita One', cursive;
-  font-size: 13.5px;
-  color: #065F46;
+/* Navbar on Mobile (HP): Single-row flex capsule */
+@media (max-width: 720px) {
+  .app-navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .nav-center {
+    width: 100%;
+    justify-content: space-between;
+    padding: 3px;
+    gap: 2px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-center::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-link-btn {
+    flex: 1;
+    text-align: center;
+    padding: 7px 6px;
+    font-size: 12.5px;
+    min-width: 0;
+  }
 }
 
 /* Screen 1: Modern Hero Card */
 .mockup-hero-card {
   position: relative;
-  background: #EDF7F2 url('hero_bg_exact.jpg') right center / cover no-repeat;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 45%, rgba(255, 255, 255, 0.15) 75%), url('hero_bg_exact.jpg') right center / cover no-repeat;
   border: 3px solid #F5E6B3;
   border-radius: 28px;
   min-height: 480px;
   padding: 30px 32px 24px;
-  margin-bottom: 26px;
+  margin-bottom: 24px;
   box-shadow: 0 14px 40px rgba(6, 78, 59, 0.15), 0 0 0 1px #D4AF37;
   display: flex;
   flex-direction: column;
@@ -1975,51 +1999,76 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   box-sizing: border-box;
   overflow: hidden;
 }
-@media(max-width: 860px) {
+
+@media(max-width: 768px) {
   .mockup-hero-card {
-    min-height: 420px;
-    padding: 22px 20px 20px;
-    background-position: 72% center;
+    min-height: auto;
+    padding: 14px 12px 14px;
+    border-radius: 22px;
+    margin-bottom: 16px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(255, 255, 255, 0.3) 100%), url('hero_bg_exact.jpg') center bottom / cover no-repeat;
+    gap: 12px;
   }
 }
+
 @media(min-width: 860px) {
   .mockup-hero-card {
     grid-template-columns: 1.2fr 0.95fr;
-    padding: 30px 26px;
+    padding: 30px 28px;
     align-items: center;
   }
 }
+
 .hero-content {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 22px 24px;
+  box-shadow: 0 8px 25px rgba(6, 78, 59, 0.08);
+  box-sizing: border-box;
 }
+
+@media(max-width: 600px) {
+  .hero-content {
+    padding: 16px 14px;
+    border-radius: 18px;
+    gap: 9px;
+  }
+}
+
 .hero-big-title {
   font-family: 'Lilita One', cursive;
-  font-size: clamp(28px, 4.2vw, 42px);
+  font-size: clamp(23px, 4.2vw, 40px);
   color: #064E3B;
-  line-height: 1.15;
+  line-height: 1.16;
   margin: 0;
-  text-shadow: 0 2px 6px rgba(6, 78, 59, 0.12);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
 }
 .hero-big-title .highlight-green {
   color: #059669;
 }
 .hero-desc {
-  font-size: clamp(14px, 1.8vw, 16px);
-  color: #4B5563;
+  font-size: clamp(13px, 1.8vw, 15.5px);
+  color: #1F2937;
   line-height: 1.55;
   margin: 0;
   font-weight: 700;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
 }
 .hero-btn-cta {
-  background: linear-gradient(180deg, #FBBF24, #D97706);
+  background: linear-gradient(180deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%);
   color: #451A03;
   border: 2px solid #B45309;
-  padding: 11px 28px;
+  padding: 11px 26px;
   border-radius: 999px;
   font-family: 'Lilita One', cursive;
-  font-size: 16.5px;
+  font-size: 16px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -2027,10 +2076,11 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   width: fit-content;
   box-shadow: 0 5px 14px rgba(180, 83, 9, 0.35);
   transition: all 0.18s ease;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 .hero-btn-cta:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.08);
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.05);
 }
 
 /* 4 Quick Pills on Hero matching Mockup Screen 1 */
@@ -2038,21 +2088,27 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  margin-top: 10px;
-  padding-top: 14px;
-  border-top: 1.5px dashed #E5D6A8;
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 14px rgba(6, 78, 59, 0.08);
 }
-@media(min-width: 600px) {
+@media(min-width: 680px) {
   .hero-quick-pills {
     grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
   }
 }
 .hero-qp-item {
   background: #FFFFFF;
   border: 1.5px solid #E6D5A7;
   color: #065F46;
-  padding: 8px 10px;
-  border-radius: 12px;
+  padding: 9px 12px;
+  border-radius: 999px;
   font-size: 12.5px;
   font-weight: 800;
   cursor: pointer;
@@ -2064,8 +2120,9 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   transition: all 0.16s ease;
 }
 .hero-qp-item:hover {
-  background: #FEF3C7;
-  border-color: #F59E0B;
+  background: #ECFDF5;
+  border-color: #10B981;
+  color: #047857;
   transform: translateY(-2px);
 }
 
@@ -2979,6 +3036,52 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   font-size: 11px;
   font-weight: 800;
 }
+
+/* =========================================================
+   COMPREHENSIVE MOBILE & LAPTOP RESPONSIVE STYLES
+   ========================================================= */
+@media (max-width: 680px) {
+  .slide-container,
+  .game-view-container {
+    padding: 14px 10px !important;
+    border-radius: 18px !important;
+  }
+  .pilih-menu-card-wrap {
+    padding: 14px 10px 18px !important;
+    border-radius: 20px !important;
+    margin-bottom: 16px !important;
+  }
+  .menu-plaque-pill {
+    padding: 6px 16px !important;
+    font-size: 15px !important;
+  }
+  .menu-round-btn {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 17px !important;
+  }
+  #chatbotContainer {
+    height: 65vh !important;
+    min-height: 440px !important;
+    border-radius: 16px !important;
+  }
+  .s5-robot-sidebar {
+    padding: 12px 10px !important;
+    border-radius: 16px !important;
+  }
+  .mockup-profile-card {
+    padding: 14px 10px !important;
+    border-radius: 18px !important;
+  }
+  .mockup-profile-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .rpp-container {
+    padding: 14px 10px !important;
+  }
+}
+
 </style></head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
 <div class="wrap">
