@@ -1619,7 +1619,7 @@ $("#gb").innerHTML=BN.map((t,i)=>`<button class="bc" data-b="${i}" aria-label="$
 $("#nama").oninput=e=>{S.name=e.target.value;save()};
 document.addEventListener("click",e=>{const m=e.target.closest("[data-m]"),b=e.target.closest("[data-b]");
  if(m){const i=+m.dataset.m;if(i>0&&!S.done[i-1]){snd(180,.2);return}[m1,m2,m3,m4][i]();go("m"+(i+1))}
- if(b){const i=+b.dataset.b;if(i==0){go("vp")}else if(i==1){slide(0);go("sl")}else if(i==2){comicPage(0);go("km")}else if(i==3){go("pl")}else if(i==4)go("lk");else if(i==5)go("rp");else{$("#bt").textContent=BI[i][1];$("#bd").textContent=BI[i][2];go("b0")}}});
+ if(b){const i=+b.dataset.b;if(i==0){go("vp")}else if(i==1){slide(0);go("sl")}else if(i==2){go("km");if(window.jumpToComicPage)jumpToComicPage(0);}else if(i==3){go("pl")}else if(i==4)go("lk");else if(i==5)go("rp");else{$("#bt").textContent=BI[i][1];$("#bd").textContent=BI[i][2];go("b0")}}});
 function finish(i,stars){S.done[i]=1;if(stars)S.stars["m"+i]=Math.max(stars,S.stars["m"+i]||0);save();snd(880,.3);if(S.done.every(Boolean))go("medal");else go("menu")}
 // misi 1
 function m1(){$("#jml").innerHTML=[6,7,8].map(n=>`<button class="btn sec" data-n="${n}">${n} anggota</button>`).join("");$("#m1b").innerHTML=""}
@@ -1701,6 +1701,7 @@ const COMIC_DATA = [
 ];
 
 function jumpToComicPage(idx) {
+  idx = Math.max(0, Math.min(COMIC_DATA.length - 1, idx || 0));
   const el = document.getElementById("comicPageItem-" + idx);
   if (el) {
     el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1712,6 +1713,11 @@ function jumpToComicPage(idx) {
   });
 }
 window.jumpToComicPage = jumpToComicPage;
+
+function comicPage(idx) {
+  jumpToComicPage(idx);
+}
+window.comicPage = comicPage;
 
 function openComicZoom(src) {
   const modal = document.getElementById("comicModal");
