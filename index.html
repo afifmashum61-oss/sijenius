@@ -2351,6 +2351,49 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   object-fit: cover;
   border: 1.5px solid #10B981;
 }
+
+/* Exact Beranda Styles */
+.hero-main-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: center;
+}
+@media(min-width: 860px) {
+  .hero-main-row {
+    grid-template-columns: 1.25fr 1fr;
+    gap: 28px;
+  }
+}
+.hero-characters-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-kids-standalone {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 2.5px solid #F3E5AB;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+.hero-play-icon {
+  background: #1F2937;
+  color: #FBBF24;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  margin-left: 2px;
+}
+.qp-icon-img {
+  font-size: 16px;
+}
 </style></head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
 <div class="wrap">
@@ -2387,53 +2430,47 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 
   <!-- Screen 1: Modern Hero Card -->
   <div class="mockup-hero-card">
-    <div class="hero-content">
-      <h1 class="hero-big-title">
-        Selamat Datang<br>di <span class="highlight-green">SI JENIUS</span>
-      </h1>
-      <p class="hero-desc">
-        Belajar Sejarah Kebudayaan Islam Daulah Abbasiyah jadi lebih mudah, seru dan menyenangkan!
-      </p>
+    <div class="hero-main-row">
+      <div class="hero-content">
+        <h1 class="hero-big-title">
+          Selamat Datang<br>di <span class="highlight-green">SI JENIUS</span>
+        </h1>
+        <p class="hero-desc">
+          Belajar Sejarah Kebudayaan Islam Daulah Abbasiyah jadi lebih mudah, seru dan menyenangkan!
+        </p>
 
-      <div class="hero-action-row">
-        <button class="hero-btn-cta" onclick="startLearningMisi()">
-          <span>Mulai Belajar</span>
-          <span>▶</span>
-        </button>
+        <div class="hero-action-row" style="margin-top: 6px;">
+          <button class="hero-btn-cta" onclick="startLearningMisi()">
+            <span>Mulai Belajar</span>
+            <span class="hero-play-icon">▶</span>
+          </button>
+        </div>
       </div>
 
-      <!-- 4 Quick Access Pills matching Screen 1 -->
-      <div class="hero-quick-pills">
-        <button class="hero-qp-item" onclick="go('sl')">
-          <span style="font-size:16px;">📖</span>
-          <span>Materi Interaktif</span>
-        </button>
-        <button class="hero-qp-item" onclick="go('pl')">
-          <span style="font-size:16px;">🎮</span>
-          <span>Game Edukatif</span>
-        </button>
-        <button class="hero-qp-item" onclick="go('lk')">
-          <span style="font-size:16px;">🤖</span>
-          <span>Chatbot AI</span>
-        </button>
-        <button class="hero-qp-item" onclick="go('rp')">
-          <span style="font-size:16px;">📋</span>
-          <span>RPP KBC</span>
-        </button>
+      <!-- Right Side: Exact Muslim Students Illustration (NO moving parrot video) -->
+      <div class="hero-characters-side">
+        <img src="hero_islamic_kids.jpg" alt="Siswa Si Jenius" class="hero-kids-standalone" draggable="false">
       </div>
     </div>
 
-    <!-- Right Side: Kids Illustration & Si Jenius Parrot -->
-    <div class="hero-characters-wrapper">
-      <img src="hero_islamic_kids.jpg" alt="Siswa Si Jenius" class="hero-kids-img" draggable="false">
-      <div class="hero-mascot-box mascot" id="mascotBird" title="Si Jenius - Klik untuk menyapa!">
-        <canvas id="mascotCanvas" class="mascot-canvas"></canvas>
-        <video id="mascotVideo" src="Cartoon_parrot_holding_book.mp4" autoplay loop muted playsinline preload="auto" style="display:none"></video>
-      </div>
-      <div class="bubble" style="margin-top:8px; width:100%;">
-        <img src="sijenius_cert.png" alt="Si Jenius" style="width:38px;height:38px;object-fit:contain;flex-shrink:0;" draggable="false">
-        <span>Halo, aku SiJenius! Selesaikan misi satu per satu untuk meraih medali Peradaban.</span>
-      </div>
+    <!-- 4 Bottom Pills matching mockup floating over white clouds -->
+    <div class="hero-quick-pills">
+      <button class="hero-qp-item" onclick="go('sl')">
+        <span class="qp-icon-img">📘</span>
+        <span>Materi Interaktif</span>
+      </button>
+      <button class="hero-qp-item" onclick="go('pl')">
+        <span class="qp-icon-img">🎮</span>
+        <span>Game Edukatif</span>
+      </button>
+      <button class="hero-qp-item" onclick="go('lk')">
+        <span class="qp-icon-img">🤖</span>
+        <span>Chatbot AI</span>
+      </button>
+      <button class="hero-qp-item" onclick="go('rp')">
+        <span class="qp-icon-img">📋</span>
+        <span>RPP KBC</span>
+      </button>
     </div>
   </div>
 
