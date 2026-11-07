@@ -1494,16 +1494,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
         </div>
       </div>
 
-      <!-- Kustom Upload Komik Sendiri -->
-      <div style="background:#FFF8E7; border:1px dashed #C9A24B; border-radius:12px; padding:12px 16px; margin-top:20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-        <span style="font-size:13px; color:#5C4718;">
-          🖼️ <b>Ingin membaca komik karya sendiri?</b> Anda dapat memuat gambar panel komik dari perangkat:
-        </span>
-        <label style="background:linear-gradient(180deg,#FDE68A,#D97706); color:#451A03; padding:6px 14px; border-radius:8px; font-size:12.5px; font-weight:800; cursor:pointer; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15);">
-          📂 Buka Gambar Komik
-          <input type="file" id="customComicInput" accept="image/*" style="display:none;">
-        </label>
-      </div>
+      
     </div>
   </div>
 
@@ -1734,16 +1725,7 @@ function closeComicZoom() {
 }
 window.closeComicZoom = closeComicZoom;
 
-const customComicInp = document.getElementById("customComicInput");
-if (customComicInp) {
-  customComicInp.onchange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      openComicZoom(url);
-    }
-  };
-}
+
 
 
 
