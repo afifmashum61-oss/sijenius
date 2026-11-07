@@ -1840,12 +1840,523 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     padding: 8px 12px;
   }
 }
+
+/* =========================================================
+   EXACT MOCKUP UI - ISLAMIC GAMIFIED DESIGN (DESKTOP & MOBILE)
+   ========================================================= */
+
+/* Golden Arch Container Wrap */
+.wrap {
+  position: relative;
+  max-width: 1140px;
+  margin: 16px auto;
+  width: calc(100% - 24px);
+  padding: 16px 18px 28px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 4px solid #F5E6B3;
+  border-radius: 28px;
+  box-shadow: 0 16px 45px rgba(6, 78, 59, 0.18), 0 0 0 1.5px #D4AF37;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-sizing: border-box;
+}
+
+/* Screen 1: Top Floating Navbar */
+.app-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 2px solid #E6D5A7;
+  border-radius: 22px;
+  padding: 8px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(107, 74, 18, 0.07);
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.nav-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+.nav-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+.brand-title {
+  font-family: 'Lilita One', cursive;
+  font-size: 20px;
+  color: #064E3B;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+.brand-sub {
+  font-size: 11px;
+  font-weight: 800;
+  color: #B45309;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.nav-link-btn {
+  background: transparent;
+  border: none;
+  color: #374151;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-family: 'Lilita One', cursive;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.nav-link-btn:hover {
+  background: #FEF3C7;
+  color: #92400E;
+}
+.nav-link-btn.active {
+  background: #10B981;
+  color: #FFFFFF;
+  box-shadow: 0 3px 8px rgba(16, 185, 129, 0.35);
+}
+
+.nav-user-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #F0FDF4;
+  border: 1.5px solid #86EFAC;
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.nav-user-pill:hover {
+  background: #DCFCE7;
+  transform: translateY(-1px);
+}
+.nav-avatar-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #10B981;
+}
+.nav-user-name {
+  font-family: 'Lilita One', cursive;
+  font-size: 13.5px;
+  color: #065F46;
+}
+
+/* Screen 1: Modern Hero Card */
+.mockup-hero-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  background: linear-gradient(135deg, #F0FDF4 0%, #FEFCE8 50%, #ECFDF5 100%);
+  border: 2.5px solid #E6D5A7;
+  border-radius: 26px;
+  padding: 24px 22px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 28px rgba(107, 74, 18, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+@media(min-width: 860px) {
+  .mockup-hero-card {
+    grid-template-columns: 1.2fr 0.95fr;
+    padding: 30px 26px;
+    align-items: center;
+  }
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.hero-big-title {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(28px, 4.2vw, 42px);
+  color: #064E3B;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(6, 78, 59, 0.12);
+}
+.hero-big-title .highlight-green {
+  color: #059669;
+}
+.hero-desc {
+  font-size: clamp(14px, 1.8vw, 16px);
+  color: #4B5563;
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 700;
+}
+.hero-btn-cta {
+  background: linear-gradient(180deg, #FBBF24, #D97706);
+  color: #451A03;
+  border: 2px solid #B45309;
+  padding: 11px 28px;
+  border-radius: 999px;
+  font-family: 'Lilita One', cursive;
+  font-size: 16.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  box-shadow: 0 5px 14px rgba(180, 83, 9, 0.35);
+  transition: all 0.18s ease;
+}
+.hero-btn-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+/* 4 Quick Pills on Hero matching Mockup Screen 1 */
+.hero-quick-pills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1.5px dashed #E5D6A8;
+}
+@media(min-width: 600px) {
+  .hero-quick-pills {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.hero-qp-item {
+  background: #FFFFFF;
+  border: 1.5px solid #E6D5A7;
+  color: #065F46;
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: all 0.16s ease;
+}
+.hero-qp-item:hover {
+  background: #FEF3C7;
+  border-color: #F59E0B;
+  transform: translateY(-2px);
+}
+
+/* Hero Right Side: Islamic Students & Mascot */
+.hero-characters-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hero-kids-img {
+  width: min(340px, 85vw);
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 2.5px solid #F5E6B3;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.hero-mascot-box {
+  width: min(200px, 60vw);
+  aspect-ratio: 880 / 700;
+  cursor: pointer;
+  margin-top: -30px;
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+.hero-mascot-box:hover {
+  transform: scale(1.05);
+}
+
+/* Screen 2: Plaque Header Banner */
+.plaque-header-banner {
+  background: linear-gradient(135deg, #064E3B 0%, #047857 50%, #065F46 100%);
+  border: 2.5px solid #FDE047;
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin: 20px 0 16px;
+  text-align: center;
+  color: #FFFBEB;
+  box-shadow: 0 6px 20px rgba(6, 78, 59, 0.22);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.plaque-corner-btn {
+  background: #10B981;
+  color: #FFFFFF;
+  border: 1.5px solid #FDE047;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 17px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  transition: all 0.16s ease;
+}
+.plaque-corner-btn:hover {
+  transform: scale(1.08);
+  background: #059669;
+}
+.plaque-title-wrap {
+  flex: 1;
+  padding: 0 10px;
+}
+.plaque-title {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(20px, 3.2vw, 26px);
+  color: #FEF08A;
+  margin: 0;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+.plaque-sub {
+  font-size: 13px;
+  font-weight: 700;
+  color: #E2E8F0;
+  margin: 2px 0 0;
+}
+
+/* Screen 2: 8 Cards Grid (2 rows x 4 cols on desktop, 2 cols on mobile) */
+.mockup-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+@media(min-width: 768px) {
+  .mockup-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+}
+.mockup-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFFFFF;
+  border: 2px solid #E5E7EB;
+  border-radius: 18px;
+  padding: 10px 8px 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  overflow: hidden;
+}
+.mockup-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(6, 78, 59, 0.15);
+  border-color: #F59E0B;
+}
+.mockup-card:active {
+  transform: translateY(-1px);
+}
+.mc-img-wrap {
+  width: 100%;
+  aspect-ratio: 97 / 74;
+  max-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  background: #F3F4F6;
+}
+.mc-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.mc-text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.mc-title {
+  font-family: 'Lilita One', cursive;
+  font-size: 14.5px;
+  color: #064E3B;
+  line-height: 1.15;
+}
+.mc-sub {
+  font-size: 11px;
+  font-weight: 800;
+  color: #6B7280;
+  line-height: 1.2;
+}
+
+/* Card border accents matching mockup colors */
+.card-c1 { border-color: #A7F3D0; }
+.card-c2 { border-color: #BFDBFE; }
+.card-c3 { border-color: #DDD6FE; }
+.card-c4 { border-color: #FED7AA; }
+.card-c5 { border-color: #A5F3FC; }
+.card-c6 { border-color: #FECACA; }
+.card-c7 { border-color: #BFDBFE; }
+.card-c8 { border-color: #FDE68A; }
+
+/* Status tags on mockup cards */
+.mc-badge-done {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #10B981;
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.mc-badge-star {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.65);
+  color: #FDE047;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* Screen 6: Profil Pengguna & Prestasi */
+.mockup-profile-card {
+  background: #FFFFFF;
+  border: 2.5px solid #E6D5A7;
+  border-radius: 22px;
+  padding: 20px;
+  margin-top: 24px;
+  box-shadow: 0 8px 24px rgba(107, 74, 18, 0.08);
+}
+.mockup-profile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media(min-width: 780px) {
+  .mockup-profile-grid {
+    grid-template-columns: 0.95fr 1.35fr;
+    align-items: center;
+  }
+}
+.profile-user-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #F0FDF4;
+  border: 1.5px solid #BBF7D0;
+  border-radius: 18px;
+  padding: 14px;
+}
+.profile-avatar-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #10B981;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+.profile-inp-nama {
+  width: 100%;
+  font-family: 'Lilita One', cursive;
+  font-size: 17px;
+  color: #064E3B;
+  background: #FFFFFF;
+  border: 1.5px solid #86EFAC;
+  border-radius: 10px;
+  padding: 5px 10px;
+  outline: none;
+  box-sizing: border-box;
+}
+.profile-inp-nama:focus {
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.profile-stat-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.p-stat-box {
+  background: #FFFDF5;
+  border: 1.5px solid #E5D6A8;
+  border-radius: 14px;
+  padding: 10px 6px;
+  text-align: center;
+}
+.p-stat-lbl {
+  font-size: 11px;
+  font-weight: 800;
+  color: #78350F;
+  margin-bottom: 2px;
+}
+.p-stat-val {
+  font-family: 'Lilita One', cursive;
+  font-size: 17px;
+  color: #065F46;
+}
+
+/* Chatbot Screen 5 Modern Sidebar Widget */
+.chatbot-robot-badge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #ECFDF5, #EFF6FF);
+  border: 2px solid #86EFAC;
+  border-radius: 18px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+}
+.chatbot-robot-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1.5px solid #10B981;
+}
 </style></head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
 <div class="wrap">
 
 <section class="screen on" id="menu">
-  <!-- Top Floating Navbar -->
+  <!-- Screen 1: Top Floating Navbar -->
   <header class="app-navbar">
     <div class="nav-left">
       <div class="nav-brand" onclick="go('menu')">
@@ -1858,35 +2369,30 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     </div>
     
     <nav class="nav-center">
-      <button class="nav-pill active" onclick="go('menu')">🏠 Beranda</button>
-      <button class="nav-pill" onclick="go('vp')">🎬 Video</button>
-      <button class="nav-pill" onclick="go('sl')">📊 Materi</button>
-      <button class="nav-pill" onclick="go('km')">📖 Komik</button>
-      <button class="nav-pill" onclick="go('pl')">🎮 Game</button>
-      <button class="nav-pill" onclick="go('lk')">🤖 Chatbot</button>
-      <button class="nav-pill" onclick="scrollToSection('profileSection')">👤 Profil</button>
+      <button class="nav-link-btn active" onclick="go('menu'); window.scrollTo({top:0,behavior:'smooth'})">🏠 Beranda</button>
+      <button class="nav-link-btn" onclick="go('sl')">Materi</button>
+      <button class="nav-link-btn" onclick="go('pl')">Game</button>
+      <button class="nav-link-btn" onclick="go('lk')">Chatbot</button>
+      <button class="nav-link-btn" onclick="scrollToSection('profileSection')">Profil</button>
     </nav>
 
     <div class="nav-right">
       <div class="nav-user-pill" onclick="focusStudentName()" title="Klik untuk mengganti nama">
-        <span class="user-avatar-circle">🎓</span>
-        <span class="user-name-display" id="navUserName">Siswa Hebat</span>
-        <span class="user-edit-icon" style="font-size:12px;">✏️</span>
+        <img src="user_avatar.png" alt="Avatar" class="nav-avatar-img">
+        <span class="nav-user-name" id="navUserName">Ahmad</span>
+        <span style="font-size:11px; color:#047857;">▼</span>
       </div>
     </div>
   </header>
 
-  <!-- Modern Hero Card (Banner Depan) -->
-  <div class="modern-hero-card">
+  <!-- Screen 1: Modern Hero Card -->
+  <div class="mockup-hero-card">
     <div class="hero-content">
-      <div class="hero-badge-tag">
-        <span>✨</span> Pembelajaran Interaktif Daulah Abbasiyah
-      </div>
       <h1 class="hero-big-title">
-        Selamat Datang di <span class="highlight-green">SI JENIUS</span>
+        Selamat Datang<br>di <span class="highlight-green">SI JENIUS</span>
       </h1>
       <p class="hero-desc">
-        Belajar Sejarah Kebudayaan Islam Daulah Abbasiyah jadi lebih mudah, seru, dan menyenangkan!
+        Belajar Sejarah Kebudayaan Islam Daulah Abbasiyah jadi lebih mudah, seru dan menyenangkan!
       </p>
 
       <div class="hero-action-row">
@@ -1894,67 +2400,153 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
           <span>Mulai Belajar</span>
           <span>▶</span>
         </button>
-        <button class="hero-btn-sub" onclick="scrollToSection('pilihMenuSection')">
-          <span>Pilih Menu</span>
-          <span>🧭</span>
-        </button>
       </div>
 
-      <!-- Quick Access Floating Pills -->
+      <!-- 4 Quick Access Pills matching Screen 1 -->
       <div class="hero-quick-pills">
-        <button class="hero-qp-item" onclick="go('vp')">🎬 Video Materi</button>
-        <button class="hero-qp-item" onclick="go('sl')">📊 Slide PPT</button>
-        <button class="hero-qp-item" onclick="go('km')">📖 Komik</button>
-        <button class="hero-qp-item" onclick="go('pl')">🎮 Game Edukatif</button>
-        <button class="hero-qp-item" onclick="go('lk')">🤖 Chatbot AI</button>
-        <button class="hero-qp-item" onclick="go('rp')">📋 RPP KBC</button>
+        <button class="hero-qp-item" onclick="go('sl')">
+          <span style="font-size:16px;">📖</span>
+          <span>Materi Interaktif</span>
+        </button>
+        <button class="hero-qp-item" onclick="go('pl')">
+          <span style="font-size:16px;">🎮</span>
+          <span>Game Edukatif</span>
+        </button>
+        <button class="hero-qp-item" onclick="go('lk')">
+          <span style="font-size:16px;">🤖</span>
+          <span>Chatbot AI</span>
+        </button>
+        <button class="hero-qp-item" onclick="go('rp')">
+          <span style="font-size:16px;">📋</span>
+          <span>RPP KBC</span>
+        </button>
       </div>
     </div>
 
-    <!-- Mascot Side -->
-    <div class="hero-mascot-side">
+    <!-- Right Side: Kids Illustration & Si Jenius Parrot -->
+    <div class="hero-characters-wrapper">
+      <img src="hero_islamic_kids.jpg" alt="Siswa Si Jenius" class="hero-kids-img" draggable="false">
       <div class="hero-mascot-box mascot" id="mascotBird" title="Si Jenius - Klik untuk menyapa!">
         <canvas id="mascotCanvas" class="mascot-canvas"></canvas>
         <video id="mascotVideo" src="Cartoon_parrot_holding_book.mp4" autoplay loop muted playsinline preload="auto" style="display:none"></video>
       </div>
-      <div class="bubble" style="margin-top:10px; width:100%;">
-        <img src="sijenius_cert.png" alt="Si Jenius" style="width:42px;height:42px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 5px rgba(107,74,18,0.25));" draggable="false">
+      <div class="bubble" style="margin-top:8px; width:100%;">
+        <img src="sijenius_cert.png" alt="Si Jenius" style="width:38px;height:38px;object-fit:contain;flex-shrink:0;" draggable="false">
         <span>Halo, aku SiJenius! Selesaikan misi satu per satu untuk meraih medali Peradaban.</span>
       </div>
     </div>
   </div>
 
-  <!-- SECTION: PILIH MENU PEMBELAJARAN -->
+  <!-- Screen 2: PILIH MENU PEMBELAJARAN (8 CARDS IN 2 ROWS) -->
   <div id="pilihMenuSection">
     <div class="plaque-header-banner">
       <button class="plaque-corner-btn left" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ke Atas">🏠</button>
-      <h2 class="plaque-title">✦ Pilih Menu Pembelajaran ✦</h2>
-      <p class="plaque-sub">Ayo pilih misi atau menu yang ingin kamu pelajari!</p>
+      <div class="plaque-title-wrap">
+        <h2 class="plaque-title">✦ Pilih Menu Pembelajaran ✦</h2>
+        <p class="plaque-sub">Ayo pilih menu yang ingin kamu pelajari!</p>
+      </div>
       <button class="plaque-corner-btn right" onclick="document.getElementById('mute').click()" title="Bunyikan/Matikan Suara">🔊</button>
     </div>
 
-    <!-- SUBSECTION 1: Peta Misi Utama (Misi 1-4) -->
-    <div class="section-subtitle-tag">
-      <span>🗺️</span> <b>Peta Misi Pembelajaran</b>
-      <span style="font-size:12.5px; color:#B45309; margin-left:auto; font-family:'Nunito',sans-serif;" id="pt">0 dari 4 misi selesai</span>
+    <!-- 8 Cards Grid matching Screen 2 in Mockup -->
+    <div class="mockup-cards-grid">
+      <!-- Card 1: Misi 1 -->
+      <button class="mockup-card card-c1" id="mCard0" onclick="m1(); go('m1')" title="Misi 1: Ayo Kenali Daulah Abbasiyah">
+        <div class="mc-img-wrap"><img src="card_misi1.png" alt="Misi 1"></div>
+        <div class="mc-text-wrap">
+          <span class="mc-title">Misi 1</span>
+          <span class="mc-sub">Ayo Kenali Daulah Abbasiyah</span>
+        </div>
+        <span class="mc-badge-done" id="mDone0" style="display:none;">✓</span>
+        <span class="mc-badge-star" id="mStar0" style="display:none;"></span>
+      </button>
+
+      <!-- Card 2: Misi 2 -->
+      <button class="mockup-card card-c2" id="mCard1" onclick="m2(); go('m2')" title="Misi 2: Tokoh &amp; Khalifah Utama">
+        <div class="mc-img-wrap"><img src="card_misi2.png" alt="Misi 2"></div>
+        <div class="mc-text-wrap">
+          <span class="mc-title">Misi 2</span>
+          <span class="mc-sub">Uji Kompetensi Khalifah</span>
+        </div>
+        <span class="mc-badge-done" id="mDone1" style="display:none;">✓</span>
+        <span class="mc-badge-star" id="mStar1" style="display:none;"></span>
+      </button>
+
+      <!-- Card 3: Misi 3 -->
+      <button class="mockup-card card-c3" id="mCard2" onclick="m3(); go('m3')" title="Misi 3: Susun Ceritanya!">
+        <div class="mc-img-wrap"><img src="card_misi3.png" alt="Misi 3"></div>
+        <div class="mc-text-wrap">
+          <span class="mc-title">Misi 3</span>
+          <span class="mc-sub">Susun Ceritanya!</span>
+        </div>
+        <span class="mc-badge-done" id="mDone2" style="display:none;">✓</span>
+        <span class="mc-badge-star" id="mStar2" style="display:none;"></span>
+      </button>
+
+      <!-- Card 4: Chatbot AI -->
+      <button class="mockup-card card-c4" onclick="go('lk')" title="Chatbot AI: Tanya SKI">
+        <div class="mc-img-wrap"><img src="card_chatbot.png" alt="Chatbot AI"></div>
+        <div class="mc-text-wrap">
+          <span class="mc-title">Chatbot AI</span>
+          <span class="mc-sub">Tanya Jawab SKI</span>
+        </div>
+      </button>
+
+      <!-- Card 5: Video Pembelajaran -->
+      <button class="mockup-card card-c5" onclick="go('vp')" title="Video Pembelajaran">
+        <div class="mc-img-wrap"><img src="card_video.png" alt="Video Pembelajaran"></div>
+        <div class="mc-text-wrap">
+          <span class="mc-title">Video</span>
+          <span class="mc-sub">Pembelajaran</span>
+        </div>
+      </button>
+
+      <!-- Card 6: Game Petualangan -->
+      <button class="mockup-card card-c6" onclick="go('pl')" title="Game Petualangan">
+        <div class="mc-img-wrap"><img src="card_game.png" alt="Game Petualangan"></div>
+        <div class="mc-text-wrap">
+          <span class="mc-title">Game</span>
+          <span class="mc-sub">Petualangan</span>
+        </div>
+      </button>
+
+      <!-- Card 7: RPP KBC -->
+      <button class="mockup-card card-c7" onclick="go('rp')" title="RPP KBC Kurikulum Merdeka">
+        <div class="mc-img-wrap"><img src="card_rpp.png" alt="RPP KBC"></div>
+        <div class="mc-text-wrap">
+          <span class="mc-title">RPP KBC</span>
+          <span class="mc-sub">Kurikulum Merdeka</span>
+        </div>
+      </button>
+
+      <!-- Card 8: Quiz / Misi 4 -->
+      <button class="mockup-card card-c8" id="mCard3" onclick="m4(); go('m4')" title="Quiz Evaluasi / Misi 4">
+        <div class="mc-img-wrap"><img src="card_quiz.png" alt="Quiz Uji Kemampuan"></div>
+        <div class="mc-text-wrap">
+          <span class="mc-title">Quiz</span>
+          <span class="mc-sub">Uji Kemampuan</span>
+        </div>
+        <span class="mc-badge-done" id="mDone3" style="display:none;">✓</span>
+        <span class="mc-badge-star" id="mStar3" style="display:none;"></span>
+      </button>
     </div>
 
-    <!-- Progress bar misi -->
-    <div class="bar" id="pbar" role="progressbar" aria-label="Kemajuan misi" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" style="margin-bottom:14px;">
-      <i id="pb"></i>
+    <!-- Progress bar & hidden container for existing JS compatibility -->
+    <div style="margin-top:16px;">
+      <div class="bar" id="pbar" role="progressbar" aria-label="Kemajuan misi" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0">
+        <i id="pb"></i>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:800; color:#065F46; margin-top:4px;">
+        <span id="pt">0 dari 4 misi selesai</span>
+        <span id="pstarTotal">0 ⭐ Terkumpul</span>
+      </div>
     </div>
-
-    <div class="grid gm" id="gm"></div>
-
-    <!-- SUBSECTION 2: Menu Fitur Interaktif -->
-    <div class="section-subtitle-tag" style="margin-top:28px;">
-      <span>🎮</span> <b>Fitur &amp; Media Interaktif</b>
-    </div>
-    <div class="grid gb" id="gb"></div>
+    <div id="gm" style="display:none;"></div>
+    <div id="gb" style="display:none;"></div>
   </div>
 
-  <!-- SECTION: PROFIL PENGGUNA & PRESTASI -->
-  <div class="profile-overview-card" id="profileSection">
+  <!-- Screen 6: PROFIL PENGGUNA & PRESTASI -->
+  <div class="mockup-profile-card" id="profileSection">
     <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; border-bottom:1.5px dashed #E5D6A8; padding-bottom:10px;">
       <h3 style="font-family:'Lilita One',cursive; font-size:20px; color:#064E3B; margin:0;">
         👤 Profil Pengguna &amp; Prestasi
@@ -1964,41 +2556,43 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
       </button>
     </div>
 
-    <div class="profile-grid-layout">
+    <div class="mockup-profile-grid">
       <!-- Left: User Identity -->
-      <div class="profile-user-left">
-        <div class="profile-avatar-big">🎓</div>
-        <div class="profile-info-content">
+      <div class="profile-user-box">
+        <img src="user_avatar.png" alt="Avatar" class="profile-avatar-circle">
+        <div style="flex:1; min-width:0;">
           <label style="font-size:11.5px; font-weight:800; color:#047857; display:block; margin-bottom:2px;">Nama Siswa:</label>
-          <input type="text" id="nama" class="profile-name-inp" placeholder="Tulis namamu di sini..." maxlength="40" autocomplete="off">
-          <div class="profile-class-sub">Siswa Kelas 8 · MTs Darussalam</div>
+          <input type="text" id="nama" class="profile-inp-nama" placeholder="Tulis namamu..." maxlength="40" autocomplete="off">
+          <div style="font-size:12.5px; font-weight:700; color:#047857; margin-top:4px;">
+            Siswa Kelas 8 · MTs Darussalam
+          </div>
         </div>
       </div>
 
       <!-- Right: Stat Tiles & Bar -->
-      <div class="profile-stats-right">
-        <div class="profile-stat-tiles">
-          <div class="stat-tile">
-            <div class="stat-tile-title">📚 Misi</div>
-            <div class="stat-tile-val" id="profileMisiVal">0 / 4</div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="profile-stat-3">
+          <div class="p-stat-box">
+            <div class="p-stat-lbl">📚 Misi</div>
+            <div class="p-stat-val" id="profileMisiVal">0 / 4</div>
           </div>
-          <div class="stat-tile">
-            <div class="stat-tile-title">⭐ Bintang</div>
-            <div class="stat-tile-val" id="profileStarVal">0 ⭐</div>
+          <div class="p-stat-box">
+            <div class="p-stat-lbl">⭐ Bintang</div>
+            <div class="p-stat-val" id="profileStarVal">0 ⭐</div>
           </div>
-          <div class="stat-tile">
-            <div class="stat-tile-title">🎮 Skor Game</div>
-            <div class="stat-tile-val" id="profileGameVal">0</div>
+          <div class="p-stat-box">
+            <div class="p-stat-lbl">🎮 Skor Game</div>
+            <div class="p-stat-val" id="profileGameVal">0</div>
           </div>
         </div>
 
-        <div class="profile-bar-wrap">
-          <div class="profile-bar-label">
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:800; color:#065F46; margin-bottom:4px;">
             <span>Progres Belajar</span>
             <span id="profilePercentText">0%</span>
           </div>
-          <div class="profile-bar-track">
-            <div class="profile-bar-fill" id="profileBarFill" style="width: 0%;"></div>
+          <div style="width:100%; height:14px; background:#E5E7EB; border-radius:999px; overflow:hidden; border:1px solid #CBD5E1;">
+            <div id="profileBarFill" style="height:100%; width:0%; background:linear-gradient(90deg, #10B981, #059669); border-radius:999px; transition:width 0.4s ease;"></div>
           </div>
         </div>
       </div>
@@ -2434,7 +3028,7 @@ const IMG={"ml": ["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAECCAYAAAC
 const MI=["Majelis Ilmu","Kuis Peradaban","Susun Peristiwa","Cermin Hati"],BN=["Video Pembelajaran","Slide Materi","Komik","Game Petualangan","Chatbot AI","RPP KBC"];
 const BI=[["🎬","Video Pembelajaran","Tonton video pembelajaran seru menelusuri kejayaan peradaban Daulah Abbasiyah di kota Baghdad!"],["🖼️","Slide"],["📖","Komik","Baca komik petualangan seru masa kejayaan Daulah Abbasiyah!"],["🎮","Game Petualangan","Mainkan game petualangan seru Si Jenius menjelajah kota Baghdad!"],["🤖","Chatbot AI","Tanya jawab sejarah peradaban Daulah Abbasiyah bersama Si Jenius AI!"],["📚","RPP KBC"]];
 function renderMenu(){
-  const sName = (S.name || "Siswa Hebat").trim();
+  const sName = (S.name || "Ahmad").trim();
   const namaInp = $("#nama");
   if (namaInp) namaInp.value = S.name || "";
   const navUserEl = document.getElementById("navUserName");
@@ -2457,6 +3051,8 @@ function renderMenu(){
   for (let k in S.stars) { totalStars += (S.stars[k] || 0); }
   const elStarVal = document.getElementById("profileStarVal");
   if (elStarVal) elStarVal.textContent = totalStars + " ⭐";
+  const pstarTotalEl = document.getElementById("pstarTotal");
+  if (pstarTotalEl) pstarTotalEl.textContent = totalStars + " ⭐ Terkumpul";
 
   const elGameVal = document.getElementById("profileGameVal");
   if (elGameVal) elGameVal.textContent = S.pf || 0;
@@ -2467,19 +3063,20 @@ function renderMenu(){
   const elBarFill = document.getElementById("profileBarFill");
   if (elBarFill) elBarFill.style.width = (n * 25) + "%";
 
-  const gmEl = $("#gm");
-  if (gmEl) {
-    gmEl.innerHTML = MI.map((m, i) => {
-      const lock = i > 0 && !S.done[i - 1], st = S.stars["m" + i], art = lock ? IMG.ml[i] : IMG.mu[i];
-      return `<button class="mc ${lock ? "lock" : ""} ${S.done[i] ? "done" : ""}" data-m="${i}" aria-label="Misi ${i + 1}: ${m}${lock ? ", terkunci" : S.done[i] ? ", selesai" : ""}" ${lock ? 'aria-disabled="true"' : ""}><img src="${art}" alt="" draggable="false">${S.done[i] ? '<span class="tag ck" aria-hidden="true">✓</span>' : ""}${st ? `<span class="tag stz" aria-label="${st} bintang">${"⭐".repeat(st)}</span>` : ""}</button>`;
-    }).join("");
-  }
-
-  const gbEl = $("#gb");
-  if (gbEl) {
-    gbEl.innerHTML = BN.map((t, i) =>
-      `<button class="bc" data-b="${i}" aria-label="${t}"><img src="${IMG.b[i]}" alt="" draggable="false">${S.stars.pf && i == 3 ? `<span class="stz" aria-label="${S.stars.pf} bintang">${"⭐".repeat(S.stars.pf)}</span>` : ""}</button>`
-    ).join("");
+  // Update Mission Badges on Mockup Cards
+  for (let i = 0; i < 4; i++) {
+    const doneBadge = document.getElementById("mDone" + i);
+    if (doneBadge) doneBadge.style.display = S.done[i] ? "flex" : "none";
+    const starBadge = document.getElementById("mStar" + i);
+    if (starBadge) {
+      const st = S.stars["m" + i];
+      if (st) {
+        starBadge.textContent = "⭐".repeat(st);
+        starBadge.style.display = "block";
+      } else {
+        starBadge.style.display = "none";
+      }
+    }
   }
 }
 
@@ -2506,7 +3103,7 @@ function startLearningMisi() {
 }
 window.startLearningMisi = startLearningMisi;
 
-$("#nama").oninput=e=>{S.name=e.target.value;save();const el=document.getElementById("navUserName");if(el)el.textContent=(e.target.value.trim()||"Siswa Hebat");};
+$("#nama").oninput=e=>{S.name=e.target.value;save();const el=document.getElementById("navUserName");if(el)el.textContent=(e.target.value.trim()||"Ahmad");};
 document.addEventListener("click",e=>{const m=e.target.closest("[data-m]"),b=e.target.closest("[data-b]");
  if(m){const i=+m.dataset.m;if(i>0&&!S.done[i-1]){snd(180,.2);return}[m1,m2,m3,m4][i]();go("m"+(i+1))}
  if(b){const i=+b.dataset.b;if(i==0){go("vp")}else if(i==1){slide(0);go("sl")}else if(i==2){go("km");if(window.jumpToComicPage)jumpToComicPage(0);}else if(i==3){go("pl")}else if(i==4)go("lk");else if(i==5)go("rp");else{$("#bt").textContent=BI[i][1];$("#bd").textContent=BI[i][2];go("b0")}}});
