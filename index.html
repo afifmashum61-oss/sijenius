@@ -1907,28 +1907,33 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 .nav-center {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  padding: 4px 6px;
+  border-radius: 999px;
+  gap: 4px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
 }
 .nav-link-btn {
   background: transparent;
   border: none;
-  color: #374151;
-  padding: 7px 14px;
+  color: #475569;
+  padding: 8px 16px;
   border-radius: 999px;
   font-family: 'Lilita One', cursive;
   font-size: 13.5px;
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all 0.18s ease;
+  letter-spacing: 0.2px;
 }
 .nav-link-btn:hover {
-  background: #FEF3C7;
-  color: #92400E;
+  background: #ECFDF5;
+  color: #047857;
 }
 .nav-link-btn.active {
-  background: #10B981;
+  background: linear-gradient(135deg, #10B981, #059669);
   color: #FFFFFF;
-  box-shadow: 0 3px 8px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
 }
 
 .nav-user-pill {
@@ -1962,13 +1967,13 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 /* Screen 1: Modern Hero Card */
 .mockup-hero-card {
   position: relative;
-  background: #EDF7F2 url('hero_bg_exact.jpg') right center / cover no-repeat;
-  border: 3px solid #F5E6B3;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 45%, rgba(255, 255, 255, 0.15) 75%), url('hero_bg_exact.jpg') right center / cover no-repeat;
+  border: 3.5px solid #F5E6B3;
   border-radius: 28px;
   min-height: 480px;
   padding: 30px 32px 24px;
   margin-bottom: 26px;
-  box-shadow: 0 14px 40px rgba(6, 78, 59, 0.15), 0 0 0 1px #D4AF37;
+  box-shadow: 0 16px 45px rgba(6, 78, 59, 0.16), 0 0 0 1.5px #D4AF37;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1977,9 +1982,9 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 }
 @media(max-width: 860px) {
   .mockup-hero-card {
-    min-height: 420px;
-    padding: 22px 20px 20px;
-    background-position: 72% center;
+    min-height: 440px;
+    padding: 20px 16px 18px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(255, 255, 255, 0.35) 100%), url('hero_bg_exact.jpg') center center / cover no-repeat;
   }
 }
 @media(min-width: 860px) {
@@ -1993,44 +1998,62 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 26px;
+  padding: 24px 28px;
+  box-shadow: 0 12px 35px rgba(6, 78, 59, 0.1);
+}
+@media(max-width: 600px) {
+  .hero-content {
+    padding: 18px 18px;
+    border-radius: 20px;
+  }
 }
 .hero-big-title {
   font-family: 'Lilita One', cursive;
   font-size: clamp(28px, 4.2vw, 42px);
   color: #064E3B;
-  line-height: 1.15;
+  line-height: 1.18;
   margin: 0;
-  text-shadow: 0 2px 6px rgba(6, 78, 59, 0.12);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
 }
 .hero-big-title .highlight-green {
   color: #059669;
+  text-shadow: 0 1px 3px rgba(5, 150, 105, 0.2);
 }
 .hero-desc {
-  font-size: clamp(14px, 1.8vw, 16px);
-  color: #4B5563;
-  line-height: 1.55;
+  font-size: clamp(14px, 1.8vw, 16.5px);
+  color: #1F2937;
+  line-height: 1.6;
   margin: 0;
   font-weight: 700;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 .hero-btn-cta {
-  background: linear-gradient(180deg, #FBBF24, #D97706);
+  background: linear-gradient(180deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%);
   color: #451A03;
   border: 2px solid #B45309;
-  padding: 11px 28px;
+  padding: 12px 30px;
   border-radius: 999px;
   font-family: 'Lilita One', cursive;
-  font-size: 16.5px;
+  font-size: 17px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   width: fit-content;
-  box-shadow: 0 5px 14px rgba(180, 83, 9, 0.35);
-  transition: all 0.18s ease;
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 .hero-btn-cta:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.08);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(217, 119, 6, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.6);
+  filter: brightness(1.05);
 }
 
 /* 4 Quick Pills on Hero matching Mockup Screen 1 */
@@ -2038,35 +2061,43 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  margin-top: 10px;
-  padding-top: 14px;
-  border-top: 1.5px dashed #E5D6A8;
+  margin-top: 18px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 16px rgba(6, 78, 59, 0.08);
 }
 @media(min-width: 600px) {
   .hero-quick-pills {
     grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
   }
 }
 .hero-qp-item {
   background: #FFFFFF;
   border: 1.5px solid #E6D5A7;
   color: #065F46;
-  padding: 8px 10px;
-  border-radius: 12px;
-  font-size: 12.5px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px;
   font-weight: 800;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  transition: all 0.16s ease;
+  gap: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  transition: all 0.18s ease;
 }
 .hero-qp-item:hover {
-  background: #FEF3C7;
-  border-color: #F59E0B;
+  background: #ECFDF5;
+  border-color: #10B981;
+  color: #047857;
   transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(16, 185, 129, 0.22);
 }
 
 /* Hero Right Side: Islamic Students & Mascot */
@@ -3016,6 +3047,9 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   <!-- Screen 1: Modern Hero Card -->
   <div class="mockup-hero-card">
     <div class="hero-content">
+      <div style="display:inline-flex; align-items:center; gap:6px; background:#ECFDF5; color:#065F46; border:1.5px solid #A7F3D0; padding:4px 14px; border-radius:999px; font-size:12.5px; font-weight:800; width:fit-content; box-shadow:0 2px 6px rgba(16,185,129,0.12);">
+        <span>✨</span> Pembelajaran Interaktif SKI Kelas 8
+      </div>
       <h1 class="hero-big-title">
         Selamat Datang<br>di <span class="highlight-green">SI JENIUS</span>
       </h1>
@@ -3023,7 +3057,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
         Belajar Sejarah Kebudayaan Islam jadi lebih mudah,<br>seru dan menyenangkan!
       </p>
 
-      <div class="hero-action-row" style="margin-top:4px;">
+      <div class="hero-action-row" style="margin-top:6px;">
         <button class="hero-btn-cta" onclick="startLearningMisi()">
           <span>Mulai Belajar</span>
           <span class="hero-play-icon">▶</span>
