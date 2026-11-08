@@ -1558,18 +1558,11 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   font-size: clamp(14px, 1.8vw, 16px);
   color: #064E3B;
   line-height: 1.55;
-  margin: 6px 0 14px;
+  margin: 6px 0 16px;
   font-weight: 800;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: 8px 14px;
-  border-radius: 14px;
-  border-left: 4px solid #10B981;
-  box-shadow: 0 2px 8px rgba(6, 78, 59, 0.08);
-  display: inline-block;
-  max-width: 460px;
+  text-shadow: 0 1px 3px #FFFFFF, 0 0 14px rgba(255, 255, 255, 0.95), 0 0 24px #FFFFFF;
+  max-width: 380px;
+  display: block;
 }
 .hero-action-row {
   display: flex;
@@ -1970,7 +1963,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 /* Screen 1: Modern Hero Card */
 .mockup-hero-card {
   position: relative;
-  background: #EDF7F2 url('hero_bg_exact.jpg') right center / cover no-repeat;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.5) 42%, rgba(255, 255, 255, 0) 65%), url('hero_bg_exact.jpg') right center / cover no-repeat;
   border: 3px solid #F5E6B3;
   border-radius: 28px;
   min-height: 480px;
@@ -2011,18 +2004,11 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   font-size: clamp(14px, 1.8vw, 16px);
   color: #064E3B;
   line-height: 1.55;
-  margin: 6px 0 14px;
+  margin: 6px 0 16px;
   font-weight: 800;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: 8px 14px;
-  border-radius: 14px;
-  border-left: 4px solid #10B981;
-  box-shadow: 0 2px 8px rgba(6, 78, 59, 0.08);
-  display: inline-block;
-  max-width: 460px;
+  text-shadow: 0 1px 3px #FFFFFF, 0 0 14px rgba(255, 255, 255, 0.95), 0 0 24px #FFFFFF;
+  max-width: 380px;
+  display: block;
 }
 .hero-btn-cta {
   background: linear-gradient(180deg, #FBBF24, #D97706);
@@ -3044,7 +3030,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     padding: 18px 14px 16px !important;
     border-radius: 20px !important;
     margin-bottom: 16px !important;
-    background-position: 85% center !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.55) 45%, rgba(255, 255, 255, 0.1) 75%), url('hero_bg_exact.jpg') 85% center / cover no-repeat !important;
   }
   .hero-big-title {
     font-size: 24px !important;
@@ -3057,17 +3043,13 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     margin: 6px 0 14px !important;
     color: #064E3B !important;
     font-weight: 800 !important;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95) !important;
-    background: rgba(255, 255, 255, 0.88) !important;
-    backdrop-filter: blur(6px) !important;
-    -webkit-backdrop-filter: blur(6px) !important;
-    padding: 8px 12px !important;
-    border-radius: 12px !important;
-    border-left: 3.5px solid #10B981 !important;
-    box-shadow: 0 2px 8px rgba(6, 78, 59, 0.1) !important;
-    display: inline-block !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
+    text-shadow: 0 1px 3px #FFFFFF, 0 0 12px rgba(255, 255, 255, 0.95) !important;
+    max-width: 300px !important;
+    display: block !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
   }
   .hero-btn-cta {
     padding: 10px 18px !important;
