@@ -2290,9 +2290,11 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center;
   border: 2.5px solid #10B981;
   box-shadow: 0 3px 8px rgba(0,0,0,0.12);
   flex-shrink: 0;
+  background: #FFFFFF;
 }
 .profile-inp-nama {
   width: 100%;
@@ -3113,6 +3115,33 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     padding: 16px 12px 20px !important;
     border-radius: 20px !important;
   }
+  .profile-header-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }
+  .profile-header-title {
+    font-size: 15px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    line-height: 1.2 !important;
+  }
+  .profile-cert-btn {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    line-height: 1.2 !important;
+    border-radius: 999px !important;
+  }
+  .profile-avatar-circle {
+    width: 58px !important;
+    height: 58px !important;
+    object-position: center !important;
+  }
 }
 
 </style>
@@ -3215,11 +3244,11 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   </div>
 
   <div class="mockup-profile-card" id="profileSection">
-    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; border-bottom:1.5px dashed #E5D6A8; padding-bottom:10px;">
-      <h3 style="font-family:'Lilita One',cursive; font-size:20px; color:#064E3B; margin:0;">
+    <div class="profile-header-row" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; border-bottom:1.5px dashed #E5D6A8; padding-bottom:10px; gap:8px;">
+      <h3 class="profile-header-title" style="font-family:'Lilita One',cursive; font-size:19px; color:#064E3B; margin:0; white-space:nowrap;">
         👤 Profil Pengguna &amp; Prestasi
       </h3>
-      <button onclick="cert(1)" class="hero-btn-cta" style="padding:6px 16px; font-size:13.5px;">
+      <button onclick="cert(1)" class="hero-btn-cta profile-cert-btn" style="padding:6px 14px; font-size:13px; white-space:nowrap; flex-shrink:0;">
         🏆 Cetak Sertifikat
       </button>
     </div>
