@@ -60,7 +60,8 @@ input[type=text],textarea{width:100%;font:800 16px/1.4 Nunito,system-ui,sans-ser
 input::placeholder,textarea::placeholder{color:#8b8570}
 textarea{resize:vertical}
 .grid{display:grid;gap:12px}
-.gm{grid-template-columns:repeat(4,1fr);margin-top:22px}.gb{grid-template-columns:repeat(6,1fr);gap:10px;margin-top:14px}
+.gm{display:grid;grid-template-columns:repeat(4,1fr);max-width:760px;margin:18px auto 0;gap:12px;box-sizing:border-box}
+.gb{display:grid;grid-template-columns:repeat(6,1fr);max-width:760px;margin:14px auto 0;gap:8px;box-sizing:border-box}
 .mc,.bc{position:relative;display:block;padding:0;border:0;background:none;cursor:pointer;font:inherit;border-radius:20px;-webkit-tap-highlight-color:transparent}
 .mc img,.bc img{display:block;width:100%;height:auto;filter:drop-shadow(0 6px 6px #5a3d0a40);transition:transform .15s}
 .mc:not(.lock):hover img,.bc:hover img{transform:translateY(-3px)}
@@ -3060,7 +3061,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     </div>
 
     <!-- Progress bar misi -->
-    <div style="margin-bottom:16px; padding:0 4px;">
+    <div style="margin:0 auto 16px; max-width:760px; padding:0 4px;">
       <div class="bar" id="pbar" role="progressbar" aria-label="Kemajuan misi" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0">
         <i id="pb"></i>
       </div>
