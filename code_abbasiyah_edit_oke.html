@@ -1904,8 +1904,9 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 .nav-center {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
+  white-space: nowrap;
 }
 .nav-link-btn {
   background: transparent;
@@ -2993,24 +2994,30 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   }
   .nav-center {
     width: 100% !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 6px !important;
-    padding: 4px 4px 6px !important;
-    scrollbar-width: none !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    gap: 3px !important;
+    padding: 4px 2px !important;
     white-space: nowrap !important;
-    border-radius: 999px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    box-sizing: border-box !important;
   }
   .nav-center::-webkit-scrollbar {
     display: none !important;
   }
-  .nav-pill {
-    padding: 6px 12px !important;
-    font-size: 13px !important;
+  .nav-link-btn {
+    padding: 6px 8px !important;
+    font-size: 12px !important;
     flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.2px !important;
+  }
+  .nav-link-btn.active {
+    padding: 6px 10px !important;
   }
   .mockup-hero-card {
     min-height: auto !important;
