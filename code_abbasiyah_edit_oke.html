@@ -3057,16 +3057,28 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   }
   .hero-quick-pills {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 5px !important;
     margin-top: 12px !important;
     padding-top: 12px !important;
   }
   .hero-qp-item {
-    padding: 8px 6px !important;
-    font-size: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     justify-content: center !important;
+    padding: 6px 2px !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
     text-align: center !important;
+    border-radius: 12px !important;
+    gap: 3px !important;
+    min-height: 52px !important;
+  }
+  .hero-qp-item span:first-child {
+    font-size: 16px !important;
+    line-height: 1 !important;
   }
   .pilih-menu-card-wrap {
     padding: 16px 10px 20px !important;
