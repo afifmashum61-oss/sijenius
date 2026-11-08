@@ -3144,6 +3144,64 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   }
 }
 
+
+/* Universal Fullscreen Mode for Mobile & Desktop */
+#gameContainer.is-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  z-index: 999999 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #000000 !important;
+}
+#gameContainer.is-fullscreen iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+  display: block !important;
+}
+.game-fs-floating-close {
+  display: none;
+  position: absolute;
+  top: calc(14px + env(safe-area-inset-top, 0px));
+  right: 14px;
+  z-index: 1000000;
+  background: rgba(0, 0, 0, 0.78);
+  color: #FFFFFF;
+  border: 1.5px solid #FDE047;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: 'Lilita One', cursive;
+  font-size: 13.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+#gameContainer.is-fullscreen .game-fs-floating-close {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+}
+.game-fs-floating-close:hover {
+  background: #DC2626;
+  border-color: #FFFFFF;
+  transform: scale(1.04);
+}
+
 </style>
 </head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
@@ -3729,6 +3787,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     </div>
 
     <div id="gameContainer" style="position:relative; width:100%; aspect-ratio:16/9; max-height:76vh; border-radius:16px; overflow:hidden; border:3px solid #C9A24B; box-shadow:0 10px 30px rgba(0,0,0,0.25); background:#000;">
+      <button id="closeGameFsBtn" class="game-fs-floating-close" onclick="toggleGameFullscreen()" aria-label="Keluar Layar Penuh"><span>✖</span><span>Keluar Layar Penuh</span></button>
       <iframe id="gameFrame" src="Si_Jenius_Petualangan_Dimulai.html" style="width:100%; height:100%; border:none; display:block;" allow="autoplay; fullscreen; clipboard-write; encrypted-media" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
     </div>
 
@@ -4330,17 +4389,62 @@ function reloadGame() {
 window.reloadGame = reloadGame;
 
 function toggleGameFullscreen() {
-  const el = document.getElementById('gameContainer') || document.getElementById('gameFrame');
-  if (!el) return;
-  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-    if (el.requestFullscreen) el.requestFullscreen();
-    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+  const box = document.getElementById('gameContainer');
+  if (!box) return;
+  const fsBtn = document.getElementById('gameFsBtn');
+  const isFs = box.classList.contains('is-fullscreen');
+  
+  if (!isFs) {
+    box.classList.add('is-fullscreen');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    if (fsBtn) fsBtn.innerHTML = '✖ Keluar Layar Penuh';
+    
+    // Try native Fullscreen API if supported (Android Chrome / PC)
+    try {
+      if (box.requestFullscreen) {
+        box.requestFullscreen();
+      } else if (box.webkitRequestFullscreen) {
+        box.webkitRequestFullscreen();
+      } else if (box.msRequestFullscreen) {
+        box.msRequestFullscreen();
+      }
+    } catch (err) {}
   } else {
-    if (document.exitFullscreen) document.exitFullscreen();
-    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    box.classList.remove('is-fullscreen');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    if (fsBtn) fsBtn.innerHTML = '⛶ Layar Penuh';
+    
+    try {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      }
+    } catch (err) {}
   }
 }
+
+document.addEventListener('fullscreenchange', function() {
+  const box = document.getElementById('gameContainer');
+  const fsBtn = document.getElementById('gameFsBtn');
+  if (!document.fullscreenElement && box && box.classList.contains('is-fullscreen')) {
+    box.classList.remove('is-fullscreen');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    if (fsBtn) fsBtn.innerHTML = '⛶ Layar Penuh';
+  }
+});
+document.addEventListener('webkitfullscreenchange', function() {
+  const box = document.getElementById('gameContainer');
+  const fsBtn = document.getElementById('gameFsBtn');
+  if (!document.webkitFullscreenElement && box && box.classList.contains('is-fullscreen')) {
+    box.classList.remove('is-fullscreen');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    if (fsBtn) fsBtn.innerHTML = '⛶ Layar Penuh';
+  }
+});
 window.toggleGameFullscreen = toggleGameFullscreen;
 
 </script>
