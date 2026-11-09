@@ -3291,6 +3291,58 @@ body.game-fs-active .game-view-container {
   }
 }
 
+
+.global-edge-back-hint {
+  position: fixed;
+  top: 50%;
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(6, 78, 59, 0.95);
+  color: #FFFFFF;
+  border: 2px solid #F59E0B;
+  border-radius: 40px;
+  font-family: 'Lilita One', 'Trebuchet MS', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 15px rgba(245,158,11,0.4);
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.12s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.global-edge-back-hint.edge-left {
+  left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+  transform: translateY(-50%) translateX(-100%);
+}
+.global-edge-back-hint.edge-right {
+  right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  transform: translateY(-50%) translateX(100%);
+}
+.global-edge-back-hint.ready {
+  background: linear-gradient(135deg, #10B981, #059669);
+  border-color: #6EE7B7;
+  color: #FFFFFF;
+  box-shadow: 0 8px 32px rgba(16,185,129,0.7), 0 0 20px rgba(110,231,183,0.8);
+}
+.global-edge-back-hint .global-edge-back-icon {
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.global-edge-back-hint.ready .global-edge-back-icon {
+  transform: scale(1.3);
+}
+
 </style>
 </head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
@@ -4541,6 +4593,117 @@ document.addEventListener('webkitfullscreenchange', function() {
   }
 });
 window.toggleGameFullscreen = toggleGameFullscreen;
+
+// Edge swipe back navigation on mobile
+(function initGlobalEdgeSwipe() {
+  const hint = document.createElement('div');
+  hint.id = 'globalEdgeBackHint';
+  hint.className = 'global-edge-back-hint';
+  hint.innerHTML = '<span class="global-edge-back-icon">◀</span><span class="global-edge-back-text">Kembali</span>';
+  document.body.appendChild(hint);
+
+  let startX = 0, startY = 0, side = null, tracking = false;
+  const THRESHOLD = 50;
+
+  function canGoBack() {
+    const box = document.getElementById('gameContainer');
+    if (box && box.classList.contains('is-fullscreen')) return true;
+    const cur = document.querySelector('.screen.on');
+    return cur && cur.id !== 'menu';
+  }
+
+  function doGlobalBack() {
+    const box = document.getElementById('gameContainer');
+    if (box && box.classList.contains('is-fullscreen')) {
+      toggleGameFullscreen();
+      return;
+    }
+    const cur = document.querySelector('.screen.on');
+    if (cur && cur.id !== 'menu') {
+      go('menu');
+    }
+  }
+
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1 || !canGoBack()) {
+      tracking = false;
+      side = null;
+      return;
+    }
+    const t = e.touches[0];
+    const w = window.innerWidth;
+    const lim = Math.min(65, Math.max(45, w * 0.12));
+    if (t.clientX <= lim) side = 'left';
+    else if (t.clientX >= w - lim) side = 'right';
+    else { side = null; tracking = false; return; }
+
+    startX = t.clientX;
+    startY = t.clientY;
+    tracking = true;
+    hint.className = 'global-edge-back-hint edge-' + side;
+    hint.style.top = Math.max(50, Math.min(window.innerHeight - 50, startY)) + 'px';
+    hint.style.opacity = '0';
+    hint.style.transform = side === 'left' ? 'translateY(-50%) translateX(-100%)' : 'translateY(-50%) translateX(100%)';
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!tracking || !side) return;
+    const t = e.touches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+    if (Math.abs(dy) > Math.abs(dx) * 1.2 && Math.abs(dx) < 20) {
+      tracking = false;
+      side = null;
+      hint.style.opacity = '0';
+      return;
+    }
+    const pull = side === 'left' ? dx : -dx;
+    if (pull <= 0) { hint.style.opacity = '0'; return; }
+    hint.style.opacity = Math.min(pull / 25, 1).toString();
+    const slide = Math.min(pull, 65);
+    if (side === 'left') {
+      hint.style.transform = `translateY(-50%) translateX(${ -100 + (slide / 65) * 100 }%)`;
+    } else {
+      hint.style.transform = `translateY(-50%) translateX(${ 100 - (slide / 65) * 100 }%)`;
+    }
+    if (pull >= THRESHOLD) {
+      if (!hint.classList.contains('ready')) {
+        hint.classList.add('ready');
+        try { if (navigator.vibrate) navigator.vibrate(20); } catch(err) {}
+      }
+    } else {
+      hint.classList.remove('ready');
+    }
+  }, { passive: true });
+
+  const onEnd = (e) => {
+    if (!tracking || !side) return;
+    const t = e.changedTouches ? e.changedTouches[0] : null;
+    let pull = 0;
+    if (t) pull = side === 'left' ? (t.clientX - startX) : (startX - t.clientX);
+    if (pull >= THRESHOLD) {
+      hint.classList.add('ready');
+      hint.style.transform = side === 'left' ? 'translateY(-50%) translateX(12px) scale(1.12)' : 'translateY(-50%) translateX(-12px) scale(1.12)';
+      setTimeout(() => { hint.style.opacity = '0'; }, 200);
+      doGlobalBack();
+    } else {
+      hint.style.opacity = '0';
+      hint.style.transform = side === 'left' ? 'translateY(-50%) translateX(-100%)' : 'translateY(-50%) translateX(100%)';
+    }
+    tracking = false;
+    side = null;
+  };
+
+  window.addEventListener('touchend', onEnd, { passive: true });
+  window.addEventListener('touchcancel', () => { tracking = false; side = null; hint.style.opacity = '0'; }, { passive: true });
+
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'GAME_EDGE_BACK') {
+      doGlobalBack();
+    }
+  });
+})();
+
 
 </script>
 </body></html>
