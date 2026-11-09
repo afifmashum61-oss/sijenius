@@ -141,10 +141,10 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 .rpp-header-card {
   background: linear-gradient(135deg, #0B3D2E 0%, #145a43 100%);
   color: #FFFBEC;
-  padding: 24px 20px;
-  border-radius: 20px;
+  padding: 16px 18px 14px;
+  border-radius: 16px;
   border: 2px solid #C9A24B;
-  box-shadow: 0 8px 24px rgba(11, 61, 46, 0.28);
+  box-shadow: 0 6px 20px rgba(11, 61, 46, 0.22);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -161,50 +161,61 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 }
 .rpp-header-card h2 {
   font-family: 'Lilita One', cursive;
-  font-size: 25px;
+  font-size: 20px;
   color: #EBD28F;
-  margin: 0 0 6px;
+  margin: 0 0 3px;
   letter-spacing: 0.5px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 .rpp-header-sub {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
+  opacity: 0.95;
 }
 .rpp-meta-tags {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 14px;
-  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-width: 860px;
   margin: 0 auto;
 }
+.rpp-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
 .rpp-meta-pill {
-  background: rgba(255, 251, 236, 0.15);
-  border: 1px solid rgba(235, 210, 143, 0.5);
-  padding: 8px 16px;
+  background: rgba(255, 251, 236, 0.12);
+  border: 1px solid rgba(235, 210, 143, 0.42);
+  padding: 5px 13px;
   border-radius: 999px;
-  font-size: 13.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #FFFBEC;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  gap: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  gap: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  white-space: nowrap;
 }
 @media (max-width: 680px) {
-  .rpp-meta-tags {
-    grid-template-columns: 1fr;
-    gap: 8px;
+  .rpp-meta-row {
+    gap: 6px;
   }
   .rpp-meta-pill {
-    font-size: 12.5px;
-    padding: 7px 12px;
+    font-size: 11px;
+    padding: 4px 10px;
+    white-space: normal;
+    text-align: center;
   }
 }
 .rpp-actions-bar {
@@ -3468,10 +3479,14 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
       <h2>📋 RENCANA PELAKSANAAN PEMBELAJARAN (RPP)</h2>
       <div class="rpp-header-sub">Kurikulum Berbasis Cinta (KBC) · Jenjang MTs / SMP</div>
       <div class="rpp-meta-tags">
-        <span class="rpp-meta-pill">📚 <b>Mata Pelajaran:</b> Sejarah Kebudayaan Islam (SKI)</span>
-        <span class="rpp-meta-pill">🏛️ <b>Kelas / Fase:</b> VIII / Fase D</span>
-        <span class="rpp-meta-pill">📖 <b>Materi Pokok:</b> Kemajuan Peradaban Daulah Abbasiyah</span>
-        <span class="rpp-meta-pill">⏱️ <b>Alokasi Waktu:</b> 2 JP (2 × 40 Menit)</span>
+        <div class="rpp-meta-row">
+          <span class="rpp-meta-pill">📚 <b>Mata Pelajaran:</b> Sejarah Kebudayaan Islam (SKI)</span>
+          <span class="rpp-meta-pill">🏛️ <b>Kelas / Fase:</b> VIII / Fase D</span>
+        </div>
+        <div class="rpp-meta-row">
+          <span class="rpp-meta-pill">📖 <b>Materi Pokok:</b> Kemajuan Peradaban Daulah Abbasiyah</span>
+          <span class="rpp-meta-pill">⏱️ <b>Alokasi Waktu:</b> 2 JP (2 × 40 Menit)</span>
+        </div>
       </div>
     </div>
 
