@@ -18,3 +18,6 @@ node_modules/
 .env
 .env.local
 
+# Raw backup videos (> 100MB)
+*(original raw)*
+
