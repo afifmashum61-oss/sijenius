@@ -115,7 +115,7 @@ function render(){
   if(!st.gems.has(n))h+=`<button class="gem" style="${at(g[0],g[1])}" onclick="gem(${n})" aria-label="Kumpulkan wawasan">💎</button>`;
  }
  else if(n===7||n===8){
-  h+=`<div class="dim"></div><div class="panel" id="panel"></div><div class="say" id="say"></div><div class="mas ava" id="mas"></div><div class="nb"><button class="b" onclick="go(2)">🏠 Beranda</button><button class="b y" onclick="go(${n-1})">◀ Kembali</button><button class="b g" onclick="go(${n+1})">Lanjut ▶</button></div>`;
+  h+=`<div class="dim"></div><div class="panel" id="panel"></div><div class="say" id="say"></div><div class="mas ava" id="mas"></div><div class="nb"><button class="b" onclick="go(2)">🏠 Beranda</button><button class="b y" onclick="go(${n-1})">◀ Kembali</button><button class="b g" onclick="${n===8?'quizNext()':`go(${n+1})`}">Lanjut ▶</button></div>`;
  }
  else if(n===9){
   hs(142,450,306,70,'go(2)');hs(512,450,305,70,'reset()');
@@ -158,8 +158,13 @@ const Q=[
 ['Apa fungsi utama Bayt al-Hikmah pada masa Daulah Abbasi?',['Pusat perdagangan internasional','Pusat ilmu pengetahuan dan penerjemahan','Tempat pelatihan militer','Balai pertemuan politik'],1,'Bayt al-Hikmah menjadi pusat ilmu dan penerjemahan karya penting dari berbagai bahasa.'],
 ['Buku Al-Qanun fi al-Tibb karya Ibnu Sina membahas bidang apa?',['Astronomi','Hukum dagang','Kedokteran','Arsitektur'],2,'Al-Qanun fi al-Tibb adalah karya besar Ibnu Sina di bidang kedokteran.'],
 ['Sikap apa yang dicontohkan melalui Tutor Sebaya?',['Bersaing tanpa peduli teman','Kolaborasi dan empati','Belajar sendirian saja','Menunda belajar'],1,'Adab menuntut ilmu mencakup kolaborasi dan empati, seperti pada Tutor Sebaya.']];
+function quizNext(){
+ if(st.quiz){go(9);return}
+ if(!st.lock){toast('Pilih salah satu jawaban terlebih dahulu! 💡');return}
+ st.qi++;quiz();
+}
 function quiz(){
- const p=$('panel');
+ const p=$('panel');if(p)p.scrollTop=0;
  if(st.qi>=Q.length){
   const c=st.cur;st.best=Math.max(st.best,c);st.quiz=true;hud();say(c>=3?'Hebat sekali!':'Ayo coba lagi!',c>=3);
   p.innerHTML=`<h2>Evaluasi selesai!</h2><p style="font-size:2.2cqw">Skor kamu: <b>${c} / 5</b> &nbsp;${'⭐'.repeat(c)}${'☆'.repeat(5-c)}</p><p>${c===5?'Sempurna! Kamu layak bergelar Si Jenius.':c>=3?'Bagus! Coba lagi untuk skor lebih tinggi, hanya skor terbaik yang dihitung.':'Tidak apa-apa. Pelajari materinya lagi, lalu coba lagi.'}</p><button class="b" onclick="st.qi=0;st.cur=0;quiz()">Coba lagi</button> &nbsp;<button class="b g" onclick="go(9)">Lanjut ke Penutup</button>`;return;
@@ -171,7 +176,8 @@ function ans(i){
  if(st.lock)return;st.lock=1;const q=Q[st.qi],ok=i===q[2];
  if(ok)st.cur++;beep(ok?880:220);say(ok?'Hebat! Jawabanmu benar! 🎉':'Tidak apa-apa, baca penjelasannya ya.',ok);
  document.querySelectorAll('.opt').forEach((b,j)=>{if(j===q[2])b.classList.add('ok');else if(j===i)b.classList.add('bad');b.disabled=true});
- $('fb').innerHTML=`<div class="fb"><b style="color:${ok?'#6dff9c':'#ff8a7a'}">${ok?'✔ Benar!':'✘ Belum tepat.'}</b> ${q[3]}<br><br><button class="b y" onclick="st.qi++;quiz()">${st.qi===4?'Lihat hasil':'Soal berikutnya'}</button></div>`;
+ $('fb').innerHTML=`<div class="fb"><b style="color:${ok?'#6dff9c':'#ff8a7a'}">${ok?'✔ Benar!':'✘ Belum tepat.'}</b> ${q[3]}<br><br><button class="b y" style="display:block;width:100%;font-size:1.7cqw;padding:1cqw 1.8cqw;margin-top:1cqw;cursor:pointer;font-weight:bold;box-shadow:0 0 1.2cqw rgba(245,197,66,.5);" onclick="quizNext()">${st.qi===4?'🏆 Lihat Hasil Evaluasi ➔':'Soal Berikutnya ➔'}</button></div>`;
+ const p=$('panel');if(p){setTimeout(()=>{p.scrollTo({top:p.scrollHeight,behavior:'smooth'});},60);}
 }
 stage.style.setProperty('--ava','url('+AVA+')');
 for(let i=0;i<18;i++){const p=document.createElement('i');p.className='pt';p.style.left=Math.random()*100+'%';p.style.animationDuration=(7+Math.random()*8)+'s';p.style.animationDelay=-Math.random()*12+'s';$('fx').appendChild(p)}
