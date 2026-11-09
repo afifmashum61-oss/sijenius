@@ -3184,6 +3184,27 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 
 
 /* Universal Fullscreen Mode for Mobile & Desktop */
+body.game-fs-active {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+}
+body.game-fs-active .wrap {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+body.game-fs-active .game-view-container {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 #gameContainer.is-fullscreen {
   position: fixed !important;
   inset: 0 !important;
@@ -3192,12 +3213,13 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   right: 0 !important;
   bottom: 0 !important;
   width: 100vw !important;
+  width: 100% !important;
   height: 100vh !important;
   height: 100dvh !important;
   max-width: none !important;
   max-height: none !important;
   aspect-ratio: auto !important;
-  z-index: 999999 !important;
+  z-index: 2147483647 !important;
   border-radius: 0 !important;
   border: none !important;
   margin: 0 !important;
@@ -3205,18 +3227,20 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   background: #000000 !important;
 }
 #gameContainer.is-fullscreen iframe {
+  width: 100vw !important;
   width: 100% !important;
-  height: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
   border: none !important;
   display: block !important;
 }
 .game-fs-floating-close {
   display: none;
-  position: absolute;
-  top: calc(14px + env(safe-area-inset-top, 0px));
-  right: 14px;
-  z-index: 1000000;
-  background: rgba(0, 0, 0, 0.78);
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top, 14px));
+  right: max(14px, env(safe-area-inset-right, 14px));
+  z-index: 2147483647;
+  background: rgba(0, 0, 0, 0.82);
   color: #FFFFFF;
   border: 1.5px solid #FDE047;
   border-radius: 999px;
@@ -3238,6 +3262,33 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   background: #DC2626;
   border-color: #FFFFFF;
   transform: scale(1.04);
+}
+
+/* Landscape orientation tip banner in fullscreen mode on mobile */
+.game-fs-rotate-tip {
+  display: none;
+}
+@media (orientation: portrait) and (max-width: 900px) {
+  #gameContainer.is-fullscreen .game-fs-rotate-tip {
+    display: flex !important;
+    position: fixed;
+    bottom: max(16px, env(safe-area-inset-bottom, 16px));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2147483647;
+    background: rgba(11, 61, 46, 0.94);
+    border: 1.5px solid #C9A24B;
+    color: #FFFBEC;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.5);
+    pointer-events: none;
+    align-items: center;
+    gap: 6px;
+  }
 }
 
 </style>
@@ -3804,6 +3855,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
     <div style="display:flex; gap:8px;">
       <button id="gameReloadBtn" class="hero-btn-cta" style="padding:6px 14px; font-size:12.5px;" onclick="reloadGame()">🔄 Mulai Ulang</button>
       <button id="gameFsBtn" class="hero-btn-cta" style="padding:6px 14px; font-size:12.5px;" onclick="toggleGameFullscreen()">⛶ Layar Penuh</button>
+      <a href="Si_Jenius_Petualangan_Dimulai.html" target="_blank" class="hero-btn-cta" style="padding:6px 14px; font-size:12.5px; text-decoration:none; display:inline-flex; align-items:center; gap:5px; background:linear-gradient(180deg,#10B981,#059669); color:#FFFFFF; border:1.5px solid #34D399;">🌐 Buka Mandiri</a>
     </div>
   </div>
 
@@ -3819,6 +3871,7 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 
     <div id="gameContainer" style="position:relative; width:100%; aspect-ratio:16/9; max-height:76vh; border-radius:16px; overflow:hidden; border:3px solid #C9A24B; box-shadow:0 10px 30px rgba(0,0,0,0.25); background:#000;">
       <button id="closeGameFsBtn" class="game-fs-floating-close" onclick="toggleGameFullscreen()" aria-label="Keluar Layar Penuh"><span>✖</span><span>Keluar Layar Penuh</span></button>
+      <div class="game-fs-rotate-tip"><span>🔄</span><span>Putar HP ke posisi mendatar (Landscape)</span></div>
       <iframe id="gameFrame" src="Si_Jenius_Petualangan_Dimulai.html" style="width:100%; height:100%; border:none; display:block;" allow="autoplay; fullscreen; clipboard-write; encrypted-media" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
     </div>
 
@@ -4419,6 +4472,8 @@ function reloadGame() {
 }
 window.reloadGame = reloadGame;
 
+let isNativeFsActive = false;
+
 function toggleGameFullscreen() {
   const box = document.getElementById('gameContainer');
   if (!box) return;
@@ -4427,53 +4482,63 @@ function toggleGameFullscreen() {
   
   if (!isFs) {
     box.classList.add('is-fullscreen');
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('game-fs-active');
+    document.documentElement.classList.add('game-fs-active');
     if (fsBtn) fsBtn.innerHTML = '✖ Keluar Layar Penuh';
     
-    // Try native Fullscreen API if supported (Android Chrome / PC)
+    // Try orientation lock to landscape if supported on mobile
+    try {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch(() => {});
+      }
+    } catch(e) {}
+
+    // Try native Fullscreen API if supported (e.g. Android Chrome / PC)
     try {
       if (box.requestFullscreen) {
-        box.requestFullscreen();
+        box.requestFullscreen().then(() => { isNativeFsActive = true; }).catch(() => {});
       } else if (box.webkitRequestFullscreen) {
         box.webkitRequestFullscreen();
-      } else if (box.msRequestFullscreen) {
-        box.msRequestFullscreen();
+        isNativeFsActive = true;
       }
     } catch (err) {}
   } else {
-    box.classList.remove('is-fullscreen');
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-    if (fsBtn) fsBtn.innerHTML = '⛶ Layar Penuh';
-    
-    try {
-      if (document.fullscreenElement || document.webkitFullscreenElement) {
-        if (document.exitFullscreen) document.exitFullscreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      }
-    } catch (err) {}
+    exitFullscreenMode();
   }
 }
 
-document.addEventListener('fullscreenchange', function() {
+function exitFullscreenMode() {
   const box = document.getElementById('gameContainer');
   const fsBtn = document.getElementById('gameFsBtn');
-  if (!document.fullscreenElement && box && box.classList.contains('is-fullscreen')) {
-    box.classList.remove('is-fullscreen');
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-    if (fsBtn) fsBtn.innerHTML = '⛶ Layar Penuh';
+  if (box) box.classList.remove('is-fullscreen');
+  document.body.classList.remove('game-fs-active');
+  document.documentElement.classList.remove('game-fs-active');
+  if (fsBtn) fsBtn.innerHTML = '⛶ Layar Penuh';
+
+  try {
+    if (screen.orientation && screen.orientation.unlock) {
+      screen.orientation.unlock();
+    }
+  } catch(e) {}
+
+  try {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    }
+  } catch (err) {}
+  isNativeFsActive = false;
+}
+
+// Only react to native exit if native fullscreen was actually active!
+document.addEventListener('fullscreenchange', function() {
+  if (!document.fullscreenElement && isNativeFsActive) {
+    exitFullscreenMode();
   }
 });
 document.addEventListener('webkitfullscreenchange', function() {
-  const box = document.getElementById('gameContainer');
-  const fsBtn = document.getElementById('gameFsBtn');
-  if (!document.webkitFullscreenElement && box && box.classList.contains('is-fullscreen')) {
-    box.classList.remove('is-fullscreen');
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-    if (fsBtn) fsBtn.innerHTML = '⛶ Layar Penuh';
+  if (!document.webkitFullscreenElement && isNativeFsActive) {
+    exitFullscreenMode();
   }
 });
 window.toggleGameFullscreen = toggleGameFullscreen;
