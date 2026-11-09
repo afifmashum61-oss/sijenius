@@ -174,22 +174,38 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   margin-bottom: 14px;
 }
 .rpp-meta-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+  max-width: 820px;
+  margin: 0 auto;
 }
 .rpp-meta-pill {
-  background: rgba(255, 251, 236, 0.16);
-  border: 1px solid rgba(235, 210, 143, 0.55);
-  padding: 6px 14px;
+  background: rgba(255, 251, 236, 0.15);
+  border: 1px solid rgba(235, 210, 143, 0.5);
+  padding: 8px 16px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #FFFBEC;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+@media (max-width: 680px) {
+  .rpp-meta-tags {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .rpp-meta-pill {
+    font-size: 12.5px;
+    padding: 7px 12px;
+  }
 }
 .rpp-actions-bar {
   display: flex;
@@ -253,10 +269,10 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
   margin-bottom: 12px;
 }
 .rpp-group-label {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 800;
-  color: #5C4718;
-  margin-bottom: 6px;
+  color: #0B3D2E;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -264,31 +280,39 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 .rpp-chip-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
+  align-items: center;
 }
 .rpp-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 13px;
-  border-radius: 10px;
-  font-size: 13px;
+  gap: 7px;
+  padding: 7px 15px;
+  border-radius: 999px;
+  font-size: 13.5px;
   font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease;
 }
 .rpp-chip-emerald {
   background: #E8F5E9;
   color: #0B3D2E;
-  border: 1px solid #A5D6A7;
+  border: 1.5px solid #81C784;
+}
+.rpp-chip-blue {
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1.5px solid #93C5FD;
 }
 .rpp-chip-gold {
-  background: #FFF3D6;
-  color: #7A5200;
-  border: 1px solid #D9BE70;
+  background: #FFF9E6;
+  color: #854D0E;
+  border: 1.5px solid #FDE047;
 }
 .rpp-chip-rose {
   background: #FDF2F8;
   color: #9D174D;
-  border: 1px solid #FBCFE8;
+  border: 1.5px solid #F9A8D4;
 }
 
 .rpp-goal-box {
