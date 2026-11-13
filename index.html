@@ -667,6 +667,60 @@ canvas#pf{width:100%;max-width:640px;background:#0a2e23;border:3px solid var(--a
 /* =====================================
    KOMIK SEJARAH (ADAPTIVE PORTRAIT READER)
    ===================================== */
+/* =========================================================
+   VIDEO PETUALANGAN & PODCAST STYLES (CLEAN & SIMPLE)
+   ========================================================= */
+.vp-switcher-wrap {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(201, 162, 75, 0.4);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+.vp-tab-btn {
+  background: transparent;
+  border: none;
+  color: #E2E8F0;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+  user-select: none;
+  text-decoration: none;
+  outline: none;
+}
+.vp-tab-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+.vp-tab-btn.active {
+  background: #C9A24B;
+  color: #06261C !important;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+@media (max-width: 480px) {
+  .vp-switcher-wrap {
+    width: 100%;
+    display: flex;
+  }
+  .vp-tab-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 12.5px;
+  }
+}
+
 .comic-container {
   display: flex;
   flex-direction: column;
@@ -4315,14 +4369,26 @@ body.game-fs-active .game-view-container {
 <section class="screen" id="vp">
   <button class="back" data-go="menu">⬅ Kembali ke peta</button>
   <div class="panel dark" style="background: linear-gradient(180deg, #0B3D2E 0%, #06261C 100%); border: 2.5px solid #C9A24B; border-radius: 20px; padding: 22px; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
       <div>
-        <h2 style="font-family:'Lilita One',cursive; font-size:26px; color:#EBD28F; margin:0; letter-spacing:0.5px;">🎬 Video Petualangan: Kejayaan Daulah Abbasiyah</h2>
-        <p style="color:#FFFBEC; font-size:14px; margin:4px 0 0; opacity:0.92;">Saksikan kisah keemasan Daulah Abbasiyah &amp; majelis ilmu Baitul Hikmah!</p>
+        <h2 style="font-family:'Lilita One',cursive; font-size:26px; color:#EBD28F; margin:0; letter-spacing:0.5px;" id="vpTitle">🎬 Video 1: Petualangan Kejayaan Daulah Abbasiyah</h2>
+        <p style="color:#FFFBEC; font-size:14px; margin:4px 0 0; opacity:0.92;" id="vpSubtitle">Saksikan kisah keemasan Daulah Abbasiyah &amp; majelis ilmu Baitul Hikmah!</p>
       </div>
-      <span style="background:rgba(201,162,75,0.2); border:1px solid #C9A24B; color:#EBD28F; font-size:12.5px; font-weight:800; padding:5px 12px; border-radius:999px;">
-        ⭐ Media Edukasi
+      <span style="background:rgba(201,162,75,0.2); border:1px solid #C9A24B; color:#EBD28F; font-size:12.5px; font-weight:800; padding:5px 12px; border-radius:999px;" id="vpBadge">
+        ⭐ Animasi Petualangan
       </span>
+    </div>
+
+    <!-- Video Playlist Switcher (Simple Segmented Capsule) -->
+    <div style="display:flex; justify-content:center; margin-bottom:16px;">
+      <div class="vp-switcher-wrap" role="tablist">
+        <button id="vpTab0" class="vp-tab-btn active" onclick="switchAdvVideo(0)">
+          <span>🎬</span> <span>Video 1: Petualangan</span>
+        </button>
+        <button id="vpTab1" class="vp-tab-btn" onclick="switchAdvVideo(1)">
+          <span>🎙️</span> <span>Video 2: Podcast</span>
+        </button>
+      </div>
     </div>
 
     <!-- Video Theater Box -->
@@ -4331,14 +4397,14 @@ body.game-fs-active .game-view-container {
     </div>
 
     <!-- Sinopsis & Ringkasan Cerita -->
-    <div style="background:rgba(255,251,236,0.08); border:1.5px solid rgba(201,162,75,0.4); border-radius:14px; padding:16px 20px; color:#FFFBEC; line-height:1.65; font-size:13.5px; margin-bottom:0;">
-      <h3 style="font-family:'Lilita One',cursive; font-size:18px; color:#EBD28F; margin:0 0 8px; display:flex; align-items:center; gap:8px;">
+    <div id="vpInfoBox" style="background:rgba(255,251,236,0.08); border:1.5px solid rgba(201,162,75,0.4); border-radius:14px; padding:16px 20px; color:#FFFBEC; line-height:1.65; font-size:13.5px; margin-bottom:0;">
+      <h3 style="font-family:'Lilita One',cursive; font-size:18px; color:#EBD28F; margin:0 0 8px; display:flex; align-items:center; gap:8px;" id="vpDescTitle">
         <span>🧭</span> Sinopsis Petualangan:
       </h3>
-      <p style="margin:0 0 10px;">
+      <p style="margin:0 0 10px;" id="vpDescText">
         Melintasi aliran Sungai Tigris, kita tiba di kota bundar <b>Baghdad</b> pada masa Khalifah <b>Harun Ar-Rasyid</b> dan <b>Al-Ma'mun</b>. Di pusat kota, berdiri megah perpustakaan dan lembaga riset terbesar di dunia: <b>Baitul Hikmah</b>. Para cendekiawan dari berbagai penjuru dunia berduyun-duyun menerjemahkan, meneliti, dan mengembangkan sains, kedokteran, matematika, serta astronomi demi peradaban umat manusia.
       </p>
-      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:12px; font-weight:700;">
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:12px; font-weight:700;" id="vpTagsContainer">
         <span style="background:#0B3D2E; border:1px solid #145a43; padding:4px 10px; border-radius:8px; color:#EBD28F;">🏛️ Kota Bundar Baghdad (762 M)</span>
         <span style="background:#0B3D2E; border:1px solid #145a43; padding:4px 10px; border-radius:8px; color:#EBD28F;">📚 Baitul Hikmah</span>
         <span style="background:#0B3D2E; border:1px solid #145a43; padding:4px 10px; border-radius:8px; color:#EBD28F;">💡 Gerakan Cinta Ilmu</span>
@@ -4535,14 +4601,36 @@ let AC,mute=false;const snd=(f,d=.12)=>{if(mute)return;try{AC=AC||new AudioConte
 const SPK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/>',ON=SPK+'<path d="M15.5 8.5a5 5 0 0 1 0 7l-1.2-1.2a3.3 3.3 0 0 0 0-4.6zM18 6a8.5 8.5 0 0 1 0 12l-1.2-1.2a6.8 6.8 0 0 0 0-9.6z" opacity=".9"/></svg>',OFF=SPK+'<path d="M16 9.4 17.4 8l2.1 2.1L21.6 8 23 9.4l-2.1 2.1L23 13.6 21.6 15l-2.1-2.1L17.4 15 16 13.6l2.1-2.1z"/></svg>';
 $("#mute").innerHTML=ON;$("#mute").onclick=()=>{mute=!mute;$("#mute").innerHTML=mute?OFF:ON};
 document.addEventListener("click",()=>snd(520,.05));
+function pauseGameAudio(){
+  const gf=$("#gameFrame");
+  if(gf&&gf.contentWindow){
+    try{
+      if(typeof gf.contentWindow.pauseGameMusic==="function")gf.contentWindow.pauseGameMusic();
+      if(gf.contentWindow.ac&&typeof gf.contentWindow.ac.suspend==="function")gf.contentWindow.ac.suspend();
+      gf.contentWindow.postMessage("pauseMusic","*");
+    }catch(e){}
+  }
+}
+function resumeGameAudio(){
+  const gf=$("#gameFrame");
+  if(gf&&gf.contentWindow){
+    try{
+      if(typeof gf.contentWindow.resumeGameMusic==="function")gf.contentWindow.resumeGameMusic();
+      if(gf.contentWindow.ac&&typeof gf.contentWindow.ac.resume==="function"&&gf.contentWindow.mu)gf.contentWindow.ac.resume();
+      gf.contentWindow.postMessage("resumeMusic","*");
+    }catch(e){}
+  }
+}
+window.pauseGameAudio=pauseGameAudio;
+window.resumeGameAudio=resumeGameAudio;
+document.addEventListener("visibilitychange",()=>{if(document.hidden)pauseGameAudio()});
+
 // navigasi
 function go(id){$$(".screen").forEach(s=>s.classList.remove("on"));$("#"+id).classList.add("on");scrollTo(0,0);if(id!="pl"){
   stopPF();
-  const gf=$("#gameFrame");
-  if(gf&&gf.contentWindow){try{if(gf.contentWindow.ac)gf.contentWindow.ac.suspend()}catch(e){}}
+  pauseGameAudio();
 }else{
-  const gf=$("#gameFrame");
-  if(gf&&gf.contentWindow){try{if(gf.contentWindow.ac&&gf.contentWindow.mu)gf.contentWindow.ac.resume()}catch(e){}}
+  resumeGameAudio();
 }
 const adv=$("#advVideo");if(adv)adv.pause();const sv=$("#slideVideoPlayer");if(sv)sv.pause();if(id=="menu")renderMenu()}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g)go(g.dataset.go);const c=e.target.closest("[data-cert]");if(c)cert(c.dataset.cert)});
@@ -4719,6 +4807,86 @@ function prevSlide() { slide(curSlideIdx - 1); }
 function nextSlide() { slide(curSlideIdx + 1); }
 window.prevSlide = prevSlide;
 window.nextSlide = nextSlide;
+
+const ADV_VIDEOS = [
+  {
+    title: "🎬 Video 1: Petualangan Kejayaan Daulah Abbasiyah",
+    subtitle: "Saksikan animasi petualangan menelusuri kota Baghdad & kemegahan Baitul Hikmah!",
+    badge: "⭐ Animasi Petualangan",
+    src: "petualangan_abbasiyah.mp4",
+    poster: "video_petualangan_poster.jpg",
+    descTitle: "Sinopsis Petualangan:",
+    descText: "Melintasi aliran Sungai Tigris, kita tiba di kota bundar <b>Baghdad</b> pada masa Khalifah <b>Harun Ar-Rasyid</b> dan <b>Al-Ma'mun</b>. Di pusat kota, berdiri megah perpustakaan dan lembaga riset terbesar di dunia: <b>Baitul Hikmah</b>. Para cendekiawan dari berbagai penjuru dunia berduyun-duyun menerjemahkan, meneliti, dan mengembangkan sains, kedokteran, matematika, serta astronomi demi peradaban umat manusia.",
+    tags: [
+      "🏛️ Kota Bundar Baghdad (762 M)",
+      "📚 Baitul Hikmah",
+      "💡 Gerakan Cinta Ilmu"
+    ]
+  },
+  {
+    title: "🎙️ Video 2: Podcast Bincang Inspirasi Daulah Abbasiyah",
+    subtitle: "Kupasan mendalam bincang podcast sejarah peradaban Islam & teladan ilmuwan Muslim!",
+    badge: "🎙️ Podcast Edukasi",
+    src: "podcast.mp4",
+    poster: "",
+    descTitle: "Sinopsis Podcast Inspiratif:",
+    descText: "Podcast edukasi yang mengupas tuntas masa keemasan <b>Daulah Abbasiyah</b> sebagai pusat peradaban dan mercusuar ilmu pengetahuan dunia. Bersama narasumber inspiratif, kita akan mendalami sejarah kepemimpinan Khalifah <b>Harun Ar-Rasyid</b>, peran strategis <b>Baitul Hikmah</b>, kecerdasan para ilmuwan Muslim (seperti Al-Khawarizmi, Ibnu Sina, dan Ar-Razi), serta bagaimana mengintegrasikan nilai-nilai luhur <b>Kurikulum Berbasis Cinta (KBC)</b> dalam kehidupan belajar kita sehari-hari.",
+    tags: [
+      "🎙️ Podcast Sejarah Abbasiyah (06:48)",
+      "📜 Bincang Hikmah & Peradaban",
+      "💎 Integrasi Kurikulum Berbasis Cinta",
+      "🌟 Keteladanan Intelektual Muslim"
+    ]
+  }
+];
+
+let curAdvVideoIdx = 0;
+
+function switchAdvVideo(idx) {
+  if (idx < 0 || idx >= ADV_VIDEOS.length) return;
+  curAdvVideoIdx = idx;
+  const v = document.getElementById("advVideo");
+  if (v) {
+    v.pause();
+    v.src = ADV_VIDEOS[idx].src;
+    if (ADV_VIDEOS[idx].poster) {
+      v.poster = ADV_VIDEOS[idx].poster;
+    } else {
+      v.removeAttribute("poster");
+    }
+    v.load();
+  }
+
+  // Update tabs
+  for (let i = 0; i < ADV_VIDEOS.length; i++) {
+    const tab = document.getElementById("vpTab" + i);
+    if (tab) {
+      if (i === idx) tab.classList.add("active");
+      else tab.classList.remove("active");
+    }
+  }
+
+  // Update details
+  const item = ADV_VIDEOS[idx];
+  const elTitle = document.getElementById("vpTitle");
+  if (elTitle) elTitle.textContent = item.title;
+  const elSubtitle = document.getElementById("vpSubtitle");
+  if (elSubtitle) elSubtitle.textContent = item.subtitle;
+  const elBadge = document.getElementById("vpBadge");
+  if (elBadge) elBadge.textContent = item.badge;
+  const elDescTitle = document.getElementById("vpDescTitle");
+  if (elDescTitle) elDescTitle.innerHTML = "<span>🧭</span> " + item.descTitle;
+  const elDescText = document.getElementById("vpDescText");
+  if (elDescText) elDescText.innerHTML = item.descText;
+
+  const elTags = document.getElementById("vpTagsContainer");
+  if (elTags) {
+    elTags.innerHTML = item.tags.map(t => 
+      '<span style="background:#0B3D2E; border:1px solid #145a43; padding:4px 10px; border-radius:8px; color:#EBD28F;">' + t + '</span>'
+    ).join("");
+  }
+}
+window.switchAdvVideo = switchAdvVideo;
 
 function toggleSlideFull() {
   const stage = document.getElementById("slideStage");

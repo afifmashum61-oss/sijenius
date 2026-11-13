@@ -287,6 +287,14 @@ function tick(){
  }
 }
 function music(){AC();if(ac.state==='suspended')ac.resume();mg.gain.value=mu?.55:0;if(!tm){nx=ac.currentTime+.1;tm=setInterval(tick,100)}}
+function pauseGameMusic(){if(ac&&typeof ac.suspend==='function'&&ac.state==='running'){try{ac.suspend()}catch(e){}}if(mg&&mg.gain){try{mg.gain.value=0}catch(e){}}}
+function resumeGameMusic(){if(mu&&ac&&typeof ac.resume==='function'&&ac.state==='suspended'){try{ac.resume()}catch(e){}}if(mu&&mg&&mg.gain){try{mg.gain.value=0.55}catch(e){}}}
+window.pauseGameMusic=pauseGameMusic;
+window.resumeGameMusic=resumeGameMusic;
+window.music=music;
+Object.defineProperty(window,'ac',{get:()=>ac,configurable:true});
+Object.defineProperty(window,'mu',{get:()=>mu,set:v=>{mu=v;},configurable:true});
+window.addEventListener('message',e=>{if(e.data==='pauseMusic'||(e.data&&e.data.action==='pauseMusic')){pauseGameMusic()}else if(e.data==='resumeMusic'||(e.data&&e.data.action==='resumeMusic')){resumeGameMusic()}});
 $('mus').onclick=()=>{mu=!mu;$('mus').textContent=mu?'🔊':'🔇';if(mu)music();else if(mg)mg.gain.value=0};
 document.addEventListener('pointerdown',()=>{if(mu)music()},{once:true});
 document.addEventListener('visibilitychange',()=>{if(!ac)return;if(document.hidden)ac.suspend();else if(mu)ac.resume()});
