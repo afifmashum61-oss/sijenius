@@ -16,6 +16,8 @@ const MIME_TYPES = {
   '.mp3': 'audio/mpeg',
   '.wav': 'audio/wav',
   '.mp4': 'video/mp4',
+  '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  '.doc': 'application/msword',
 };
 
 const server = http.createServer((req, res) => {
@@ -83,12 +85,16 @@ const server = http.createServer((req, res) => {
   }
 
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-  
-  res.writeHead(200, {
+  const headers = {
     'Content-Type': contentType,
     'Accept-Ranges': 'bytes',
     'Content-Length': fileSize
-  });
+  };
+  if (ext === '.docx' || ext === '.doc') {
+    headers['Content-Disposition'] = `attachment; filename="${path.basename(filePath)}"`;
+  }
+  
+  res.writeHead(200, headers);
   fs.createReadStream(filePath).pipe(res);
 });
 
