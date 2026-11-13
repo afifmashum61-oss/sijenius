@@ -4855,6 +4855,13 @@ function switchAdvVideo(idx) {
       v.removeAttribute("poster");
     }
     v.load();
+    // Auto-play secara aman setelah user memilih tab video
+    const playPromise = v.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Browser autoplay policy menangani jika butuh tap tombol play kontrol video
+      });
+    }
   }
 
   // Update tabs
