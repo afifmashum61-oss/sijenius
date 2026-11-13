@@ -51,7 +51,7 @@ const server = http.createServer((req, res) => {
   }
   let reqUrl = decodeURI(req.url.split('?')[0]);
   if (reqUrl === '/') {
-    reqUrl = '/code_abbasiyah_edit_oke.html';
+    reqUrl = fs.existsSync(path.join(__dirname, 'index.html')) ? '/index.html' : '/code_abbasiyah_edit_oke.html';
   }
   const filePath = path.join(__dirname, reqUrl);
   

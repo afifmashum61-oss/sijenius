@@ -21,3 +21,6 @@ node_modules/
 # Raw backup videos (> 100MB)
 *(original raw)*
 
+# Scratch temporary test scripts
+scratch/
+
