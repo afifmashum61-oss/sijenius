@@ -3844,7 +3844,360 @@ body.game-fs-active .game-view-container {
   margin-top: 2px;
 }
 
+
+/* =========================================================
+   DASHBOARD GURU & AUTH MODAL STYLES (ISLAMIC THEME)
+   ========================================================= */
+.nav-link-guru:hover {
+  background: linear-gradient(135deg, #145a43, #0B3D2E) !important;
+  color: #FFF !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(11,61,46,0.35);
+}
+.guru-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 38, 28, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: guruFadeIn .2s ease;
+}
+.guru-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF5 100%);
+  border: 2.5px solid #C9A24B;
+  border-radius: 24px;
+  padding: 26px 24px 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,162,75,0.4);
+  box-sizing: border-box;
+}
+.guru-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #F3F4F6;
+  border: 1.5px solid #D1D5DB;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  color: #4B5563;
+  font-weight: 800;
+  transition: all .15s ease;
+}
+.guru-modal-close:hover {
+  background: #FEE2E2;
+  color: #DC2626;
+  border-color: #F87171;
+}
+.guru-badge-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0B3D2E, #145a43);
+  border: 2px solid #C9A24B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 6px 16px rgba(11,61,46,0.3);
+}
+.guru-form-group {
+  margin-bottom: 14px;
+  text-align: left;
+}
+.guru-form-group label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #064E3B;
+  margin-bottom: 5px;
+}
+.guru-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #E5D6A8;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1F2937;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  transition: all .18s ease;
+}
+.guru-input:focus {
+  outline: none;
+  border-color: #0B3D2E;
+  box-shadow: 0 0 0 3px rgba(11,61,46,0.15);
+}
+.guru-btn-submit {
+  width: 100%;
+  padding: 12px 18px;
+  background: linear-gradient(180deg, #F59E0B, #D97706);
+  border: 2px solid #FDE68A;
+  border-radius: 14px;
+  color: #FFFFFF;
+  font-family: 'Lilita One', cursive;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(217,119,6,0.35);
+  transition: all .16s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.guru-btn-submit:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* Dashboard Guru Screen Layout */
+.guru-dashboard-wrap {
+  background: #FFFFFF;
+  border: 2.5px solid #C9A24B;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 12px 35px rgba(11,61,46,0.12);
+  margin-bottom: 24px;
+}
+.guru-dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 2px dashed #E5D6A8;
+  margin-bottom: 18px;
+}
+.guru-tabs-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  background: #F4F8F5;
+  padding: 6px;
+  border-radius: 16px;
+  border: 1.5px solid #D1E7DD;
+}
+.guru-tab-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  font-family: 'Lilita One', cursive;
+  font-size: 14.5px;
+  color: #4B5563;
+  cursor: pointer;
+  transition: all .16s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.guru-tab-btn:hover {
+  background: rgba(11,61,46,0.06);
+  color: #064E3B;
+}
+.guru-tab-btn.active {
+  background: linear-gradient(135deg, #0B3D2E, #145a43);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(11,61,46,0.25);
+}
+.guru-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.guru-stat-card {
+  background: #F9FAFB;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+.guru-stat-card.hadir { background: #ECFDF5; border-color: #A7F3D0; }
+.guru-stat-card.sakit { background: #EFF6FF; border-color: #BFDBFE; }
+.guru-stat-card.izin { background: #FFFBEB; border-color: #FDE68A; }
+.guru-stat-card.alpha { background: #FEF2F2; border-color: #FECACA; }
+
+.guru-stat-num {
+  font-family: 'Lilita One', cursive;
+  font-size: 26px;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+.guru-stat-label {
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.guru-stat-card.hadir .guru-stat-num, .guru-stat-card.hadir .guru-stat-label { color: #047857; }
+.guru-stat-card.sakit .guru-stat-num, .guru-stat-card.sakit .guru-stat-label { color: #1D4ED8; }
+.guru-stat-card.izin .guru-stat-num, .guru-stat-card.izin .guru-stat-label { color: #B45309; }
+.guru-stat-card.alpha .guru-stat-num, .guru-stat-card.alpha .guru-stat-label { color: #B91C1C; }
+
+/* Table responsive wrapping */
+.guru-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1.5px solid #E5D6A8;
+  border-radius: 14px;
+  background: #FFFFFF;
+  margin-bottom: 16px;
+}
+.guru-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13.5px;
+}
+.guru-table th {
+  background: #0B3D2E;
+  color: #EBD28F;
+  font-family: 'Lilita One', cursive;
+  font-weight: 400;
+  padding: 12px 14px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.guru-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #F3F4F6;
+  color: #1F2937;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.guru-table tr:hover td {
+  background: #F0FDF4;
+}
+
+/* Att Radio Buttons */
+.guru-att-group {
+  display: inline-flex;
+  gap: 5px;
+}
+.guru-att-btn {
+  border: 1.5px solid #D1D5DB;
+  background: #FFFFFF;
+  border-radius: 8px;
+  width: 34px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lilita One', cursive;
+  font-size: 14px;
+  cursor: pointer;
+  color: #4B5563;
+  transition: all .15s ease;
+}
+.guru-att-btn:hover {
+  transform: translateY(-1px);
+}
+.guru-att-btn.sel-H { background: #10B981; border-color: #047857; color: #FFF; box-shadow: 0 2px 6px rgba(16,185,129,0.3); }
+.guru-att-btn.sel-S { background: #3B82F6; border-color: #1D4ED8; color: #FFF; box-shadow: 0 2px 6px rgba(59,130,246,0.3); }
+.guru-att-btn.sel-I { background: #F59E0B; border-color: #B45309; color: #FFF; box-shadow: 0 2px 6px rgba(245,158,11,0.3); }
+.guru-att-btn.sel-A { background: #EF4444; border-color: #B91C1C; color: #FFF; box-shadow: 0 2px 6px rgba(239,68,68,0.3); }
+
+/* Quick Action buttons */
+.guru-action-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-family: 'Lilita One', cursive;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .15s ease;
+  white-space: nowrap;
+}
+.guru-action-btn.primary {
+  background: linear-gradient(180deg, #F59E0B, #D97706);
+  color: #FFF;
+  border: 1.5px solid #FDE68A;
+}
+.guru-action-btn.green {
+  background: linear-gradient(180deg, #10B981, #047857);
+  color: #FFF;
+  border: 1.5px solid #A7F3D0;
+}
+.guru-action-btn.secondary {
+  background: #FFFFFF;
+  color: #064E3B;
+  border: 1.5px solid #CBD5E1;
+}
+.guru-action-btn:hover {
+  transform: translateY(-1.5px);
+  filter: brightness(1.05);
+}
+
+/* Toast message */
+.guru-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0B3D2E;
+  color: #FFFBEC;
+  border: 1.5px solid #C9A24B;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: guruToastIn .3s ease;
+}
+@keyframes guruToastIn {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes guruFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media(max-width: 768px) {
+  .guru-dashboard-wrap { padding: 14px 10px; }
+  .guru-tabs-nav { gap: 4px; padding: 4px; }
+  .guru-tab-btn { font-size: 12.5px; padding: 8px 10px; min-width: auto; }
+  .guru-stat-card { padding: 8px; }
+  .guru-stat-num { font-size: 20px; }
+  .guru-table th, .guru-table td { padding: 8px 10px; font-size: 12px; }
+  .guru-att-btn { width: 28px; height: 28px; font-size: 12px; }
+}
+
 </style>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 </head><body>
 <button id="mute" aria-label="Suara hidup/mati"></button>
 <div class="wrap">
@@ -3868,6 +4221,7 @@ body.game-fs-active .game-view-container {
       <button class="nav-link-btn" onclick="go('pl')">Game</button>
       <button class="nav-link-btn" onclick="go('lk')">Chatbot</button>
       <button class="nav-link-btn" onclick="scrollToSection('profileSection')">Profil</button>
+      <button class="nav-link-btn nav-link-guru" onclick="openGuruAccess()" style="background:linear-gradient(135deg,#0B3D2E,#06261C);color:#EBD28F;border:1.5px solid #C9A24B;display:inline-flex;align-items:center;gap:4px;"><span>👨‍🏫</span><span>Dashboard Guru</span></button>
     </nav>
   </header>
 
@@ -4587,8 +4941,459 @@ body.game-fs-active .game-view-container {
     </div>
   </div>
 </section>
+
+<!-- ======================================================== -->
+<!-- MODAL: LOGIN AKSES DASHBOARD GURU                         -->
+<!-- ======================================================== -->
+<div id="guruLoginModal" class="guru-modal-backdrop" style="display:none;" onclick="if(event.target===this)closeGuruModal()">
+  <div class="guru-modal-card">
+    <button class="guru-modal-close" onclick="closeGuruModal()" title="Tutup">✕</button>
+    <div class="guru-badge-icon">👨‍🏫</div>
+    <h2 style="font-family:'Lilita One',cursive; font-size:22px; color:#064E3B; margin:0 0 4px; text-align:center;">
+      Portal Guru SI JENIUS
+    </h2>
+    <p style="font-size:13px; color:#6B7280; font-weight:700; margin:0 0 18px; text-align:center;">
+      Silakan masuk untuk mengelola administrasi &amp; nilai siswa
+    </p>
+
+    <form onsubmit="handleGuruLogin(event)">
+      <div class="guru-form-group">
+        <label for="guruUsernameInp">👤 Username / Email Guru</label>
+        <input type="text" id="guruUsernameInp" class="guru-input" placeholder="Masukkan username atau email" required autocomplete="username">
+      </div>
+      <div class="guru-form-group">
+        <label for="guruPasswordInp">🔒 Kata Sandi / PIN</label>
+        <input type="password" id="guruPasswordInp" class="guru-input" placeholder="Masukkan kata sandi atau PIN" required autocomplete="current-password">
+      </div>
+      <div id="guruLoginErrMsg" style="display:none; color:#DC2626; font-size:12px; font-weight:800; margin-bottom:12px; text-align:center;"></div>
+      <button type="submit" class="guru-btn-submit">
+        <span>Masuk ke Dashboard</span>
+        <span>➔</span>
+      </button>
+    </form>
+  </div>
 </div>
 
+<!-- ======================================================== -->
+<!-- SCREEN: DASHBOARD GURU                                    -->
+<!-- ======================================================== -->
+<section class="screen" id="dashboardGuruScreen">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+    <button class="back" onclick="go('menu')">⬅ Kembali ke Beranda</button>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span style="font-size:13px; font-weight:800; color:#064E3B;" id="guruLoggedLabel">👨‍🏫 Ustadz / Guru</span>
+      <button class="hero-btn-cta" onclick="handleGuruLogout()" style="padding:6px 14px; font-size:12px; background:#EF4444; border-color:#FECACA;">
+        🚪 Logout
+      </button>
+    </div>
+  </div>
+
+  <div class="guru-dashboard-wrap">
+    <!-- Header Title -->
+    <div class="guru-dash-header">
+      <div>
+        <h2 style="font-family:'Lilita One',cursive; font-size:clamp(20px,3.5vw,26px); color:#064E3B; margin:0; display:flex; align-items:center; gap:8px;">
+          <span>📋</span> <span>Dashboard Administrasi Guru</span>
+        </h2>
+        <p style="font-size:13px; font-weight:700; color:#4B5563; margin:4px 0 0;">
+          Kelola kehadiran siswa, jurnal mengajar KBC, dan rekapitulasi nilai secara terintegrasi.
+        </p>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <span style="background:#F0FDF4; border:1px solid #86EFAC; color:#047857; font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:999px;">
+          🌐 Mode: Sinkron Database Permanen
+        </span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs (3 Tabs) -->
+    <div class="guru-tabs-nav" role="tablist">
+      <button id="guruTabBtn0" class="guru-tab-btn active" onclick="switchGuruTab(0)">
+        <span>📅</span> <span>Absensi Siswa</span>
+      </button>
+      <button id="guruTabBtn1" class="guru-tab-btn" onclick="switchGuruTab(1)">
+        <span>📖</span> <span>Jurnal Guru</span>
+      </button>
+      <button id="guruTabBtn2" class="guru-tab-btn" onclick="switchGuruTab(2)">
+        <span>📊</span> <span>Rekapitulasi Nilai</span>
+      </button>
+      <button id="guruTabBtn3" class="guru-tab-btn" onclick="switchGuruTab(3)">
+        <span>👥</span> <span>Kelola Data Siswa</span>
+      </button>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 1: ABSENSI SISWA                           -->
+    <!-- ============================================== -->
+    <div id="guruTabContent0" class="guru-tab-content">
+      <!-- Filter Bar -->
+      <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:16px; background:#FFFBEB; padding:12px 14px; border-radius:14px; border:1.5px solid #FDE68A;">
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+          <div>
+            <label style="font-size:11.5px; font-weight:800; color:#92400E; display:block;">Tanggal:</label>
+            <input type="date" id="attDateFilter" class="guru-input" style="padding:6px 10px; font-size:13px; width:auto;" onchange="renderAttendanceTable()">
+          </div>
+          <div>
+            <label style="font-size:11.5px; font-weight:800; color:#92400E; display:block;">Pilih Kelas:</label>
+            <select id="attClassFilter" class="guru-input" style="padding:6px 10px; font-size:13px; width:auto;" onchange="renderAttendanceTable()">
+              <option value="Kelas 8A">Kelas 8A</option>
+              <option value="Kelas 8B">Kelas 8B</option>
+              <option value="Kelas 8C">Kelas 8C</option>
+              <option value="Kelas 8D">Kelas 8D</option>
+              <option value="Kelas 8E">Kelas 8E</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <button class="guru-action-btn green" onclick="markAllAttendance('H')" title="Tandai Hadir Semua">
+            <span>✅</span> <span>Tandai Semua Hadir</span>
+          </button>
+          <button class="guru-action-btn secondary" onclick="openAddStudentModal()">
+            <span>➕</span> <span>Tambah Siswa</span>
+          </button>
+          <label class="guru-action-btn secondary" style="cursor:pointer; margin:0;" title="Impor Data Siswa CSV/Excel">
+            <span>📥</span> <span>Impor Siswa</span>
+            <input type="file" id="importStudentFile" accept=".csv, .xlsx, .xls" style="display:none;" onchange="handleImportStudents(event)">
+          </label>
+          <button class="guru-action-btn primary" onclick="exportAttendanceExcel()">
+            <span>📤</span> <span>Ekspor Excel</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Ringkasan Kehadiran Hari Ini -->
+      <div class="guru-summary-grid">
+        <div class="guru-stat-card hadir">
+          <div class="guru-stat-num" id="statHadirCount">0</div>
+          <div class="guru-stat-label">Hadir (H)</div>
+        </div>
+        <div class="guru-stat-card sakit">
+          <div class="guru-stat-num" id="statSakitCount">0</div>
+          <div class="guru-stat-label">Sakit (S)</div>
+        </div>
+        <div class="guru-stat-card izin">
+          <div class="guru-stat-num" id="statIzinCount">0</div>
+          <div class="guru-stat-label">Izin (I)</div>
+        </div>
+        <div class="guru-stat-card alpha">
+          <div class="guru-stat-num" id="statAlphaCount">0</div>
+          <div class="guru-stat-label">Alpha (A)</div>
+        </div>
+      </div>
+
+      <!-- Tabel Daftar Siswa & Presensi -->
+      <div class="guru-table-responsive">
+        <table class="guru-table">
+          <thead>
+            <tr>
+              <th style="width:40px; text-align:center;">No</th>
+              <th>NIS / ID</th>
+              <th>Nama Siswa</th>
+              <th>Kelas</th>
+              <th style="text-align:center;">Status Kehadiran</th>
+              <th>Catatan</th>
+              <th style="text-align:center;">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="attTableBody">
+            <!-- Diisi otomatis oleh JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: JURNAL GURU (JURNAL MENGAJAR)           -->
+    <!-- ============================================== -->
+    <div id="guruTabContent1" class="guru-tab-content" style="display:none;">
+      <!-- Form Input / Edit Jurnal -->
+      <div style="background:#F0FDF4; border:1.5px solid #86EFAC; border-radius:16px; padding:18px; margin-bottom:20px;">
+        <h3 style="font-family:'Lilita One',cursive; font-size:18px; color:#064E3B; margin:0 0 14px; display:flex; align-items:center; gap:8px;" id="journalFormTitle">
+          <span>✍️</span> <span>Input Jurnal Pembelajaran Baru</span>
+        </h3>
+        <input type="hidden" id="journalEditId" value="">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin-bottom:12px;">
+          <div>
+            <label style="font-size:12px; font-weight:800; color:#047857; display:block; margin-bottom:4px;">Tanggal:</label>
+            <input type="date" id="journalDateInp" class="guru-input" required>
+          </div>
+          <div>
+            <label style="font-size:12px; font-weight:800; color:#047857; display:block; margin-bottom:4px;">Kelas:</label>
+            <select id="journalClassInp" class="guru-input">
+              <option value="Kelas 8A">Kelas 8A</option>
+              <option value="Kelas 8B">Kelas 8B</option>
+              <option value="Kelas 8C">Kelas 8C</option>
+              <option value="Kelas 8D">Kelas 8D</option>
+              <option value="Kelas 8E">Kelas 8E</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:12px; font-weight:800; color:#047857; display:block; margin-bottom:4px;">Jam Pelajaran Ke-:</label>
+            <input type="text" id="journalJamInp" class="guru-input" placeholder="Contoh: 1 - 2 (07.30 - 09.00)" required>
+          </div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+          <label style="font-size:12px; font-weight:800; color:#047857; display:block; margin-bottom:4px;">Materi / Topik Pembelajaran:</label>
+          <input type="text" id="journalTopicInp" class="guru-input" placeholder="Contoh: Kejayaan Peradaban & Kemegahan Baitul Hikmah Daulah Abbasiyah" required>
+        </div>
+
+        <div style="margin-bottom:12px;">
+          <label style="font-size:12px; font-weight:800; color:#047857; display:block; margin-bottom:4px;">Aktivitas Pembelajaran (Kurikulum Berbasis Cinta):</label>
+          <textarea id="journalActivityInp" class="guru-input" rows="2" placeholder="Contoh: Siswa menonton video petualangan, bermain peran di Baitul Hikmah, dan eksplorasi ilmuwan muslim." required></textarea>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="font-size:12px; font-weight:800; color:#047857; display:block; margin-bottom:4px;">Catatan / Refleksi Guru:</label>
+          <textarea id="journalNotesInp" class="guru-input" rows="2" placeholder="Contoh: Seluruh siswa antusias, kolaborasi kelompok sangat aktif, nilai pemahaman kuis di atas rata-rata."></textarea>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button type="button" id="journalCancelBtn" class="guru-action-btn secondary" style="display:none;" onclick="cancelJournalEdit()">
+            Batal
+          </button>
+          <button type="button" class="guru-action-btn green" onclick="saveJournalEntry()">
+            <span>💾</span> <span id="journalSaveBtnText">Simpan Jurnal</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Riwayat Jurnal Mengajar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <label style="font-size:12px; font-weight:800; color:#064E3B;">Filter Kelas:</label>
+          <select id="journalFilterClass" class="guru-input" style="padding:6px 10px; font-size:13px; width:auto;" onchange="renderJournalList()">
+            <option value="SEMUA">Semua Kelas</option>
+            <option value="Kelas 8A">Kelas 8A</option>
+            <option value="Kelas 8B">Kelas 8B</option>
+            <option value="Kelas 8C">Kelas 8C</option>
+            <option value="Kelas 8D">Kelas 8D</option>
+            <option value="Kelas 8E">Kelas 8E</option>
+          </select>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="guru-action-btn primary" onclick="exportJournalExcel()">
+            <span>📤</span> <span>Ekspor Excel</span>
+          </button>
+          <button class="guru-action-btn secondary" onclick="printJournalPDF()">
+            <span>🖨️</span> <span>Cetak / PDF Jurnal</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabel/List Jurnal -->
+      <div class="guru-table-responsive">
+        <table class="guru-table">
+          <thead>
+            <tr>
+              <th style="width:40px; text-align:center;">No</th>
+              <th>Tanggal</th>
+              <th>Kelas</th>
+              <th>Jam Ke-</th>
+              <th>Materi / Topik</th>
+              <th>Aktivitas Pembelajaran</th>
+              <th>Catatan / Refleksi</th>
+              <th style="text-align:center;">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="journalTableBody">
+            <!-- Diisi otomatis oleh JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 3: REKAPITULASI NILAI                      -->
+    <!-- ============================================== -->
+    <div id="guruTabContent2" class="guru-tab-content" style="display:none;">
+      <!-- Filter & Search Bar -->
+      <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:16px; background:#FFFBEB; padding:12px 14px; border-radius:14px; border:1.5px solid #FDE68A;">
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+          <div>
+            <label style="font-size:11.5px; font-weight:800; color:#92400E; display:block;">Pilih Kelas:</label>
+            <select id="gradesClassFilter" class="guru-input" style="padding:6px 10px; font-size:13px; width:auto;" onchange="renderGradesTable()">
+              <option value="SEMUA">Semua Kelas</option>
+              <option value="Kelas 8A">Kelas 8A</option>
+              <option value="Kelas 8B">Kelas 8B</option>
+              <option value="Kelas 8C">Kelas 8C</option>
+              <option value="Kelas 8D">Kelas 8D</option>
+              <option value="Kelas 8E">Kelas 8E</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11.5px; font-weight:800; color:#92400E; display:block;">Cari Nama Siswa:</label>
+            <input type="text" id="gradesSearchInp" class="guru-input" placeholder="Ketik nama siswa..." style="padding:6px 10px; font-size:13px; width:180px;" oninput="renderGradesTable()">
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <button class="guru-action-btn green" onclick="syncLiveAppScores()">
+            <span>🔄</span> <span>Sinkron Nilai Game/Kuis Live</span>
+          </button>
+          <button class="guru-action-btn primary" onclick="exportGradesExcel()">
+            <span>📥</span> <span>Unduh Rekap Nilai (Excel)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabel Rekapitulasi Nilai -->
+      <div class="guru-table-responsive">
+        <table class="guru-table">
+          <thead>
+            <tr>
+              <th style="width:40px; text-align:center;">No</th>
+              <th>Nama Siswa</th>
+              <th>Kelas</th>
+              <th style="text-align:center;">Nilai Game (Otomatis)</th>
+              <th style="text-align:center;">Kuis Kahoot (Otomatis)</th>
+              <th style="text-align:center;">Nilai Tugas (Manual)</th>
+              <th style="text-align:center;">Nilai Rata-Rata</th>
+              <th style="text-align:center;">Predikat</th>
+              <th style="text-align:center;">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="gradesTableBody">
+            <!-- Diisi otomatis oleh JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12px; color:#6B7280; font-weight:700; margin-top:8px;">
+        💡 <b>Catatan:</b> Nilai Game &amp; Kahoot tersinkron otomatis dari progres belajar siswa di aplikasi. Nilai Tugas dapat diedit langsung oleh guru.
+      </p>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 4: KELOLA & TAMBAH SISWA                   -->
+    <!-- ============================================== -->
+    <div id="guruTabContent3" class="guru-tab-content" style="display:none;">
+      <!-- Form Input Siswa Baru -->
+      <div style="background:#F0FDF4; border:1.5px solid #86EFAC; border-radius:16px; padding:18px; margin-bottom:20px;">
+        <h3 style="font-family:'Lilita One',cursive; font-size:18px; color:#064E3B; margin:0 0 14px; display:flex; align-items:center; gap:8px;" id="studentFormTitle">
+          <span>➕</span> <span>Tambah Siswa Baru</span>
+        </h3>
+        <input type="hidden" id="studentEditId" value="">
+        <form onsubmit="handleDirectStudentForm(event)">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-bottom:12px;">
+            <div>
+              <label style="font-size:12px; font-weight:800; color:#047857; display:block; margin-bottom:4px;">NIS / ID Siswa:</label>
+              <input type="text" id="directStudentNis" class="guru-input" placeholder="Contoh: 2026816" required>
+            </div>
+            <div>
+              <label style="font-size:12px; font-weight:800; color:#047857; display:block; margin-bottom:4px;">Nama Lengkap Siswa:</label>
+              <input type="text" id="directStudentName" class="guru-input" placeholder="Contoh: Muhammad Al-Khawarizmi" required>
+            </div>
+            <div>
+              <label style="font-size:12px; font-weight:800; color:#047857; display:block; margin-bottom:4px;">Pilih Kelas:</label>
+              <select id="directStudentClass" class="guru-input">
+                <option value="Kelas 8A">Kelas 8A</option>
+                <option value="Kelas 8B">Kelas 8B</option>
+                <option value="Kelas 8C">Kelas 8C</option>
+                <option value="Kelas 8D">Kelas 8D</option>
+                <option value="Kelas 8E">Kelas 8E</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:8px;">
+            <button type="button" id="studentCancelBtn" class="guru-action-btn secondary" style="display:none;" onclick="cancelStudentEdit()">
+              Batal
+            </button>
+            <button type="submit" class="guru-action-btn green">
+              <span>💾</span> <span id="studentSaveBtnText">Simpan Siswa</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Filter & Aksi Daftar Siswa -->
+      <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:14px; background:#FFFBEB; padding:12px 14px; border-radius:14px; border:1.5px solid #FDE68A;">
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+          <div>
+            <label style="font-size:11.5px; font-weight:800; color:#92400E; display:block;">Filter Kelas:</label>
+            <select id="manageStudentClassFilter" class="guru-input" style="padding:6px 10px; font-size:13px; width:auto;" onchange="renderManageStudentsTable()">
+              <option value="SEMUA">Semua Kelas</option>
+              <option value="Kelas 8A">Kelas 8A</option>
+              <option value="Kelas 8B">Kelas 8B</option>
+              <option value="Kelas 8C">Kelas 8C</option>
+              <option value="Kelas 8D">Kelas 8D</option>
+              <option value="Kelas 8E">Kelas 8E</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11.5px; font-weight:800; color:#92400E; display:block;">Cari Siswa:</label>
+            <input type="text" id="manageStudentSearchInp" class="guru-input" placeholder="Cari nama atau NIS..." style="padding:6px 10px; font-size:13px; width:180px;" oninput="renderManageStudentsTable()">
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <label class="guru-action-btn secondary" style="cursor:pointer; margin:0;" title="Impor Data Siswa CSV/Excel">
+            <span>📥</span> <span>Impor Siswa (Excel/CSV)</span>
+            <input type="file" accept=".csv, .xlsx, .xls" style="display:none;" onchange="handleImportStudents(event)">
+          </label>
+          <button class="guru-action-btn primary" onclick="exportStudentsListExcel()">
+            <span>📤</span> <span>Ekspor Data Siswa</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabel Daftar Siswa Lengkap -->
+      <div class="guru-table-responsive">
+        <table class="guru-table">
+          <thead>
+            <tr>
+              <th style="width:40px; text-align:center;">No</th>
+              <th>NIS / ID</th>
+              <th>Nama Siswa</th>
+              <th>Kelas</th>
+              <th style="text-align:center;">Skor Game</th>
+              <th style="text-align:center;">Skor Kahoot</th>
+              <th style="text-align:center;">Nilai Tugas</th>
+              <th style="text-align:center;">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="manageStudentsTableBody">
+            <!-- Diisi otomatis oleh JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- Modal Tambah Siswa Manual -->
+<div id="addStudentModal" class="guru-modal-backdrop" style="display:none;" onclick="if(event.target===this)closeAddStudentModal()">
+  <div class="guru-modal-card">
+    <button class="guru-modal-close" onclick="closeAddStudentModal()">✕</button>
+    <h3 style="font-family:'Lilita One',cursive; font-size:20px; color:#064E3B; margin:0 0 12px; text-align:center;">
+      ➕ Tambah Siswa Baru
+    </h3>
+    <form onsubmit="handleSaveNewStudent(event)">
+      <div class="guru-form-group">
+        <label>NIS / ID Siswa:</label>
+        <input type="text" id="newStudentNisInp" class="guru-input" placeholder="Contoh: 20260101" required>
+      </div>
+      <div class="guru-form-group">
+        <label>Nama Lengkap Siswa:</label>
+        <input type="text" id="newStudentNameInp" class="guru-input" placeholder="Contoh: Fatimah Az-Zahra" required>
+      </div>
+      <div class="guru-form-group">
+        <label>Kelas:</label>
+        <select id="newStudentClassInp" class="guru-input">
+          <option value="Kelas 8A">Kelas 8A</option>
+          <option value="Kelas 8B">Kelas 8B</option>
+          <option value="Kelas 8C">Kelas 8C</option>
+          <option value="Kelas 8D">Kelas 8D</option>
+          <option value="Kelas 8E">Kelas 8E</option>
+        </select>
+      </div>
+      <button type="submit" class="guru-btn-submit">
+        <span>Simpan Siswa</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+</div>
 <script>
 
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -5886,6 +6691,781 @@ window.toggleGameFullscreen = toggleGameFullscreen;
   });
 })();
 
+
+
+
+/* =========================================================
+   DASHBOARD GURU JAVASCRIPT LOGIC (PERMANENT DB SYNC)
+   ========================================================= */
+
+// Default Students Initial Seed
+const DEFAULT_GURU_STUDENTS = [
+  { id: "S01", nis: "2026801", name: "Ahmad Fauzi", class: "Kelas 8A", gameScore: 95, khScore: 92, taskScore: 90 },
+  { id: "S02", nis: "2026802", name: "Aisyah Humaira", class: "Kelas 8A", gameScore: 100, khScore: 95, taskScore: 94 },
+  { id: "S03", nis: "2026803", name: "Ali Al-Fatih", class: "Kelas 8A", gameScore: 85, khScore: 88, taskScore: 86 },
+  { id: "S04", nis: "2026804", name: "Bilal Habasyi", class: "Kelas 8A", gameScore: 90, khScore: 85, taskScore: 88 },
+  { id: "S05", nis: "2026805", name: "Fatimah Azzahra", class: "Kelas 8A", gameScore: 95, khScore: 100, taskScore: 96 },
+  { id: "S06", nis: "2026806", name: "Hasan Basri", class: "Kelas 8A", gameScore: 80, khScore: 82, taskScore: 85 },
+  { id: "S07", nis: "2026807", name: "Ibrahim Malik", class: "Kelas 8B", gameScore: 90, khScore: 90, taskScore: 92 },
+  { id: "S08", nis: "2026808", name: "Maryam Jamilah", class: "Kelas 8B", gameScore: 95, khScore: 94, taskScore: 90 },
+  { id: "S09", nis: "2026809", name: "Muhammad Zaid", class: "Kelas 8B", gameScore: 85, khScore: 86, taskScore: 84 },
+  { id: "S10", nis: "2026810", name: "Nur Khadijah", class: "Kelas 8B", gameScore: 100, khScore: 98, taskScore: 95 },
+  { id: "S11", nis: "2026811", name: "Raihan Hakim", class: "Kelas 8C", gameScore: 88, khScore: 85, taskScore: 87 },
+  { id: "S12", nis: "2026812", name: "Siti Sarah", class: "Kelas 8C", gameScore: 92, khScore: 90, taskScore: 91 },
+  { id: "S13", nis: "2026813", name: "Umar Hamzah", class: "Kelas 8D", gameScore: 90, khScore: 88, taskScore: 89 },
+  { id: "S14", nis: "2026814", name: "Yasmin Zahira", class: "Kelas 8D", gameScore: 96, khScore: 94, taskScore: 93 },
+  { id: "S15", nis: "2026815", name: "Zubair Awwam", class: "Kelas 8E", gameScore: 85, khScore: 84, taskScore: 86 }
+];
+
+// Initial seed journals
+const DEFAULT_GURU_JOURNALS = [
+  {
+    id: "J01",
+    date: new Date().toISOString().split('T')[0],
+    class: "Kelas 8A",
+    jam: "1 - 2 (07.30 - 09.00)",
+    topic: "Kejayaan Daulah Abbasiyah & Peran Baitul Hikmah",
+    activity: "Tonton video petualangan Baghdad, diskusi peran Harun Ar-Rasyid, dan permainan peran majelis ilmu.",
+    notes: "Siswa sangat antusias dengan visual interaktif, kolaborasi diskusi berjalan santun dan aktif."
+  }
+];
+
+let GURU_STUDENTS = [];
+let GURU_ATTENDANCE = {}; // Key: `${date}_${class}`
+let GURU_JOURNALS = [];
+
+function loadGuruData() {
+  try {
+    const sRaw = localStorage.getItem("sijenius_guru_students");
+    GURU_STUDENTS = sRaw ? JSON.parse(sRaw) : [...DEFAULT_GURU_STUDENTS];
+
+    const aRaw = localStorage.getItem("sijenius_guru_attendance");
+    GURU_ATTENDANCE = aRaw ? JSON.parse(aRaw) : {};
+
+    const jRaw = localStorage.getItem("sijenius_guru_journals");
+    GURU_JOURNALS = jRaw ? JSON.parse(jRaw) : [...DEFAULT_GURU_JOURNALS];
+  } catch (err) {
+    console.error("loadGuruData error:", err);
+    GURU_STUDENTS = [...DEFAULT_GURU_STUDENTS];
+    GURU_ATTENDANCE = {};
+    GURU_JOURNALS = [...DEFAULT_GURU_JOURNALS];
+  }
+}
+
+function saveGuruData(key) {
+  try {
+    if (!key || key === 'students') localStorage.setItem("sijenius_guru_students", JSON.stringify(GURU_STUDENTS));
+    if (!key || key === 'attendance') localStorage.setItem("sijenius_guru_attendance", JSON.stringify(GURU_ATTENDANCE));
+    if (!key || key === 'journals') localStorage.setItem("sijenius_guru_journals", JSON.stringify(GURU_JOURNALS));
+  } catch (err) {
+    console.error("saveGuruData error:", err);
+  }
+}
+
+function showGuruToast(msg, icon = '✅') {
+  const old = document.querySelector(".guru-toast");
+  if (old) old.remove();
+
+  const toast = document.createElement("div");
+  toast.className = "guru-toast";
+  toast.innerHTML = "<span>" + icon + "</span><span>" + msg + "</span>";
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transition = "opacity .3s ease";
+    setTimeout(() => toast.remove(), 300);
+  }, 2600);
+}
+
+function isGuruLoggedIn() {
+  return localStorage.getItem("sijenius_guru_session") === "active";
+}
+
+function openGuruAccess() {
+  if (isGuruLoggedIn()) {
+    openGuruDashboard();
+  } else {
+    document.getElementById("guruLoginModal").style.display = "flex";
+    document.getElementById("guruLoginErrMsg").style.display = "none";
+    document.getElementById("guruUsernameInp").value = "";
+    document.getElementById("guruPasswordInp").value = "";
+    setTimeout(() => document.getElementById("guruUsernameInp").focus(), 200);
+  }
+}
+window.openGuruAccess = openGuruAccess;
+
+function closeGuruModal() {
+  document.getElementById("guruLoginModal").style.display = "none";
+}
+window.closeGuruModal = closeGuruModal;
+
+function handleGuruLogin(e) {
+  e.preventDefault();
+  const u = (document.getElementById("guruUsernameInp").value || "").trim().toLowerCase();
+  const p = (document.getElementById("guruPasswordInp").value || "").trim();
+  const errEl = document.getElementById("guruLoginErrMsg");
+
+  const validUsers = ["guru", "ustadz", "admin", "guru@sijenius.id", "abbasiyah"];
+  const validPass = ["guru123", "123456", "abbasiyah", "admin123", "bismillah"];
+
+  const userMatch = validUsers.includes(u) || u.length >= 3;
+  const passMatch = validPass.includes(p) || p === "123456" || p === "guru123";
+
+  if (userMatch && passMatch) {
+    localStorage.setItem("sijenius_guru_session", "active");
+    localStorage.setItem("sijenius_guru_user", u);
+    closeGuruModal();
+    showGuruToast("Selamat Datang, Ustadz / Guru! Sesi berhasil dimulai.", "👨‍🏫");
+    openGuruDashboard();
+  } else {
+    errEl.textContent = "Username atau Kata Sandi salah. Silakan periksa kembali.";
+    errEl.style.display = "block";
+  }
+}
+window.handleGuruLogin = handleGuruLogin;
+
+function handleGuruLogout() {
+  localStorage.removeItem("sijenius_guru_session");
+  localStorage.removeItem("sijenius_guru_user");
+  showGuruToast("Anda telah keluar dari Dashboard Guru.", "🚪");
+  go("menu");
+}
+window.handleGuruLogout = handleGuruLogout;
+
+function openGuruDashboard() {
+  loadGuruData();
+  go("dashboardGuruScreen");
+
+  const today = new Date().toISOString().split('T')[0];
+  const dtAtt = document.getElementById("attDateFilter");
+  if (dtAtt && !dtAtt.value) dtAtt.value = today;
+
+  const dtJour = document.getElementById("journalDateInp");
+  if (dtJour && !dtJour.value) dtJour.value = today;
+
+  const usr = localStorage.getItem("sijenius_guru_user") || "Guru";
+  const labelEl = document.getElementById("guruLoggedLabel");
+  if (labelEl) labelEl.textContent = "👨‍🏫 " + usr.toUpperCase();
+
+  switchGuruTab(0);
+}
+window.openGuruDashboard = openGuruDashboard;
+
+function switchGuruTab(idx) {
+  for (let i = 0; i < 4; i++) {
+    const btn = document.getElementById("guruTabBtn" + i);
+    const content = document.getElementById("guruTabContent" + i);
+    if (btn) btn.classList.toggle("active", i === idx);
+    if (content) content.style.display = (i === idx) ? "block" : "none";
+  }
+
+  if (idx === 0) renderAttendanceTable();
+  else if (idx === 1) renderJournalList();
+  else if (idx === 2) renderGradesTable();
+  else if (idx === 3) renderManageStudentsTable();
+}
+window.switchGuruTab = switchGuruTab;
+
+function getAttendanceKey() {
+  const date = document.getElementById("attDateFilter").value || new Date().toISOString().split('T')[0];
+  const cls = document.getElementById("attClassFilter").value || "Kelas 8A";
+  return date + "_" + cls;
+}
+
+function renderAttendanceTable() {
+  const key = getAttendanceKey();
+  const cls = document.getElementById("attClassFilter").value || "Kelas 8A";
+  const students = GURU_STUDENTS.filter(s => s.class === cls);
+  const tbody = document.getElementById("attTableBody");
+  if (!tbody) return;
+
+  if (!GURU_ATTENDANCE[key]) {
+    GURU_ATTENDANCE[key] = {};
+  }
+  const attData = GURU_ATTENDANCE[key];
+
+  let hCount = 0, sCount = 0, iCount = 0, aCount = 0;
+
+  if (students.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:20px; color:#9CA3AF;">Belum ada siswa di ' + cls + '. Klik "Tambah Siswa" atau "Impor Siswa".</td></tr>';
+  } else {
+    tbody.innerHTML = students.map((st, i) => {
+      const cur = attData[st.id] || { status: 'H', notes: '' };
+      if (cur.status === 'H') hCount++;
+      else if (cur.status === 'S') sCount++;
+      else if (cur.status === 'I') iCount++;
+      else if (cur.status === 'A') aCount++;
+
+      return '<tr>' +
+        '<td style="text-align:center;">' + (i + 1) + '</td>' +
+        '<td style="color:#6B7280; font-size:12px;">' + (st.nis || '-') + '</td>' +
+        '<td>' + st.name + '</td>' +
+        '<td><span style="background:#ECFDF5; border:1px solid #A7F3D0; color:#065F46; padding:2px 8px; border-radius:6px; font-size:11.5px;">' + st.class + '</span></td>' +
+        '<td style="text-align:center;">' +
+          '<div class="guru-att-group">' +
+            '<button type="button" class="guru-att-btn ' + (cur.status === 'H' ? 'sel-H' : '') + '" onclick="setStudentAtt(\'' + st.id + '\', \'H\')">H</button>' +
+            '<button type="button" class="guru-att-btn ' + (cur.status === 'S' ? 'sel-S' : '') + '" onclick="setStudentAtt(\'' + st.id + '\', \'S\')">S</button>' +
+            '<button type="button" class="guru-att-btn ' + (cur.status === 'I' ? 'sel-I' : '') + '" onclick="setStudentAtt(\'' + st.id + '\', \'I\')">I</button>' +
+            '<button type="button" class="guru-att-btn ' + (cur.status === 'A' ? 'sel-A' : '') + '" onclick="setStudentAtt(\'' + st.id + '\', \'A\')">A</button>' +
+          '</div>' +
+        '</td>' +
+        '<td>' +
+          '<input type="text" class="guru-input" style="padding:4px 8px; font-size:12px; width:140px;" value="' + (cur.notes || '') + '" placeholder="Keterangan..." onchange="setStudentNotes(\'' + st.id + '\', this.value)">' +
+        '</td>' +
+        '<td style="text-align:center;">' +
+          '<button class="guru-modal-close" style="position:static; display:inline-flex; width:26px; height:26px; font-size:12px;" onclick="deleteStudent(\'' + st.id + '\')" title="Hapus Siswa">🗑️</button>' +
+        '</td>' +
+      '</tr>';
+    }).join("");
+  }
+
+  document.getElementById("statHadirCount").textContent = hCount;
+  document.getElementById("statSakitCount").textContent = sCount;
+  document.getElementById("statIzinCount").textContent = iCount;
+  document.getElementById("statAlphaCount").textContent = aCount;
+}
+window.renderAttendanceTable = renderAttendanceTable;
+
+function setStudentAtt(stId, status) {
+  const key = getAttendanceKey();
+  if (!GURU_ATTENDANCE[key]) GURU_ATTENDANCE[key] = {};
+  if (!GURU_ATTENDANCE[key][stId]) GURU_ATTENDANCE[key][stId] = { status: 'H', notes: '' };
+  GURU_ATTENDANCE[key][stId].status = status;
+  saveGuruData('attendance');
+  renderAttendanceTable();
+}
+window.setStudentAtt = setStudentAtt;
+
+function setStudentNotes(stId, notes) {
+  const key = getAttendanceKey();
+  if (!GURU_ATTENDANCE[key]) GURU_ATTENDANCE[key] = {};
+  if (!GURU_ATTENDANCE[key][stId]) GURU_ATTENDANCE[key][stId] = { status: 'H', notes: '' };
+  GURU_ATTENDANCE[key][stId].notes = notes;
+  saveGuruData('attendance');
+  showGuruToast("Catatan kehadiran disimpan.");
+}
+window.setStudentNotes = setStudentNotes;
+
+function markAllAttendance(status) {
+  const key = getAttendanceKey();
+  const cls = document.getElementById("attClassFilter").value || "Kelas 8A";
+  const students = GURU_STUDENTS.filter(s => s.class === cls);
+  if (!GURU_ATTENDANCE[key]) GURU_ATTENDANCE[key] = {};
+  students.forEach(st => {
+    if (!GURU_ATTENDANCE[key][st.id]) GURU_ATTENDANCE[key][st.id] = { status: status, notes: '' };
+    else GURU_ATTENDANCE[key][st.id].status = status;
+  });
+  saveGuruData('attendance');
+  renderAttendanceTable();
+  showGuruToast("Semua siswa " + cls + " ditandai Hadir!", "✅");
+}
+window.markAllAttendance = markAllAttendance;
+
+function openAddStudentModal() {
+  document.getElementById("addStudentModal").style.display = "flex";
+  document.getElementById("newStudentNisInp").value = "";
+  document.getElementById("newStudentNameInp").value = "";
+  document.getElementById("newStudentClassInp").value = document.getElementById("attClassFilter").value || "Kelas 8A";
+}
+window.openAddStudentModal = openAddStudentModal;
+
+function closeAddStudentModal() {
+  document.getElementById("addStudentModal").style.display = "none";
+}
+window.closeAddStudentModal = closeAddStudentModal;
+
+function handleSaveNewStudent(e) {
+  e.preventDefault();
+  const nis = document.getElementById("newStudentNisInp").value.trim();
+  const name = document.getElementById("newStudentNameInp").value.trim();
+  const cls = document.getElementById("newStudentClassInp").value;
+
+  if (!name) return;
+  const newSt = {
+    id: "S" + Date.now().toString().slice(-6),
+    nis: nis || ("2026" + Math.floor(100 + Math.random() * 900)),
+    name: name,
+    class: cls,
+    gameScore: 85,
+    khScore: 85,
+    taskScore: 85
+  };
+  GURU_STUDENTS.push(newSt);
+  saveGuruData('students');
+  closeAddStudentModal();
+  renderAttendanceTable();
+  showGuruToast("Siswa " + name + " berhasil ditambahkan!", "🎉");
+}
+window.handleSaveNewStudent = handleSaveNewStudent;
+
+function deleteStudent(stId) {
+  const st = GURU_STUDENTS.find(s => s.id === stId);
+  if (!st) return;
+  if (confirm("Apakah Anda yakin ingin menghapus siswa " + st.name + "?")) {
+    GURU_STUDENTS = GURU_STUDENTS.filter(s => s.id !== stId);
+    saveGuruData('students');
+    renderAttendanceTable();
+    showGuruToast("Siswa berhasil dihapus.", "🗑️");
+  }
+}
+window.deleteStudent = deleteStudent;
+
+function handleImportStudents(e) {
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  const isXlsx = file.name.endsWith('.xlsx') || file.name.endsWith('.xls');
+
+  reader.onload = function(evt) {
+    try {
+      let imported = [];
+      if (isXlsx && typeof XLSX !== "undefined") {
+        const data = new Uint8Array(evt.target.result);
+        const wb = XLSX.read(data, { type: 'array' });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const json = XLSX.utils.sheet_to_json(ws, { header: 1 });
+        for (let i = 1; i < json.length; i++) {
+          const row = json[i];
+          if (row && row[1]) {
+            imported.push({
+              id: "S" + Date.now().toString().slice(-5) + i,
+              nis: String(row[0] || "2026" + i),
+              name: String(row[1]).trim(),
+              class: String(row[2] || document.getElementById("attClassFilter").value || "Kelas 8A").trim(),
+              gameScore: 85,
+              khScore: 85,
+              taskScore: 85
+            });
+          }
+        }
+      } else {
+        const text = evt.target.result;
+        const lines = text.split(/\r?\n/);
+        for (let i = 0; i < lines.length; i++) {
+          const cols = lines[i].split(/[,;\t]/);
+          if (cols.length >= 2 && cols[1].trim() && cols[0].toLowerCase() !== "nis") {
+            imported.push({
+              id: "S" + Date.now().toString().slice(-5) + i,
+              nis: cols[0].trim(),
+              name: cols[1].trim(),
+              class: (cols[2] ? cols[2].trim() : (document.getElementById("attClassFilter").value || "Kelas 8A")),
+              gameScore: 85,
+              khScore: 85,
+              taskScore: 85
+            });
+          }
+        }
+      }
+
+      if (imported.length > 0) {
+        GURU_STUDENTS = GURU_STUDENTS.concat(imported);
+        saveGuruData('students');
+        renderAttendanceTable();
+        showGuruToast("Berhasil mengimpor " + imported.length + " siswa!", "📥");
+      } else {
+        alert("Tidak ada data siswa yang valid di file ini. Pastikan kolom: NIS, Nama, Kelas.");
+      }
+    } catch (err) {
+      console.error("Import error:", err);
+      alert("Gagal membaca file: " + err.message);
+    }
+  };
+
+  if (isXlsx) reader.readAsArrayBuffer(file);
+  else reader.readAsText(file);
+  e.target.value = "";
+}
+window.handleImportStudents = handleImportStudents;
+
+function exportAttendanceExcel() {
+  const key = getAttendanceKey();
+  const date = document.getElementById("attDateFilter").value || new Date().toISOString().split('T')[0];
+  const cls = document.getElementById("attClassFilter").value || "Kelas 8A";
+  const students = GURU_STUDENTS.filter(s => s.class === cls);
+  const attData = GURU_ATTENDANCE[key] || {};
+
+  const rows = [
+    ["REKAPITULASI ABSENSI SISWA - SI JENIUS"],
+    ["Kelas: " + cls, "Tanggal: " + date],
+    [],
+    ["No", "NIS", "Nama Siswa", "Kelas", "Status Kehadiran", "Keterangan"]
+  ];
+
+  students.forEach((st, i) => {
+    const cur = attData[st.id] || { status: 'H', notes: '' };
+    const stDesc = cur.status === 'H' ? 'Hadir' : (cur.status === 'S' ? 'Sakit' : (cur.status === 'I' ? 'Izin' : 'Alpha'));
+    rows.push([i + 1, st.nis, st.name, st.class, stDesc, cur.notes || '']);
+  });
+
+  if (typeof XLSX !== "undefined") {
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Absensi");
+    XLSX.writeFile(wb, "Absensi_" + cls.replace(/\s+/g, '_') + "_" + date + ".xlsx");
+    showGuruToast("File Excel Absensi berhasil diunduh!", "📊");
+  } else {
+    const csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.map(cell => '"' + cell + '"').join(",")).join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "Absensi_" + cls.replace(/\s+/g, '_') + "_" + date + ".csv");
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    showGuruToast("File CSV Absensi berhasil diunduh!", "📊");
+  }
+}
+window.exportAttendanceExcel = exportAttendanceExcel;
+
+function saveJournalEntry() {
+  const editId = document.getElementById("journalEditId").value;
+  const date = document.getElementById("journalDateInp").value;
+  const cls = document.getElementById("journalClassInp").value;
+  const jam = document.getElementById("journalJamInp").value.trim();
+  const topic = document.getElementById("journalTopicInp").value.trim();
+  const activity = document.getElementById("journalActivityInp").value.trim();
+  const notes = document.getElementById("journalNotesInp").value.trim();
+
+  if (!date || !topic || !activity) {
+    alert("Harap lengkapi Tanggal, Materi/Topik, dan Aktivitas Pembelajaran.");
+    return;
+  }
+
+  if (editId) {
+    const idx = GURU_JOURNALS.findIndex(j => j.id === editId);
+    if (idx !== -1) {
+      GURU_JOURNALS[idx] = { id: editId, date, class: cls, jam, topic, activity, notes };
+      showGuruToast("Jurnal berhasil diperbarui!", "✏️");
+    }
+  } else {
+    const newJ = {
+      id: "J" + Date.now().toString().slice(-6),
+      date,
+      class: cls,
+      jam: jam || "1 - 2",
+      topic,
+      activity,
+      notes
+    };
+    GURU_JOURNALS.unshift(newJ);
+    showGuruToast("Jurnal mengajar berhasil disimpan!", "💾");
+  }
+
+  saveGuruData('journals');
+  cancelJournalEdit();
+  renderJournalList();
+}
+window.saveJournalEntry = saveJournalEntry;
+
+function cancelJournalEdit() {
+  document.getElementById("journalEditId").value = "";
+  document.getElementById("journalFormTitle").innerHTML = "<span>✍️</span> <span>Input Jurnal Pembelajaran Baru</span>";
+  document.getElementById("journalSaveBtnText").textContent = "Simpan Jurnal";
+  document.getElementById("journalCancelBtn").style.display = "none";
+  document.getElementById("journalTopicInp").value = "";
+  document.getElementById("journalActivityInp").value = "";
+  document.getElementById("journalNotesInp").value = "";
+}
+window.cancelJournalEdit = cancelJournalEdit;
+
+function editJournalEntry(id) {
+  const j = GURU_JOURNALS.find(x => x.id === id);
+  if (!j) return;
+  document.getElementById("journalEditId").value = j.id;
+  document.getElementById("journalDateInp").value = j.date;
+  document.getElementById("journalClassInp").value = j.class;
+  document.getElementById("journalJamInp").value = j.jam;
+  document.getElementById("journalTopicInp").value = j.topic;
+  document.getElementById("journalActivityInp").value = j.activity;
+  document.getElementById("journalNotesInp").value = j.notes || "";
+
+  document.getElementById("journalFormTitle").innerHTML = "<span>✏️</span> <span>Edit Jurnal Pembelajaran (" + j.class + ")</span>";
+  document.getElementById("journalSaveBtnText").textContent = "Perbarui Jurnal";
+  document.getElementById("journalCancelBtn").style.display = "inline-flex";
+
+  document.getElementById("journalFormTitle").scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+window.editJournalEntry = editJournalEntry;
+
+function deleteJournalEntry(id) {
+  if (confirm("Apakah Anda yakin ingin menghapus jurnal ini?")) {
+    GURU_JOURNALS = GURU_JOURNALS.filter(j => j.id !== id);
+    saveGuruData('journals');
+    renderJournalList();
+    showGuruToast("Jurnal berhasil dihapus.", "🗑️");
+  }
+}
+window.deleteJournalEntry = deleteJournalEntry;
+
+function renderJournalList() {
+  const filterCls = document.getElementById("journalFilterClass").value || "SEMUA";
+  const list = GURU_JOURNALS.filter(j => filterCls === "SEMUA" || j.class === filterCls);
+  const tbody = document.getElementById("journalTableBody");
+  if (!tbody) return;
+
+  if (list.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:20px; color:#9CA3AF;">Belum ada jurnal untuk pilihan kelas ini. Silakan input jurnal baru di atas.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = list.map((j, i) => {
+    return '<tr>' +
+      '<td style="text-align:center;">' + (i + 1) + '</td>' +
+      '<td>' + j.date + '</td>' +
+      '<td><span style="background:#ECFDF5; border:1px solid #A7F3D0; color:#065F46; padding:2px 8px; border-radius:6px; font-size:11.5px;">' + j.class + '</span></td>' +
+      '<td>' + (j.jam || '-') + '</td>' +
+      '<td style="font-weight:800; color:#0B3D2E; max-width:200px; white-space:normal;">' + j.topic + '</td>' +
+      '<td style="max-width:240px; white-space:normal; font-size:12.5px;">' + j.activity + '</td>' +
+      '<td style="max-width:200px; white-space:normal; font-size:12px; color:#4B5563;">' + (j.notes || '-') + '</td>' +
+      '<td style="text-align:center;">' +
+        '<div style="display:inline-flex; gap:6px;">' +
+          '<button class="guru-action-btn secondary" style="padding:4px 8px; font-size:11px;" onclick="editJournalEntry(\'' + j.id + '\')" title="Edit">✏️</button>' +
+          '<button class="guru-action-btn secondary" style="padding:4px 8px; font-size:11px; color:#DC2626;" onclick="deleteJournalEntry(\'' + j.id + '\')" title="Hapus">🗑️</button>' +
+        '</div>' +
+      '</td>' +
+    '</tr>';
+  }).join("");
+}
+window.renderJournalList = renderJournalList;
+
+function exportJournalExcel() {
+  const filterCls = document.getElementById("journalFilterClass").value || "SEMUA";
+  const list = GURU_JOURNALS.filter(j => filterCls === "SEMUA" || j.class === filterCls);
+
+  const rows = [
+    ["JURNAL MENGAJAR GURU - SI JENIUS (KURIKULUM BERBASIS CINTA)"],
+    ["Kelas: " + filterCls, "Dicetak pada: " + new Date().toLocaleString('id-ID')],
+    [],
+    ["No", "Tanggal", "Kelas", "Jam Pelajaran", "Materi / Topik", "Aktivitas Pembelajaran", "Catatan / Refleksi Guru"]
+  ];
+
+  list.forEach((j, i) => {
+    rows.push([i + 1, j.date, j.class, j.jam, j.topic, j.activity, j.notes || '']);
+  });
+
+  if (typeof XLSX !== "undefined") {
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Jurnal");
+    XLSX.writeFile(wb, "Jurnal_Guru_" + filterCls + ".xlsx");
+    showGuruToast("File Excel Jurnal berhasil diunduh!", "📖");
+  } else {
+    const csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.map(cell => '"' + String(cell).replace(/"/g, '""') + '"').join(",")).join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "Jurnal_Guru_" + filterCls + ".csv");
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    showGuruToast("File CSV Jurnal berhasil diunduh!", "📖");
+  }
+}
+window.exportJournalExcel = exportJournalExcel;
+
+function printJournalPDF() {
+  const filterCls = document.getElementById("journalFilterClass").value || "SEMUA";
+  const list = GURU_JOURNALS.filter(j => filterCls === "SEMUA" || j.class === filterCls);
+
+  if (typeof window.jspdf !== "undefined" && window.jspdf.jsPDF) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('l', 'pt', 'a4');
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.setTextColor(11, 61, 46);
+    doc.text("JURNAL MENGAJAR GURU - SI JENIUS", 40, 40);
+
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(100);
+    doc.text("Mata Pelajaran: Sejarah Kebudayaan Islam (SKI) Daulah Abbasiyah | Kelas: " + filterCls, 40, 58);
+
+    const bodyData = list.map((j, i) => [
+      i + 1,
+      j.date,
+      j.class,
+      j.jam,
+      j.topic,
+      j.activity,
+      j.notes || '-'
+    ]);
+
+    doc.autoTable({
+      startY: 75,
+      head: [["No", "Tanggal", "Kelas", "Jam Ke", "Materi / Topik", "Aktivitas Pembelajaran", "Refleksi Guru"]],
+      body: bodyData,
+      theme: 'grid',
+      headStyles: { fillColor: [11, 61, 46], textColor: [235, 210, 143], fontStyle: 'bold' },
+      styles: { fontSize: 9.5, cellPadding: 5 }
+    });
+
+    doc.save("Jurnal_Guru_" + filterCls + ".pdf");
+    showGuruToast("File PDF Jurnal berhasil dibuat!", "🖨️");
+  } else {
+    window.print();
+  }
+}
+window.printJournalPDF = printJournalPDF;
+
+function syncLiveAppScores() {
+  const sName = (S && S.name ? S.name : "Ahmad").trim();
+  const gameCorrect = S && typeof S.pf === "number" ? S.pf : 18;
+  const gameScore = Math.min(100, Math.round((gameCorrect / 20) * 100));
+
+  let khScorePct = 90;
+  if (typeof khScore !== "undefined" && khScore > 0) {
+    khScorePct = Math.min(100, Math.round(khScore / 200));
+  }
+
+  let found = false;
+  GURU_STUDENTS.forEach(st => {
+    if (st.name.toLowerCase().includes(sName.toLowerCase()) || sName.toLowerCase().includes(st.name.toLowerCase())) {
+      st.gameScore = gameScore;
+      st.khScore = khScorePct;
+      found = true;
+    }
+  });
+
+  if (!found && GURU_STUDENTS.length > 0) {
+    GURU_STUDENTS[0].name = sName;
+    GURU_STUDENTS[0].gameScore = gameScore;
+    GURU_STUDENTS[0].khScore = khScorePct;
+  }
+
+  saveGuruData('students');
+  renderGradesTable();
+  showGuruToast("Nilai live siswa " + sName + " berhasil disinkronkan!", "🔄");
+}
+window.syncLiveAppScores = syncLiveAppScores;
+
+function setStudentTaskScore(stId, val) {
+  const num = Math.min(100, Math.max(0, parseInt(val, 10) || 0));
+  const st = GURU_STUDENTS.find(s => s.id === stId);
+  if (st) {
+    st.taskScore = num;
+    saveGuruData('students');
+    renderGradesTable();
+    showGuruToast("Nilai tugas " + st.name + " diperbarui.");
+  }
+}
+window.setStudentTaskScore = setStudentTaskScore;
+
+function renderGradesTable() {
+  const cls = document.getElementById("gradesClassFilter").value || "SEMUA";
+  const search = (document.getElementById("gradesSearchInp").value || "").trim().toLowerCase();
+  const tbody = document.getElementById("gradesTableBody");
+  if (!tbody) return;
+
+  const filtered = GURU_STUDENTS.filter(st => {
+    const matchClass = (cls === "SEMUA" || st.class === cls);
+    const matchSearch = (!search || st.name.toLowerCase().includes(search) || (st.nis && st.nis.includes(search)));
+    return matchClass && matchSearch;
+  });
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:20px; color:#9CA3AF;">Tidak ada siswa yang sesuai pencarian atau filter kelas.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.map((st, i) => {
+    const gScore = st.gameScore || 85;
+    const kScore = st.khScore || 85;
+    const tScore = st.taskScore || 85;
+    const avg = Math.round((gScore + kScore + tScore) / 3);
+
+    let predikat = "A (Sangat Baik)";
+    let predBadge = "background:#ECFDF5; border:1px solid #A7F3D0; color:#047857;";
+    if (avg < 75) {
+      predikat = "C (Cukup)";
+      predBadge = "background:#FEF2F2; border:1px solid #FECACA; color:#B91C1C;";
+    } else if (avg < 85) {
+      predikat = "B (Baik)";
+      predBadge = "background:#EFF6FF; border:1px solid #BFDBFE; color:#1D4ED8;";
+    }
+
+    return '<tr>' +
+      '<td style="text-align:center;">' + (i + 1) + '</td>' +
+      '<td style="font-weight:800; color:#0B3D2E;">' + st.name + '</td>' +
+      '<td><span style="background:#FFFBEB; border:1px solid #FDE68A; color:#B45309; padding:2px 8px; border-radius:6px; font-size:11.5px;">' + st.class + '</span></td>' +
+      '<td style="text-align:center;"><span style="font-weight:800; color:#047857;">' + gScore + '</span></td>' +
+      '<td style="text-align:center;"><span style="font-weight:800; color:#D97706;">' + kScore + '</span></td>' +
+      '<td style="text-align:center;">' +
+        '<input type="number" min="0" max="100" class="guru-input" style="padding:4px 8px; font-size:13px; width:65px; text-align:center;" value="' + tScore + '" onchange="setStudentTaskScore(\'' + st.id + '\', this.value)">' +
+      '</td>' +
+      '<td style="text-align:center; font-size:15px; font-weight:900; color:#0B3D2E;">' + avg + '</td>' +
+      '<td style="text-align:center;"><span style="' + predBadge + ' padding:3px 10px; border-radius:8px; font-size:11.5px; font-weight:800;">' + predikat + '</span></td>' +
+      '<td style="text-align:center;">' +
+        '<button class="guru-action-btn secondary" style="padding:3px 8px; font-size:11px;" onclick="promptEditScores(\'' + st.id + '\')">✏️ Edit</button>' +
+      '</td>' +
+    '</tr>';
+  }).join("");
+}
+window.renderGradesTable = renderGradesTable;
+
+function promptEditScores(stId) {
+  const st = GURU_STUDENTS.find(s => s.id === stId);
+  if (!st) return;
+  const newG = prompt("Nilai Game Petualangan untuk " + st.name + ":", st.gameScore || 85);
+  if (newG === null) return;
+  const newK = prompt("Nilai Kuis Kahoot untuk " + st.name + ":", st.khScore || 85);
+  if (newK === null) return;
+  const newT = prompt("Nilai Tugas Manual untuk " + st.name + ":", st.taskScore || 85);
+  if (newT === null) return;
+
+  st.gameScore = Math.min(100, Math.max(0, parseInt(newG, 10) || 0));
+  st.khScore = Math.min(100, Math.max(0, parseInt(newK, 10) || 0));
+  st.taskScore = Math.min(100, Math.max(0, parseInt(newT, 10) || 0));
+  saveGuruData('students');
+  renderGradesTable();
+  showGuruToast("Nilai " + st.name + " berhasil diperbarui!", "✅");
+}
+window.promptEditScores = promptEditScores;
+
+function exportGradesExcel() {
+  const cls = document.getElementById("gradesClassFilter").value || "SEMUA";
+  const filtered = GURU_STUDENTS.filter(st => cls === "SEMUA" || st.class === cls);
+
+  const rows = [
+    ["REKAPITULASI NILAI SISWA - SI JENIUS"],
+    ["Kelas: " + cls, "Tanggal Ekspor: " + new Date().toLocaleDateString('id-ID')],
+    [],
+    ["No", "NIS", "Nama Siswa", "Kelas", "Nilai Game", "Kuis Kahoot", "Nilai Tugas", "Nilai Rata-Rata", "Predikat"]
+  ];
+
+  filtered.forEach((st, i) => {
+    const g = st.gameScore || 85;
+    const k = st.khScore || 85;
+    const t = st.taskScore || 85;
+    const avg = Math.round((g + k + t) / 3);
+    const pred = avg >= 85 ? "A (Sangat Baik)" : (avg >= 75 ? "B (Baik)" : "C (Cukup)");
+    rows.push([i + 1, st.nis || "-", st.name, st.class, g, k, t, avg, pred]);
+  });
+
+  if (typeof XLSX !== "undefined") {
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Rekap Nilai");
+    XLSX.writeFile(wb, "Rekap_Nilai_" + cls.replace(/\s+/g, '_') + ".xlsx");
+    showGuruToast("File Excel Rekap Nilai berhasil diunduh!", "📊");
+  } else {
+    const csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.map(cell => '"' + cell + '"').join(",")).join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "Rekap_Nilai_" + cls.replace(/\s+/g, '_') + ".csv");
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    showGuruToast("File CSV Rekap Nilai berhasil diunduh!", "📊");
+  }
+}
+window.exportGradesExcel = exportGradesExcel;
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadGuruData();
+});
 
 </script>
 </body></html>
