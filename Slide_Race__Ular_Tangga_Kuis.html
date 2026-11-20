@@ -2,7 +2,9 @@
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Slide Race: Ular Tangga Kuis</title>
 <style>
-*{box-sizing:border-box;margin:0}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+button,input,select{touch-action:manipulation}
+#board,.cube,.pawn{will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 html,body{height:100%;overflow:hidden;font-family:system-ui,Segoe UI,Arial,sans-serif;background:#0f1226;color:#fff}
 body{display:flex;flex-direction:column;--W:min(78vh,62vw)}
 .stage{flex:1;position:relative;overflow:hidden;background:linear-gradient(#3fb4f5,#9bdcff 65%,#e3f6ff);perspective:1100px;perspective-origin:50% 25%;display:flex;align-items:center;justify-content:center}
@@ -231,7 +233,7 @@ if(t){const up=!!L[p.pos],f=p.pos;banner(up?`YEAY! NAIK TANGGA! ${p.name} naik d
 up?SFX.up():SFX.slide();await sleep(900);p.pawn.style.transition='left 1.2s ease-in-out,top 1.2s ease-in-out';p.pos=t;place(p,t);hud();await sleep(1500);p.pawn.style.transition=''}
 if(p.pos==100)return win(p);next()}
 // ====== MENANG + CONFETTI ======
-function win(p){SFX.win();$('#wt').textContent=`🏆 ${p.name} MENANG! 🎉 (${p.pts} poin)`;$('#win').classList.remove('h');confetti()}
+function win(p){SFX.win();$('#wt').textContent=`🏆 ${p.name} MENANG! 🎉 (${p.pts} poin)`;$('#win').classList.remove('h');confetti();try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:'GAME_SCORE',game:'slide_race',score:p.pts,winner:p.name},'*');}}catch(e){}}
 function confetti(){const c=$('#cf'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const a=[...Array(180)].map(()=>({x:Math.random()*c.width,y:-Math.random()*c.height,vx:Math.random()*4-2,vy:2+Math.random()*5,r:Math.random()*6.3,c:`hsl(${Math.random()*360},90%,60%)`}));
 (function f(){x.clearRect(0,0,c.width,c.height);let on=0;a.forEach(q=>{q.x+=q.vx;q.y+=q.vy;q.r+=.15;if(q.y<c.height+20)on=1;x.save();x.translate(q.x,q.y);x.rotate(q.r);x.fillStyle=q.c;x.fillRect(-5,-3,10,6);x.restore()});if($('#win').classList.contains('h'))return x.clearRect(0,0,c.width,c.height);on?requestAnimationFrame(f):0})()}
 $('#again').onclick=()=>{$('#win').classList.add('h');$('#start').classList.remove('h')};
@@ -244,4 +246,5 @@ $('#bg').onclick=()=>$('#bgf').click();
 $('#bgf').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{$('#bgs').style.display='none';const s=$('#stage').style;s.backgroundImage=`url(${r.result})`;s.backgroundSize='cover';s.backgroundPosition='center'};r.readAsDataURL(f)};
 $('#sv').onclick=()=>{const n=$('#ta').value.split('\n').map(l=>l.split('|').map(x=>x.trim())).filter(a=>a.length>=6&&'ABCD'.includes(a[5].toUpperCase())&&a[5]).map(a=>[a[0],a.slice(1,5),'ABCD'.indexOf(a[5].toUpperCase())]);
 if(!n.length)return alert('Format soal belum benar. Contoh: Pertanyaan | A | B | C | D | B');Q=n;deck=[];$('#ed').classList.add('h');banner(`${n.length} soal tersimpan`,1500)};
+window.addEventListener('message',e=>{if(e.data==='pauseMusic'||e.data==='pauseAudio'){muted=true;if(AC&&typeof AC.suspend==='function')AC.suspend();}else if(e.data==='resumeMusic'||e.data==='resumeAudio'){muted=false;if(AC&&typeof AC.resume==='function')AC.resume();}});
 </script></body></html>
